@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn8hnpa52k4l3"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lq20q"]
+[ext_resource type="Script" path="res://scripts/player/camera_control.gd" id="2_cd6t1"]
+[ext_resource type="PackedScene" uid="uid://dkpt0qjfyyp54" path="res://scenes/ui/player_ui.tscn" id="3_hthig"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rme7s"]
+height = 2.8
+
+[node name="Player" type="RigidBody3D"]
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_lq20q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rme7s")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+script = ExtResource("2_cd6t1")
+
+[node name="GroundedRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.5, 0)
+
+[node name="PlayerUI" parent="." instance=ExtResource("3_hthig")]

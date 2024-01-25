@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://rkdmcnpo1yah"]
+
+[node name="PlayerCrosshairUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair1" type="Control" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Horizontal" type="ColorRect" parent="CenterContainer/Crosshair1"]
+layout_mode = 2
+offset_left = -15.0
+offset_top = -1.0
+offset_right = 15.0
+offset_bottom = 1.0
+
+[node name="Vertical" type="ColorRect" parent="CenterContainer/Crosshair1"]
+layout_mode = 2
+offset_left = -1.0
+offset_top = -15.0
+offset_right = 1.0
+offset_bottom = 15.0
+
+[node name="Crosshair2" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="HorizontalTop" type="ColorRect" parent="CenterContainer/Crosshair2"]
+layout_mode = 2
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+offset_bottom = -6.0
+
+[node name="VerticalLeft" type="ColorRect" parent="CenterContainer/Crosshair2"]
+layout_mode = 2
+offset_left = -8.0
+offset_top = -4.0
+offset_right = -6.0
+offset_bottom = 4.0
+
+[node name="HorizontalDown" type="ColorRect" parent="CenterContainer/Crosshair2"]
+layout_mode = 2
+offset_left = -4.0
+offset_top = 6.0
+offset_right = 4.0
+offset_bottom = 8.0
+
+[node name="VerticalLeft2" type="ColorRect" parent="CenterContainer/Crosshair2"]
+layout_mode = 2
+offset_left = 6.0
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = 4.0

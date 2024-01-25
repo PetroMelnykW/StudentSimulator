@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://dij6ajyuubjvp"]
+
+[ext_resource type="Texture2D" uid="uid://c7kmts7di2dwg" path="res://assets/textures/floor/90_parquet decorated stencil texture-seamless.jpg" id="1_h5ntv"]
+[ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="1_k0plw"]
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/wall_physics_material.tres" id="2_d2o12"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8bog"]
+albedo_texture = ExtResource("1_h5ntv")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_okfj4"]
+material = SubResource("StandardMaterial3D_c8bog")
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fqjyo"]
+size = Vector3(50, 0, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8a1mb"]
+size = Vector3(1, 5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tn2u"]
+size = Vector3(1, 5, 20)
+
+[node name="TestRoom" type="Node3D"]
+
+[node name="GroundPlatform" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GroundPlatform"]
+mesh = SubResource("PlaneMesh_okfj4")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundPlatform"]
+shape = SubResource("BoxShape3D_fqjyo")
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.5, 0)
+physics_material_override = ExtResource("2_d2o12")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+mesh = SubResource("BoxMesh_8a1mb")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+shape = SubResource("BoxShape3D_0tn2u")
+
+[node name="Player" parent="." instance=ExtResource("1_k0plw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54682, 1.75709, 0.0787112)
