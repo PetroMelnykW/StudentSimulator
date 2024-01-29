@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn8hnpa52k4l3"]
+[gd_scene load_steps=6 format=3 uid="uid://cn8hnpa52k4l3"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lq20q"]
 [ext_resource type="Script" path="res://scripts/player/camera_control.gd" id="2_cd6t1"]
+[ext_resource type="Script" path="res://scripts/player/interact_ray.gd" id="3_8x4dw"]
 [ext_resource type="PackedScene" uid="uid://dkpt0qjfyyp54" path="res://scenes/ui/player_ui.tscn" id="3_hthig"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rme7s"]
@@ -20,6 +21,19 @@ shape = SubResource("CapsuleShape3D_rme7s")
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 script = ExtResource("2_cd6t1")
+
+[node name="InteractRay" type="RayCast3D" parent="PlayerCamera" node_paths=PackedStringArray("_player", "_name_panel", "_name_label", "_description_panel", "_description_label", "_interact_button_tip")]
+target_position = Vector3(0, 0, -4)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("3_8x4dw")
+_player = NodePath("../..")
+_name_panel = NodePath("../../PlayerUI/InteractableInfoUI/NamePanel")
+_name_label = NodePath("../../PlayerUI/InteractableInfoUI/NamePanel/Label")
+_description_panel = NodePath("../../PlayerUI/InteractableInfoUI/DescriptionPanel")
+_description_label = NodePath("../../PlayerUI/InteractableInfoUI/DescriptionPanel/Label")
+_interact_button_tip = NodePath("../../PlayerUI/InteractableInfoUI/InteractButtonTipPanel")
 
 [node name="GroundedRay" type="RayCast3D" parent="."]
 target_position = Vector3(0, -1.5, 0)

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dov5i3renx7ay"]
+
+[node name="InteractableInfoUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DescriptionPanel" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 70)
+layout_mode = 2
+offset_left = 490.0
+offset_top = 15.0
+offset_right = 790.0
+offset_bottom = 85.0
+color = Color(0.345098, 0.345098, 0.345098, 0.588235)
+
+[node name="Label" type="Label" parent="DescriptionPanel"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 70.0
+text = "Description
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NamePanel" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+offset_left = 580.0
+offset_top = 300.0
+offset_right = 700.0
+offset_bottom = 330.0
+color = Color(0.345098, 0.345098, 0.345098, 0.588235)
+
+[node name="Label" type="Label" parent="NamePanel"]
+offset_right = 120.0
+offset_bottom = 30.0
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractButtonTipPanel" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+offset_left = 550.0
+offset_top = 650.0
+offset_right = 730.0
+offset_bottom = 700.0
+color = Color(0.345098, 0.345098, 0.345098, 0.588235)
+
+[node name="Label" type="Label" parent="InteractButtonTipPanel"]
+offset_right = 180.0
+offset_bottom = 49.0
+text = "Press \"E\" to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
