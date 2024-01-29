@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxj7uno0x722"]
+
+[ext_resource type="Script" path="res://scripts/network/auth/sign_up.gd" id="1_kdj7x"]
+
+[node name="SignUp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kdj7x")
+
+[node name="Backgtound" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.396078, 0.329412, 0.882353, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Backgtound"]
+layout_mode = 0
+offset_left = 448.0
+offset_right = 832.0
+offset_bottom = 720.0
+alignment = 1
+
+[node name="Name" type="Label" parent="Backgtound/VBoxContainer"]
+layout_mode = 2
+text = "Nickname:"
+
+[node name="NicknameLineEdit" type="LineEdit" parent="Backgtound/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Email" type="Label" parent="Backgtound/VBoxContainer"]
+layout_mode = 2
+text = "Email:"
+
+[node name="EmailLineEdit" type="LineEdit" parent="Backgtound/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Password" type="Label" parent="Backgtound/VBoxContainer"]
+layout_mode = 2
+text = "Password:"
+
+[node name="PasswordLineEdit" type="LineEdit" parent="Backgtound/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+secret = true
+
+[node name="StatusMessage" type="Label" parent="Backgtound/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SignUpButton" type="Button" parent="Backgtound/VBoxContainer"]
+layout_mode = 2
+text = "Sign up"
+
+[node name="MoveToLogin" type="Button" parent="Backgtound"]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 32.0
+offset_right = 1250.0
+offset_bottom = 63.0
+text = "Login"
+
+[connection signal="pressed" from="Backgtound/VBoxContainer/SignUpButton" to="." method="_on_sign_up_button_pressed"]
+[connection signal="pressed" from="Backgtound/MoveToLogin" to="." method="_on_move_to_login_pressed"]

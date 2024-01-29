@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://m87r43ydtf7"]
+[gd_scene load_steps=6 format=3 uid="uid://m87r43ydtf7"]
 
 [ext_resource type="PackedScene" uid="uid://dij6ajyuubjvp" path="res://scenes/rooms/test_room.tscn" id="1_tfrpf"]
 
@@ -12,6 +12,14 @@ background_mode = 2
 sky = SubResource("Sky_a3xo5")
 reflected_light_source = 2
 
+[sub_resource type="GDScript" id="GDScript_3s4p5"]
+script/source = "extends Button
+
+func _on_pressed():
+	Firebase.Auth.logout()
+	get_tree().change_scene_to_file(\"res://scenes/ui/auth/login.tscn\")
+"
+
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -22,3 +30,15 @@ transform = Transform3D(0.902686, -0.234862, 0.360553, -0.0893363, 0.717362, 0.6
 shadow_enabled = true
 
 [node name="TestRoom" parent="." instance=ExtResource("1_tfrpf")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LogoutButton" type="Button" parent="CanvasLayer"]
+offset_left = 1184.0
+offset_top = 32.0
+offset_right = 1246.0
+offset_bottom = 63.0
+text = "Logout"
+script = SubResource("GDScript_3s4p5")
+
+[connection signal="pressed" from="CanvasLayer/LogoutButton" to="CanvasLayer/LogoutButton" method="_on_pressed"]
