@@ -11,15 +11,23 @@ config_version=5
 [application]
 
 config/name="StudentSimulator"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/ui/auth/login.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg")
 
 [filesystem]
 
