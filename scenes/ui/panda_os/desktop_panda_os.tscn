@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqwwgwkjsln7a"]
+
+[ext_resource type="Texture2D" uid="uid://cg7xghh8cek6g" path="res://assets/sprites/os/background_os_2.jpg" id="1_s4agx"]
+[ext_resource type="PackedScene" uid="uid://bfxlth8657x4" path="res://scenes/ui/panda_os/base_shotrcut.tscn" id="2_8godm"]
+[ext_resource type="PackedScene" uid="uid://xf3j2x35hfxt" path="res://scenes/ui/panda_os/down_panel.tscn" id="3_xel87"]
+
+[node name="DesktopPandaOS" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_s4agx")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 640.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="BaseShotrcut" parent="Background/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_8godm")]
+layout_mode = 2
+
+[node name="DownPanel" parent="Background" instance=ExtResource("3_xel87")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.933
+anchor_bottom = 0.933
+offset_top = 0.23999
+offset_bottom = 48.24

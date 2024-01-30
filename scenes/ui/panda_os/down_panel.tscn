@@ -1,0 +1,172 @@
+[gd_scene load_steps=18 format=3 uid="uid://xf3j2x35hfxt"]
+
+[ext_resource type="Texture2D" uid="uid://csf3gjtdm1x3r" path="res://assets/sprites/os/start_button.png" id="1_5ushc"]
+[ext_resource type="Script" path="res://scripts/panda_os/down_panel.gd" id="1_iw8fc"]
+[ext_resource type="Texture2D" uid="uid://d3rktqgrvojvk" path="res://assets/sprites/os/settings.png" id="3_4lvvr"]
+[ext_resource type="PackedScene" uid="uid://caixn28wlj1c0" path="res://scenes/ui/panda_os/base_shotrcut_mini_button.tscn" id="3_lx6o3"]
+[ext_resource type="Texture2D" uid="uid://cvrcebbu0qa22" path="res://assets/sprites/os/power-switch.png" id="4_wj66y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhgwf"]
+bg_color = Color(0.392157, 0.827451, 0.623529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbqla"]
+bg_color = Color(0.47451, 0.905882, 0.698039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fia6"]
+bg_color = Color(0.247059, 0.419608, 0.337255, 1)
+
+[sub_resource type="Theme" id="Theme_1ngx2"]
+Button/styles/hover = SubResource("StyleBoxFlat_vhgwf")
+Button/styles/normal = SubResource("StyleBoxFlat_bbqla")
+Button/styles/pressed = SubResource("StyleBoxFlat_8fia6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s230f"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.2, 0.34902, 0.278431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jduci"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.247059, 0.419608, 0.337255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftp7s"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.156863, 0.227451, 0.192157, 1)
+
+[sub_resource type="Theme" id="Theme_2i8jp"]
+Button/styles/hover = SubResource("StyleBoxFlat_s230f")
+Button/styles/normal = SubResource("StyleBoxFlat_jduci")
+Button/styles/pressed = SubResource("StyleBoxFlat_ftp7s")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u31qd"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.2, 0.34902, 0.278431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vb3v"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.247059, 0.419608, 0.337255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biv16"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.156863, 0.227451, 0.192157, 1)
+
+[sub_resource type="Theme" id="Theme_he1m7"]
+Button/styles/hover = SubResource("StyleBoxFlat_u31qd")
+Button/styles/normal = SubResource("StyleBoxFlat_7vb3v")
+Button/styles/pressed = SubResource("StyleBoxFlat_biv16")
+
+[node name="DownPanel" type="ColorRect"]
+offset_top = 672.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.47451, 0.905882, 0.698039, 1)
+script = ExtResource("1_iw8fc")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 64.0
+offset_bottom = 48.0
+focus_mode = 0
+theme = SubResource("Theme_1ngx2")
+theme_override_constants/icon_max_width = 48
+toggle_mode = true
+icon = ExtResource("1_5ushc")
+icon_alignment = 1
+
+[node name="Clock" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1184.0
+offset_right = 1272.0
+offset_bottom = 48.0
+theme_override_constants/separation = 0
+
+[node name="Time" type="Label" parent="Clock"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "02:10"
+horizontal_alignment = 1
+
+[node name="Date" type="Label" parent="Clock"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "01/20/2024"
+horizontal_alignment = 1
+
+[node name="StartMenu" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -352.0
+offset_right = 224.0
+color = Color(0.247059, 0.419608, 0.337255, 1)
+
+[node name="Label" type="Label" parent="StartMenu"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 216.0
+offset_bottom = 32.0
+text = "PandaOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StartMenu"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 224.0
+offset_bottom = 352.0
+theme_override_constants/separation = 0
+
+[node name="ToolMenu" type="VBoxContainer" parent="StartMenu/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="SettingsButton" type="Button" parent="StartMenu/HBoxContainer/ToolMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme = SubResource("Theme_2i8jp")
+theme_override_constants/icon_max_width = 28
+icon = ExtResource("3_4lvvr")
+
+[node name="SwitchButton" type="Button" parent="StartMenu/HBoxContainer/ToolMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme = SubResource("Theme_he1m7")
+theme_override_constants/icon_max_width = 28
+icon = ExtResource("4_wj66y")
+
+[node name="ShortcutMenu" type="ScrollContainer" parent="StartMenu/HBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu/HBoxContainer/ShortcutMenu"]
+layout_mode = 2
+
+[node name="BaseShortcutMiniButton" parent="StartMenu/HBoxContainer/ShortcutMenu/VBoxContainer" instance=ExtResource("3_lx6o3")]
+layout_mode = 2
+
+[connection signal="toggled" from="StartButton" to="." method="_on_start_button_toggled"]

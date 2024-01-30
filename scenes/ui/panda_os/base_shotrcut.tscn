@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfxlth8657x4"]
+
+[ext_resource type="Texture2D" uid="uid://hs8snjte0nju" path="res://assets/sprites/filler_icon.png" id="1_12slx"]
+
+[node name="BaseShotrcut" type="VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+icon = ExtResource("1_12slx")
+flat = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
