@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv06xksf6tsl4"]
+
+[ext_resource type="Script" path="res://scripts/panda_os/load_screen_panda_os.gd" id="1_8pt1w"]
+[ext_resource type="VideoStream" path="res://assets/videos/os/load_screen.ogv" id="1_nlvxs"]
+[ext_resource type="Texture2D" uid="uid://c2up4ed3kopy8" path="res://assets/sprites/os/loading.png" id="2_tr118"]
+
+[sub_resource type="Animation" id="Animation_ll7m6"]
+resource_name = "loading"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.28319, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_le5uw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6bpft"]
+_data = {
+"RESET": SubResource("Animation_le5uw"),
+"loading": SubResource("Animation_ll7m6")
+}
+
+[node name="LoadScreenPandaOS" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8pt1w")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 1910.0
+offset_bottom = 1075.0
+scale = Vector2(0.67, 0.67)
+stream = ExtResource("1_nlvxs")
+autoplay = true
+expand = true
+
+[node name="Loading" type="Sprite2D" parent="."]
+position = Vector2(640, 576)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_tr118")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6bpft")
+}
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
