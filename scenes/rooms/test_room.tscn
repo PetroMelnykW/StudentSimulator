@@ -1,16 +1,17 @@
-[gd_scene load_steps=24 format=3 uid="uid://dij6ajyuubjvp"]
+[gd_scene load_steps=17 format=3 uid="uid://dij6ajyuubjvp"]
 
+[ext_resource type="Script" path="res://scripts/room/room.gd" id="1_blhgo"]
 [ext_resource type="Texture2D" uid="uid://c7kmts7di2dwg" path="res://assets/textures/floor/test_floor_texture.jpg" id="1_h5ntv"]
-[ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="1_k0plw"]
 [ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/wall_physics_material.tres" id="2_d2o12"]
 [ext_resource type="PackedScene" uid="uid://blbtngiyke8a7" path="res://scenes/interactable_objects/test_interatable_cube.tscn" id="4_nfl2v"]
+[ext_resource type="PackedScene" uid="uid://dm3mgcdspc851" path="res://scenes/interactable_objects/classroom_door.tscn" id="5_vpbf3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8bog"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8erdw"]
 albedo_texture = ExtResource("1_h5ntv")
 uv1_scale = Vector3(6, 16, 20)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_okfj4"]
-material = SubResource("StandardMaterial3D_c8bog")
+material = SubResource("StandardMaterial3D_8erdw")
 size = Vector2(19, 48)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fqjyo"]
@@ -40,83 +41,9 @@ size = Vector3(19, 5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xxvja"]
 size = Vector3(19, 5, 1)
 
-[sub_resource type="Shader" id="Shader_ky8rk"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode unshaded, cull_front;
-
-uniform bool enable = true;
-uniform float outline_thickness = 0.01;
-uniform vec4 color : source_color  = vec4(0.0);
-
-void vertex() {
-	if (enable) {
-		VERTEX += normalize(VERTEX) * outline_thickness;
-	}
-}
-
-void fragment() {
-	if (enable) {
-		ALBEDO = color.rgb;
-		ALPHA = color.a;
-	}
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmv6a"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_ky8rk")
-shader_parameter/enable = false
-shader_parameter/outline_thickness = 0.04
-shader_parameter/color = Color(0.529412, 0.756863, 0.901961, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahd1m"]
-resource_local_to_scene = true
-next_pass = SubResource("ShaderMaterial_hmv6a")
-
-[sub_resource type="BoxMesh" id="BoxMesh_67eon"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_ahd1m")
-
-[sub_resource type="Shader" id="Shader_ujuwr"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-render_mode unshaded, cull_front;
-
-uniform bool enable = true;
-uniform float outline_thickness = 0.01;
-uniform vec4 color : source_color  = vec4(0.0);
-
-void vertex() {
-	if (enable) {
-		VERTEX += normalize(VERTEX) * outline_thickness;
-	}
-}
-
-void fragment() {
-	if (enable) {
-		ALBEDO = color.rgb;
-		ALPHA = color.a;
-	}
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xqak3"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_ujuwr")
-shader_parameter/enable = false
-shader_parameter/outline_thickness = 0.04
-shader_parameter/color = Color(0.529412, 0.756863, 0.901961, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ils0"]
-resource_local_to_scene = true
-next_pass = SubResource("ShaderMaterial_xqak3")
-
-[sub_resource type="BoxMesh" id="BoxMesh_c2xf2"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_0ils0")
-
-[node name="TestRoom" type="Node3D"]
+[node name="TestRoom" type="Node3D" node_paths=PackedStringArray("_player_start_position")]
+script = ExtResource("1_blhgo")
+_player_start_position = NodePath("PlayerStartPosition")
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
@@ -171,29 +98,15 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SouthWall"]
 shape = SubResource("BoxShape3D_xxvja")
 
-[node name="Player" parent="." instance=ExtResource("1_k0plw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54682, 1.75709, 0.0787112)
-
 [node name="TestInteratableCube" parent="." instance=ExtResource("4_nfl2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0634172, 0.58944, -9.02727)
-
-[node name="MeshInstance3D" parent="TestInteratableCube" index="1"]
-mesh = SubResource("BoxMesh_67eon")
-
-[node name="Interactable" parent="TestInteratableCube" index="2"]
-is_can_interacted = false
 
 [node name="TestInteratableCube2" parent="." instance=ExtResource("4_nfl2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09884, 0.58944, -8.53883)
 
-[node name="MeshInstance3D" parent="TestInteratableCube2" index="1"]
-mesh = SubResource("BoxMesh_c2xf2")
+[node name="ClassroomDoor" parent="." instance=ExtResource("5_vpbf3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.4439, 0, 0)
 
-[node name="Interactable" parent="TestInteratableCube2" index="2"]
-is_can_interacted = false
-is_show_name_info = false
-object_name = "TestCube2"
-object_description = "Some Description 22"
-
-[editable path="TestInteratableCube"]
-[editable path="TestInteratableCube2"]
+[node name="PlayerStartPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 14)
+gizmo_extents = 1.0

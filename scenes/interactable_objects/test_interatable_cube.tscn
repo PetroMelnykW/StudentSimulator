@@ -14,8 +14,8 @@ func _on_interactable_focused() -> void:
 func _on_interactable_unfocused() -> void:
 	meshInstance3D.mesh.surface_get_material(0).next_pass.set_shader_parameter(\"enable\", false)
 
-func _on_interactable_interacted(interacter : Player) -> void:
-	print(name, \"was interacted by\" , interacter.name)
+func _on_interactable_interacted(interactor : Player) -> void:
+	print(name, \"was interacted by\" , interactor.name)
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hrvwn"]
