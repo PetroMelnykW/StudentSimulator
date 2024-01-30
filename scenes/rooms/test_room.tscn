@@ -104,9 +104,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0634172, 0.58944, -9.02727)
 [node name="TestInteratableCube2" parent="." instance=ExtResource("4_nfl2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09884, 0.58944, -8.53883)
 
-[node name="ClassroomDoor" parent="." instance=ExtResource("5_vpbf3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.4439, 0, 0)
+[node name="TestDoor2Door" parent="." instance=ExtResource("5_vpbf3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.5, 0, 0)
+_scene_to_load = "res://scenes/rooms/test_room_2.tscn"
+
+[node name="Interactable" parent="TestDoor2Door" index="2"]
+is_show_description_info = false
+object_name = "Test room 2"
+object_description = ""
 
 [node name="PlayerStartPosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 14)
 gizmo_extents = 1.0
+
+[editable path="TestDoor2Door"]
+[editable path="TestDoor2Door/DoorModel"]

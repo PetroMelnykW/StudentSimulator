@@ -26,6 +26,6 @@ void fragment() {
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("Shader_uy1tq")
-shader_parameter/enable = false
+shader_parameter/enable = true
 shader_parameter/outline_thickness = 0.04
 shader_parameter/color = Color(0.529412, 0.756863, 0.901961, 1)
