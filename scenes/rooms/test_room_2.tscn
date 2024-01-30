@@ -113,10 +113,18 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SouthWall"]
 shape = SubResource("BoxShape3D_wyncn")
 
-[node name="ClassroomDoor" parent="." instance=ExtResource("4_5rc0d")]
+[node name="TestRoomDoor" parent="." instance=ExtResource("4_5rc0d")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.5, 0, 10)
 _scene_to_load = "res://scenes/rooms/test_room.tscn"
+
+[node name="Interactable" parent="TestRoomDoor" index="2"]
+is_show_description_info = false
+object_name = "Start room"
+object_description = ""
 
 [node name="PlayerStartPosition" type="Marker3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2, 14)
 gizmo_extents = 1.0
+
+[editable path="TestRoomDoor"]
+[editable path="TestRoomDoor/DoorModel"]
