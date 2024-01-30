@@ -3,7 +3,7 @@ extends Area3D
 
 signal focused
 signal unfocused
-signal interacted(interacter : Player)
+signal interacted(interactor : Player)
 
 @export_category("ObjectInfo")
 @export var is_can_interacted : bool = true
@@ -18,5 +18,5 @@ func focus() -> void:
 func unfocus() -> void:
 	unfocused.emit()
 
-func interact(interacter : Player) -> void:
-	interacted.emit(interacter)
+func interact(interactor : Player) -> void:
+	interacted.emit(interactor)

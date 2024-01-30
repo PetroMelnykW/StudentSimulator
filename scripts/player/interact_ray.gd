@@ -10,7 +10,7 @@ extends RayCast3D
 
 var _last_interactable_object : Interactable = null
 
-func _process(_delta):
+func _process(_delta) -> void:
 	_apply_ray();
 	_check_inputs();
 

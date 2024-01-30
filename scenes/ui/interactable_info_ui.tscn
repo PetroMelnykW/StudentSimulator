@@ -38,6 +38,7 @@ offset_bottom = 330.0
 color = Color(0.345098, 0.345098, 0.345098, 0.588235)
 
 [node name="Label" type="Label" parent="NamePanel"]
+layout_mode = 0
 offset_right = 120.0
 offset_bottom = 30.0
 text = "Name"
@@ -55,6 +56,7 @@ offset_bottom = 700.0
 color = Color(0.345098, 0.345098, 0.345098, 0.588235)
 
 [node name="Label" type="Label" parent="InteractButtonTipPanel"]
+layout_mode = 0
 offset_right = 180.0
 offset_bottom = 49.0
 text = "Press \"E\" to interact"

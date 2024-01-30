@@ -8,6 +8,12 @@ const MAX_LOOK_AMGLE : float = 85
 
 var _mouseDelta : Vector2 = Vector2.ZERO
 
+func set_camera_rotation(new_rotation : Vector3) -> void:
+	_mouseDelta.x = -new_rotation.y
+	_mouseDelta.y = -new_rotation.x
+	rotation_degrees.x = -_mouseDelta.y
+	rotation_degrees.y = -_mouseDelta.x
+
 func _ready() -> void:
 	_change_cursor_visible()
 
