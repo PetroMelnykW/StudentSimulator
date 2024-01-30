@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://caixn28wlj1c0"]
+
+[ext_resource type="Texture2D" uid="uid://hs8snjte0nju" path="res://assets/sprites/filler_icon.png" id="1_5w1xh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5pgo"]
+bg_color = Color(0.2, 0.34902, 0.278431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6sl5"]
+bg_color = Color(0.247059, 0.419608, 0.337255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhspi"]
+bg_color = Color(0.156863, 0.227451, 0.192157, 1)
+
+[sub_resource type="Theme" id="Theme_ak505"]
+Button/styles/hover = SubResource("StyleBoxFlat_u5pgo")
+Button/styles/normal = SubResource("StyleBoxFlat_n6sl5")
+Button/styles/pressed = SubResource("StyleBoxFlat_uhspi")
+
+[node name="BaseShortcutMiniButton" type="Button"]
+custom_minimum_size = Vector2(184, 32)
+focus_mode = 0
+theme = SubResource("Theme_ak505")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 176.0
+offset_bottom = 32.0
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_5w1xh")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Shortcut"
