@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://bl7fshtyji8s1"]
+
+[ext_resource type="PackedScene" uid="uid://cpingn2l2q7ne" path="res://assets/models/enviroment/furniture/table_1.glb" id="1_3hk7h"]
+[ext_resource type="Script" path="res://scripts/interactable_objects/pc_stand.gd" id="1_xtiv6"]
+[ext_resource type="PackedScene" uid="uid://cep5qma1pvo0b" path="res://assets/models/interactable_objects/cp_stand/pc.glb" id="2_rjndb"]
+[ext_resource type="PackedScene" uid="uid://7edfxg6ikwp4" path="res://assets/models/interactable_objects/cp_stand/monitor.glb" id="3_enukn"]
+[ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="3_x34ws"]
+[ext_resource type="PackedScene" uid="uid://dqui4cii4xh6r" path="res://assets/models/enviroment/decor/keyboard.glb" id="4_t7if8"]
+[ext_resource type="PackedScene" uid="uid://y3xrdmjl1tir" path="res://assets/models/enviroment/decor/mouse.glb" id="5_oa35p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eg0ec"]
+size = Vector3(3.84546, 2.62152, 1.12183)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qtal3"]
+size = Vector3(1.17041, 0.977783, 0.482239)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jwdou"]
+size = Vector3(563.494, 578.825, 276.762)
+
+[node name="PCStand" type="StaticBody3D"]
+transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 0, 0, 0)
+collision_mask = 0
+script = ExtResource("1_xtiv6")
+
+[node name="table_1" parent="." instance=ExtResource("1_3hk7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016261, 0, 0.0473063)
+
+[node name="monitor" parent="." instance=ExtResource("3_enukn")]
+transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 198, -50)
+
+[node name="WhiteScreen" parent="monitor" index="4"]
+visible = false
+
+[node name="Interactable" parent="monitor" instance=ExtResource("3_x34ws")]
+object_name = "Monitor"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="monitor/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000610352, 1.14517, -0.384888)
+shape = SubResource("BoxShape3D_eg0ec")
+
+[node name="pc" parent="." instance=ExtResource("2_rjndb")]
+transform = Transform3D(-1.00536e-05, 0, -230, 0, 230, 0, 230, 0, -1.00536e-05, 290, -265, 0)
+
+[node name="Interactable" parent="pc" instance=ExtResource("3_x34ws")]
+object_name = "System unit"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pc/Interactable"]
+transform = Transform3D(1, 0, -1.77636e-14, 0, 1, 0, 1.77636e-14, 0, 1, 0.0114746, 0.858277, 0.34671)
+shape = SubResource("BoxShape3D_qtal3")
+
+[node name="keyboard" parent="." instance=ExtResource("4_t7if8")]
+transform = Transform3D(19.9701, 0, -1.09308, 0, 20, 0, 1.09308, 0, 19.9701, -90, 188, 40)
+
+[node name="mouse" parent="." instance=ExtResource("5_oa35p")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 150, 194, 60.67)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.868256, 105.106, -1.65265)
+shape = SubResource("BoxShape3D_jwdou")
+
+[connection signal="interacted" from="monitor/Interactable" to="." method="_on_monitor_interacted"]
+[connection signal="interacted" from="pc/Interactable" to="." method="_on_pc_interacted"]
+
+[editable path="monitor"]
+[editable path="pc"]

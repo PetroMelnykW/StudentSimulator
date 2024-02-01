@@ -7,3 +7,9 @@ func _process(delta):
 
 func _on_start_button_toggled(toggled_on):
 	$StartMenu.visible = toggled_on
+
+func _on_switch_button_pressed():
+	var main : Main = get_tree().current_scene
+	$StartMenu.visible = false
+	$StartButton.button_pressed = false
+	main.switch_os(false)
