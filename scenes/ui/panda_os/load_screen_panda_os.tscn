@@ -22,6 +22,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_ll7m6"]
 resource_name = "loading"
 length = 10.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -68,5 +69,6 @@ texture = ExtResource("2_tr118")
 libraries = {
 "": SubResource("AnimationLibrary_6bpft")
 }
+autoplay = "loading"
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

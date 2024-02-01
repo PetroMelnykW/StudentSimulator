@@ -15,3 +15,14 @@ func change_room(scene_path : String) -> void:
 	var player_camera : CameraControl = _player.main_camera
 	player_camera.set_camera_rotation(_current_room.get_player_start_global_rotation())
 	_player.show()
+
+func switch_os(turning_on : bool) -> void:
+	$"3DWorld".visible = not turning_on
+	$"3DWorld/CanvasLayer".visible = not turning_on
+	$"3DWorld/Player/PlayerUI".visible = not turning_on
+	$PandaOS.visible = turning_on
+	$PandaOS/LoadScreenPandaOS.visible = turning_on
+	$PandaOS/LoadScreenPandaOS/VideoStreamPlayer.play()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED 
+						if not turning_on
+						else Input.MOUSE_MODE_VISIBLE)
