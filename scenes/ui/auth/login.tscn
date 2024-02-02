@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://byfxr7f4smgth"]
+[gd_scene load_steps=6 format=3 uid="uid://byfxr7f4smgth"]
 
 [ext_resource type="Script" path="res://scripts/network/auth/login.gd" id="1_j5fit"]
+[ext_resource type="Texture2D" uid="uid://dqy5od5i7lfgs" path="res://assets/ui/bg_login_and_signup.png" id="2_ykstp"]
+[ext_resource type="FontFile" uid="uid://dd7rsw2pt3kqk" path="res://assets/fonts/life_is_goofy.ttf" id="3_ewio5"]
+[ext_resource type="Theme" uid="uid://bfer2qc5j02d3" path="res://themes/text/auth_label.tres" id="4_ulwbh"]
+[ext_resource type="Theme" uid="uid://datgq1ubxoewq" path="res://themes/forms/auth.tres" id="5_unpsr"]
 
 [node name="Login" type="Control"]
 layout_mode = 3
@@ -11,52 +15,75 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j5fit")
 
-[node name="Backgtound" type="ColorRect" parent="."]
+[node name="Backgtound" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
-color = Color(0.396078, 0.329412, 0.882353, 1)
+texture = ExtResource("2_ykstp")
+expand_mode = 1
+
+[node name="SignUp" type="Label" parent="Backgtound"]
+layout_mode = 2
+offset_left = 480.0
+offset_top = 216.0
+offset_right = 800.0
+offset_bottom = 280.0
+theme_override_colors/font_outline_color = Color(0.898039, 0.568627, 0.282353, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_ewio5")
+theme_override_font_sizes/font_size = 72
+text = "Login"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Backgtound"]
 layout_mode = 0
-offset_left = 448.0
-offset_right = 832.0
-offset_bottom = 720.0
+offset_left = 480.0
+offset_top = 288.0
+offset_right = 800.0
+offset_bottom = 470.0
 alignment = 1
 
 [node name="Email" type="Label" parent="Backgtound/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_ulwbh")
 text = "Email:"
 
 [node name="EmailLineEdit" type="LineEdit" parent="Backgtound/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("5_unpsr")
 
 [node name="Password" type="Label" parent="Backgtound/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_ulwbh")
 text = "Password:"
 
 [node name="PasswordLineEdit" type="LineEdit" parent="Backgtound/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("5_unpsr")
 secret = true
 
 [node name="StatusMessage" type="Label" parent="Backgtound/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
+theme = ExtResource("4_ulwbh")
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="LoginButton" type="Button" parent="Backgtound/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_unpsr")
 text = "Login"
 
 [node name="MoveToSignUp" type="Button" parent="Backgtound"]
-offset_left = 1200.0
+layout_mode = 0
+offset_left = 1120.0
 offset_top = 32.0
-offset_right = 1250.0
-offset_bottom = 63.0
+offset_right = 1249.0
+offset_bottom = 65.0
+theme = ExtResource("5_unpsr")
 text = "Sing up"
 
 [connection signal="pressed" from="Backgtound/VBoxContainer/LoginButton" to="." method="_on_sign_up_button_pressed"]
