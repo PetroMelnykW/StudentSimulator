@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cpingn2l2q7ne" path="res://assets/models/enviroment/furniture/table_1.glb" id="1_3hk7h"]
 [ext_resource type="Script" path="res://scripts/interactable_objects/pc_stand.gd" id="1_xtiv6"]
-[ext_resource type="PackedScene" uid="uid://cep5qma1pvo0b" path="res://assets/models/interactable_objects/cp_stand/pc.glb" id="2_rjndb"]
-[ext_resource type="PackedScene" uid="uid://7edfxg6ikwp4" path="res://assets/models/interactable_objects/cp_stand/monitor.glb" id="3_enukn"]
+[ext_resource type="PackedScene" uid="uid://cep5qma1pvo0b" path="res://assets/models/interactable_objects/pc_stand/pc.glb" id="2_rjndb"]
+[ext_resource type="PackedScene" uid="uid://7edfxg6ikwp4" path="res://assets/models/interactable_objects/pc_stand/monitor.glb" id="3_enukn"]
 [ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="3_x34ws"]
 [ext_resource type="PackedScene" uid="uid://dqui4cii4xh6r" path="res://assets/models/enviroment/decor/keyboard.glb" id="4_t7if8"]
 [ext_resource type="PackedScene" uid="uid://y3xrdmjl1tir" path="res://assets/models/enviroment/decor/mouse.glb" id="5_oa35p"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eg0ec"]
 size = Vector3(3.84546, 2.62152, 1.12183)
