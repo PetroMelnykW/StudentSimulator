@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bfer2qc5j02d3"]
+
+[ext_resource type="FontFile" uid="uid://dd7rsw2pt3kqk" path="res://assets/fonts/life_is_goofy.ttf" id="1_cabfm"]
+
+[resource]
+Label/colors/font_outline_color = Color(0.898039, 0.568627, 0.282353, 1)
+Label/constants/outline_size = 10
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("1_cabfm")

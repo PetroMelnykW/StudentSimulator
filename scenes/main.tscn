@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://m87r43ydtf7"]
+[gd_scene load_steps=12 format=3 uid="uid://m87r43ydtf7"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5icmi"]
 [ext_resource type="PackedScene" uid="uid://dij6ajyuubjvp" path="res://scenes/rooms/test_room.tscn" id="1_tfrpf"]
 [ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="2_pxwtv"]
 [ext_resource type="PackedScene" uid="uid://bv06xksf6tsl4" path="res://scenes/ui/panda_os/load_screen_panda_os.tscn" id="2_w8tcm"]
 [ext_resource type="PackedScene" uid="uid://cqwwgwkjsln7a" path="res://scenes/ui/panda_os/desktop_panda_os.tscn" id="3_mxtna"]
-[ext_resource type="PackedScene" uid="uid://bkifymd3o1rrs" path="res://scenes/interactable_objects/pc_stand.tscn" id="4_4hyv1"]
+
+[ext_resource type="PackedScene" uid="uid://bl7fshtyji8s1" path="res://scenes/interactable_objects/pc_stand.tscn" id="4_4hyv1"]
+[ext_resource type="Theme" uid="uid://datgq1ubxoewq" path="res://themes/forms/auth.tres" id="7_0uptl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rsgos"]
 
@@ -58,10 +60,11 @@ transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 7.94369, 0.736722
 [node name="CanvasLayer" type="CanvasLayer" parent="3DWorld"]
 
 [node name="LogoutButton" type="Button" parent="3DWorld/CanvasLayer"]
-offset_left = 1184.0
+offset_left = 1120.0
 offset_top = 32.0
 offset_right = 1246.0
-offset_bottom = 63.0
+offset_bottom = 65.0
+theme = ExtResource("7_0uptl")
 text = "Logout"
 script = SubResource("GDScript_3s4p5")
 
