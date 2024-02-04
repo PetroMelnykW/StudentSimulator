@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl7fshtyji8s1"]
+[gd_scene load_steps=11 format=3 uid="uid://bkifymd3o1rrs"]
 
 [ext_resource type="PackedScene" uid="uid://cpingn2l2q7ne" path="res://assets/models/enviroment/furniture/table_1.glb" id="1_3hk7h"]
 [ext_resource type="Script" path="res://scripts/interactable_objects/pc_stand.gd" id="1_xtiv6"]
@@ -17,10 +17,12 @@ size = Vector3(1.17041, 0.977783, 0.482239)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jwdou"]
 size = Vector3(563.494, 578.825, 276.762)
 
-[node name="PCStand" type="StaticBody3D"]
+[node name="PCStand" type="StaticBody3D" node_paths=PackedStringArray("_monitor_meshes", "_pc_meshes")]
 transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 0, 0, 0)
 collision_mask = 0
 script = ExtResource("1_xtiv6")
+_monitor_meshes = [NodePath("monitor/Screen"), NodePath("monitor/Holder"), NodePath("monitor/Stand"), NodePath("monitor/BlackScreen"), NodePath("monitor/WhiteScreen")]
+_pc_meshes = [NodePath("pc/Cube")]
 
 [node name="table_1" parent="." instance=ExtResource("1_3hk7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016261, 0, 0.0473063)
@@ -58,8 +60,12 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 150, 194, 60.67)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.868256, 105.106, -1.65265)
 shape = SubResource("BoxShape3D_jwdou")
 
+[connection signal="focused" from="monitor/Interactable" to="." method="_on_monitor_focused"]
 [connection signal="interacted" from="monitor/Interactable" to="." method="_on_monitor_interacted"]
+[connection signal="unfocused" from="monitor/Interactable" to="." method="_on_monitor_unfocused"]
+[connection signal="focused" from="pc/Interactable" to="." method="_on_pc_focused"]
 [connection signal="interacted" from="pc/Interactable" to="." method="_on_pc_interacted"]
+[connection signal="unfocused" from="pc/Interactable" to="." method="_on_pc_unfocused"]
 
 [editable path="monitor"]
 [editable path="pc"]
