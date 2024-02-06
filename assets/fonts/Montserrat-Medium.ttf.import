@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dd7rsw2pt3kqk"
-path="res://.godot/imported/life_is_goofy.ttf-85153190e58eeb91fb9e0e11ffae6eb3.fontdata"
+uid="uid://ck18d1g324xia"
+path="res://.godot/imported/Montserrat-Medium.ttf-9322cac81db17d2f033bd26b2a37967f.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/life_is_goofy.ttf"
-dest_files=["res://.godot/imported/life_is_goofy.ttf-85153190e58eeb91fb9e0e11ffae6eb3.fontdata"]
+source_file="res://assets/fonts/Montserrat-Medium.ttf"
+dest_files=["res://.godot/imported/Montserrat-Medium.ttf-9322cac81db17d2f033bd26b2a37967f.fontdata"]
 
 [params]
 
@@ -26,7 +26,7 @@ oversampling=2.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
-compress=true
+compress=false
 preload=[]
 language_support={}
 script_support={}
