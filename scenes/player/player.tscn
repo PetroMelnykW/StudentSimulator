@@ -95,3 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 cull_mask = 2
 script = ExtResource("5_r01rv")
 _player_camera = NodePath("../../../../PlayerCamera")
+
+[editable path="PlayerUI"]
+[editable path="PlayerUI/InteractableInfoUI"]
