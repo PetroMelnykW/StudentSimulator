@@ -413,7 +413,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83675, 2.5842, 11.1411)
 shape = SubResource("BoxShape3D_o3kxh")
 
 [node name="BookShelf2" type="StaticBody3D" parent="."]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -24.0495, 0.15, -3.24343)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -24.049, 0.03, -3.243)
 
 [node name="uploads_files_2446965_GeometricBookcase" parent="BookShelf2" instance=ExtResource("14_ofill")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0, 0)
