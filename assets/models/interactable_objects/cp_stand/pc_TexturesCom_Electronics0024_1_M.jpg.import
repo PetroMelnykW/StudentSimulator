@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvujqvi70fnyn"
-path.s3tc="res://.godot/imported/table_1_bright22 seamless.jpg-e400ce7c91e05159fd19fc3c46bf5bf2.s3tc.ctex"
+uid="uid://0u1yskhn7i0p"
+path.s3tc="res://.godot/imported/pc_TexturesCom_Electronics0024_1_M.jpg-5e781054f0c87de0553cfd4694d000d2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/models/enviroment/furniture/table_1_bright22 seamless.jpg"
-dest_files=["res://.godot/imported/table_1_bright22 seamless.jpg-e400ce7c91e05159fd19fc3c46bf5bf2.s3tc.ctex"]
+source_file="res://assets/models/interactable_objects/cp_stand/pc_TexturesCom_Electronics0024_1_M.jpg"
+dest_files=["res://.godot/imported/pc_TexturesCom_Electronics0024_1_M.jpg-5e781054f0c87de0553cfd4694d000d2.s3tc.ctex"]
 
 [params]
 

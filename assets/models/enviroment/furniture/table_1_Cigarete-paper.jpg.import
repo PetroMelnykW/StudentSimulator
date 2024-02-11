@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkd5woyo3mlci"
+uid="uid://fuu20pjhvf36"
 path.s3tc="res://.godot/imported/table_1_Cigarete-paper.jpg-45a10ab480181487786c04adcb45f59f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b21h16cl2sgng"
+uid="uid://soskoiduo4v7"
 path.s3tc="res://.godot/imported/keyboard_Mac-keyboard-clean.jpg-ea2eaa8d4faf0dcc7dd304285ba8925b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

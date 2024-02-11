@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://blbtngiyke8a7"]
+[gd_scene load_steps=9 format=3 uid="uid://bhu2f0jam2xdf"]
 
-[ext_resource type="Material" uid="uid://che12idocard0" path="res://materials/shader_materials/outline_shader.tres" id="1_h4yob"]
 [ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="2_isnug"]
 
 [sub_resource type="GDScript" id="GDScript_vw6og"]
@@ -9,10 +8,10 @@ script/source = "extends StaticBody3D
 @onready var meshInstance3D : MeshInstance3D = $MeshInstance3D
 
 func _on_interactable_focused() -> void:
-	meshInstance3D.mesh.surface_get_material(0).next_pass.set_shader_parameter(\"enable\", true)
+	meshInstance3D.set_layer_mask_value(2, true)
 
 func _on_interactable_unfocused() -> void:
-	meshInstance3D.mesh.surface_get_material(0).next_pass.set_shader_parameter(\"enable\", false)
+	meshInstance3D.set_layer_mask_value(2, false)
 
 func _on_interactable_interacted(interactor : Player) -> void:
 	print(name, \"was interacted by\" , interactor.name)
@@ -20,9 +19,39 @@ func _on_interactable_interacted(interactor : Player) -> void:
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hrvwn"]
 
+[sub_resource type="Shader" id="Shader_uy1tq"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode unshaded, cull_front;
+
+uniform bool enable = true;
+uniform float outline_thickness = 0.01;
+uniform vec4 color : source_color  = vec4(0.0);
+
+void vertex() {
+	if (enable) {
+		VERTEX += normalize(VERTEX) * outline_thickness;
+	}
+}
+
+void fragment() {
+	if (enable) {
+		ALBEDO = color.rgb;
+		ALPHA = color.a;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gfuja"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_uy1tq")
+shader_parameter/enable = false
+shader_parameter/outline_thickness = 0.04
+shader_parameter/color = Color(0.529412, 0.756863, 0.901961, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j7cv"]
 resource_local_to_scene = true
-next_pass = ExtResource("1_h4yob")
+next_pass = SubResource("ShaderMaterial_gfuja")
 
 [sub_resource type="BoxMesh" id="BoxMesh_l656n"]
 resource_local_to_scene = true
