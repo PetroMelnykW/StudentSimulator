@@ -412,13 +412,23 @@ shape = SubResource("BoxShape3D_svgo7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83675, 2.5842, 11.1411)
 shape = SubResource("BoxShape3D_o3kxh")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.546, 0.05, -8.694)
+[node name="BookShelf2" type="StaticBody3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -24.0495, 0.15, -3.24343)
 
-[node name="uploads_files_2446965_GeometricBookcase" parent="StaticBody3D" instance=ExtResource("14_ofill")]
+[node name="uploads_files_2446965_GeometricBookcase" parent="BookShelf2" instance=ExtResource("14_ofill")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BookShelf2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0405884, 0.484131, -0.174292)
+shape = SubResource("BoxShape3D_6lwy6")
+
+[node name="BookShelf" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.546, 0.05, -8.694)
+
+[node name="uploads_files_2446965_GeometricBookcase" parent="BookShelf" instance=ExtResource("14_ofill")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BookShelf"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0405884, 0.484131, -0.174292)
 shape = SubResource("BoxShape3D_6lwy6")
 
