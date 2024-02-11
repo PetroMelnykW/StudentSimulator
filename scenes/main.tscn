@@ -10,12 +10,12 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rsgos"]
 
-[sub_resource type="Sky" id="Sky_a3xo5"]
+[sub_resource type="Sky" id="Sky_jdu1x"]
 sky_material = SubResource("ProceduralSkyMaterial_rsgos")
 
 [sub_resource type="Environment" id="Environment_gm0u6"]
 background_mode = 2
-sky = SubResource("Sky_a3xo5")
+sky = SubResource("Sky_jdu1x")
 reflected_light_source = 2
 
 [sub_resource type="GDScript" id="GDScript_3s4p5"]
@@ -32,7 +32,6 @@ _player = NodePath("3DWorld/Player")
 _current_room = NodePath("3DWorld/TestRoom")
 
 [node name="PandaOS" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="DesktopPandaOS" parent="PandaOS" instance=ExtResource("3_mxtna")]
 
