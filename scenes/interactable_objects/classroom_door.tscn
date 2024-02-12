@@ -40,6 +40,5 @@ object_description = "Some description"
 
 [connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
-[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
 
 [editable path="DoorModel"]

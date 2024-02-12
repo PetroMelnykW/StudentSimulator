@@ -1,0 +1,446 @@
+[gd_scene load_steps=39 format=3 uid="uid://bewgm88os46bm"]
+
+[ext_resource type="Script" path="res://scripts/room/room.gd" id="1_ealnm"]
+[ext_resource type="Texture2D" uid="uid://bw06wvjiw0dfk" path="res://assets/textures/floor/laminate_floor_02_diff_4k.jpg" id="1_o4wb3"]
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/wall_physics_material.tres" id="2_xim0o"]
+[ext_resource type="PackedScene" uid="uid://dm3mgcdspc851" path="res://scenes/interactable_objects/classroom_door.tscn" id="3_xr6j2"]
+[ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="4_uq7rv"]
+[ext_resource type="PackedScene" uid="uid://caei70ispod02" path="res://assets/models/enviroment/decor/window.glb" id="5_14e44"]
+[ext_resource type="PackedScene" uid="uid://bbdlbvvrtbhlt" path="res://assets/models/enviroment/plants/Areca.glb" id="5_vbydp"]
+[ext_resource type="PackedScene" uid="uid://dfffwuwte6ape" path="res://assets/models/enviroment/decor/light_switch.glb" id="5_vne1l"]
+[ext_resource type="PackedScene" uid="uid://3gvx2s5pp68s" path="res://assets/models/enviroment/decor/wall_cocket.glb" id="6_8pyoy"]
+[ext_resource type="PackedScene" uid="uid://bsnaqbc82g3rv" path="res://assets/models/enviroment/plants/Orchid.glb" id="6_xf3w0"]
+[ext_resource type="PackedScene" uid="uid://dbtbuuopxriv3" path="res://assets/models/enviroment/plants/Snake_plant.glb" id="7_cba74"]
+[ext_resource type="Texture2D" uid="uid://d2dhsm056w3jt" path="res://assets/textures/Wall/olga-thelavart-5Xkaq7I1iEk-unsplash.jpg" id="8_ik8nm"]
+[ext_resource type="PackedScene" uid="uid://bw5wrhnotoeio" path="res://assets/models/enviroment/plants/locker.glb" id="8_mkqr0"]
+[ext_resource type="PackedScene" uid="uid://bpm80ixdgids0" path="res://assets/models/enviroment/decor/GeometricBookcase.glb" id="14_ofill"]
+[ext_resource type="PackedScene" uid="uid://brev7xkfoi0i4" path="res://assets/models/enviroment/decor/wall_pictures.glb" id="14_rr4ay"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tmpd7"]
+
+[sub_resource type="Sky" id="Sky_wjuua"]
+sky_material = SubResource("ProceduralSkyMaterial_tmpd7")
+
+[sub_resource type="Environment" id="Environment_l65kn"]
+background_mode = 2
+sky = SubResource("Sky_wjuua")
+reflected_light_source = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8erdw"]
+albedo_texture = ExtResource("1_o4wb3")
+uv1_scale = Vector3(7.5, 20, 25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y2gnq"]
+material = SubResource("StandardMaterial3D_8erdw")
+size = Vector2(20, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbdqb"]
+size = Vector3(20, 0, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jnhqp"]
+albedo_color = Color(0.247059, 0.196078, 0.0588235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1wtti"]
+material = SubResource("StandardMaterial3D_jnhqp")
+size = Vector3(30, 0.2, 0.125)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7h2m"]
+metallic = 0.5
+metallic_texture = ExtResource("8_ik8nm")
+
+[sub_resource type="BoxMesh" id="BoxMesh_i8oow"]
+material = SubResource("StandardMaterial3D_e7h2m")
+size = Vector3(1, 5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ruop"]
+size = Vector3(1, 5, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_48waf"]
+material = SubResource("StandardMaterial3D_e7h2m")
+size = Vector3(30, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_atxg5"]
+size = Vector3(30, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p1bk3"]
+material = SubResource("StandardMaterial3D_e7h2m")
+size = Vector3(30, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gyh6o"]
+size = Vector3(30, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qr8te"]
+material = SubResource("StandardMaterial3D_e7h2m")
+size = Vector3(1, 5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uk3fi"]
+size = Vector3(1, 5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kyf1c"]
+size = Vector3(1.32544, 6.07841, 1.56384)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nemqs"]
+size = Vector3(1.57031, 6.58679, 1.52609)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3x7s"]
+size = Vector3(1, 3.9873, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_svgo7"]
+size = Vector3(4.48067, 5.88098, 1.18445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3kxh"]
+size = Vector3(0.133347, 4.93127, 1.82025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6lwy6"]
+size = Vector3(1.74695, 1.96826, 0.615356)
+
+[node name="Hallway" type="Node3D" node_paths=PackedStringArray("_player_start_position")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.72258, 0, 0)
+script = ExtResource("1_ealnm")
+_player_start_position = NodePath("PlayerStartPosition")
+
+[node name="PlayerStartPosition" type="Marker3D" parent="."]
+transform = Transform3D(1.00579, 0, 0, 0, 1.00579, 0, 0, 0, 1.00579, -0.784759, 2.0031, -0.0282934)
+gizmo_extents = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l65kn")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.902686, -0.234862, 0.360553, -0.422278, -0.644559, 0.637358, 0.0827063, -0.727587, -0.681011, 3.91612, 13.1707, -13.4191)
+shadow_enabled = true
+directional_shadow_fade_start = 0.0
+
+[node name="Player" parent="." instance=ExtResource("4_uq7rv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.68845, 0)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.39645e-08, 0, 1.00579, 0, 1.00579, 0, -1.00579, 0, -4.39645e-08, -7.81215, 0, -0.525)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, -6.75016e-14, 0, 1, 0, 6.75016e-14, 0, 1, -0.285883, 0, -2.05308)
+mesh = SubResource("PlaneMesh_y2gnq")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, -2.84217e-14, 0, 1, 0, 2.84217e-14, 0, 1, 0.336117, 0, -2.05308)
+shape = SubResource("BoxShape3D_lbdqb")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.41, 0.053, -2.38935)
+mesh = SubResource("BoxMesh_1wtti")
+skeleton = NodePath("../MeshInstance3D3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -9.54678, 0.053, -1.91767)
+mesh = SubResource("BoxMesh_1wtti")
+skeleton = NodePath("../MeshInstance3D3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, -1.81188e-13, 0, 1, 0, 1.81188e-13, 0, 1, 1.19209e-07, 0.053, -16.3711)
+mesh = SubResource("BoxMesh_1wtti")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, -5.68434e-14, 0, 1, 0, 5.68434e-14, 0, 1, 2.38419e-07, 0.053, 12.2665)
+mesh = SubResource("BoxMesh_1wtti")
+
+[node name="EastWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1.00579, 0, 0, 0, 1.00579, 0, 0, 0, 1.00579, 10.0525, 2.506, 0.00229418)
+physics_material_override = ExtResource("2_xim0o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EastWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02052, 0, 0)
+mesh = SubResource("BoxMesh_i8oow")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EastWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02052, 0, 0)
+shape = SubResource("BoxShape3D_6ruop")
+
+[node name="window" parent="EastWall" instance=ExtResource("5_14e44")]
+transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -5.51995, -0.979495, -0.80658)
+
+[node name="window2" parent="EastWall" instance=ExtResource("5_14e44")]
+transform = Transform3D(-1.09278e-07, 0, 2.49999, 0.0256558, 2.49986, 1.12145e-09, -2.49986, 0.0256558, -1.09273e-07, -5.53389, -0.979495, 5.68848)
+
+[node name="NorthWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1.00579, 0, 0, 0, 1.00579, 0, 0, 0, 1.00579, -4.90783, 2.506, -9.47599)
+physics_material_override = ExtResource("2_xim0o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NorthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02052, 0, 0)
+mesh = SubResource("BoxMesh_48waf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NorthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02052, 0, 0)
+shape = SubResource("BoxShape3D_atxg5")
+
+[node name="uploads_files_4835971_wall_pictures_(GLB)" parent="NorthWall" instance=ExtResource("14_rr4ay")]
+transform = Transform3D(-8.69195e-08, 0, -1.98849, 0, 1.98849, 0, 1.98849, 0, -8.69195e-08, -15.5581, -0.566719, 0.508049)
+
+[node name="wall_cocket" parent="NorthWall" instance=ExtResource("6_8pyoy")]
+transform = Transform3D(2, 0, -8.74228e-08, -8.74228e-08, 3.82137e-15, -2, 0, 2, 3.82137e-15, -8.41352, -0.912, 0.5)
+
+[node name="SouthWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1.00579, 0, 0, 0, 1.00579, 0, 0, 0, 1.00579, -5.17009, 2.506, 9.5514)
+physics_material_override = ExtResource("2_xim0o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SouthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02052, 0, 0)
+mesh = SubResource("BoxMesh_p1bk3")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02052, 0, 0)
+shape = SubResource("BoxShape3D_gyh6o")
+
+[node name="light_switch" parent="SouthWall" instance=ExtResource("5_vne1l")]
+transform = Transform3D(2, 0, -8.74228e-08, -8.74228e-08, 3.82137e-15, -2, 0, 2, 3.82137e-15, -9.00886, -0.911935, -18.312)
+
+[node name="Door" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(-4.39645e-08, 0, -1.00579, 0, 1.00579, 0, 1.00579, 0, -4.39645e-08, 9.55, 0, -22)
+
+[node name="TestDoor2Door" parent="Door" instance=ExtResource("3_xr6j2")]
+transform = Transform3D(-4.37115e-08, 0, 1, 0, 1, 0, -1, 0, -4.37115e-08, 30.848, -0.00380814, 6.13647)
+_scene_to_load = "res://scenes/rooms/test_room.tscn"
+
+[node name="10057_wooden_door_v002" parent="Door/TestDoor2Door/DoorModel" index="0"]
+transform = Transform3D(-0.01, -5.55111e-17, 0, 0, 0, 0.01, 0, 0.01, 0, -3.04274, 0, 0)
+
+[node name="10057_wooden_door_frame_v002" parent="Door/TestDoor2Door/DoorModel" index="1"]
+transform = Transform3D(-0.01, 1.05879e-22, 0, 0, 0, 0.01, 0, 0.01, 0, -3.04274, 0, 0)
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door" index="1"]
+transform = Transform3D(1, 0, -1.35525e-20, 0, 1, 0, 1.35525e-20, 0, 1, -5.02052, 1.5, 0)
+
+[node name="Interactable" parent="Door/TestDoor2Door" index="2"]
+is_show_description_info = false
+object_name = "Test room 2"
+object_description = ""
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door/Interactable" index="0"]
+transform = Transform3D(1, 0, -1.35525e-20, 0, 1, 0, 1.35525e-20, 0, 1, -5.02052, 1.5, 0)
+
+[node name="TestDoor2Door3" parent="Door" instance=ExtResource("3_xr6j2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.8239, -0.00380791, 16.0701)
+_scene_to_load = "res://scenes/rooms/test_room_2.tscn"
+
+[node name="10057_wooden_door_v002" parent="Door/TestDoor2Door3/DoorModel" index="0"]
+transform = Transform3D(-0.01, -1.32349e-23, 0, 0, 0, 0.01, 2.77556e-17, 0.01, 0, -3.04274, 0, 0)
+
+[node name="10057_wooden_door_frame_v002" parent="Door/TestDoor2Door3/DoorModel" index="1"]
+transform = Transform3D(-0.01, -1.32349e-23, 0, 0, 0, 0.01, -2.64698e-23, 0.01, 0, -3.04274, 0, 0)
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door3" index="1"]
+transform = Transform3D(1, 0, 1.69407e-21, 0, 1, 0, -1.69407e-21, 0, 1, -5.02052, 1.5, 0)
+
+[node name="Interactable" parent="Door/TestDoor2Door3" index="2"]
+is_show_description_info = false
+object_name = "Test room 2"
+object_description = ""
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door3/Interactable" index="0"]
+transform = Transform3D(1, 0, 1.69407e-21, 0, 1, 0, -1.69407e-21, 0, 1, -5.02052, 1.5, 0)
+
+[node name="TestDoor2Door4" parent="Door" instance=ExtResource("3_xr6j2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 0, 11.641)
+_scene_to_load = "res://scenes/rooms/test_room_2.tscn"
+
+[node name="10057_wooden_door_v002" parent="Door/TestDoor2Door4/DoorModel" index="0"]
+transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
+
+[node name="10057_wooden_door_frame_v002" parent="Door/TestDoor2Door4/DoorModel" index="1"]
+transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door4" index="1"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 5.02052, 1.5, -1.90735e-06)
+
+[node name="Interactable" parent="Door/TestDoor2Door4" index="2"]
+is_show_description_info = false
+object_name = "Test room 2"
+object_description = ""
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door4/Interactable" index="0"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 5.02052, 1.5, -1.90735e-06)
+
+[node name="TestDoor2Door6" parent="Door" instance=ExtResource("3_xr6j2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 0, 3.16)
+_scene_to_load = "res://scenes/rooms/test_room_2.tscn"
+
+[node name="10057_wooden_door_v002" parent="Door/TestDoor2Door6/DoorModel" index="0"]
+transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
+
+[node name="10057_wooden_door_frame_v002" parent="Door/TestDoor2Door6/DoorModel" index="1"]
+transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door6" index="1"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 5.02052, 1.5, 0)
+
+[node name="Interactable" parent="Door/TestDoor2Door6" index="2"]
+is_show_description_info = false
+object_name = "Test room 2"
+object_description = ""
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door6/Interactable" index="0"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 5.02052, 1.5, 0)
+
+[node name="TestDoor2Door5" parent="Door" instance=ExtResource("3_xr6j2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.8464, 0, 24.8394)
+_scene_to_load = "res://scenes/rooms/test_room_2.tscn"
+
+[node name="10057_wooden_door_v002" parent="Door/TestDoor2Door5/DoorModel" index="0"]
+transform = Transform3D(-0.01, -1.32349e-23, 0, 0, 0, 0.01, 2.77556e-17, 0.01, 0, -3.04274, 0, 0)
+
+[node name="10057_wooden_door_frame_v002" parent="Door/TestDoor2Door5/DoorModel" index="1"]
+transform = Transform3D(-0.01, -1.32349e-23, 0, 0, 0, 0.01, -2.64698e-23, 0.01, 0, -3.04274, 0, 0)
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door5" index="1"]
+transform = Transform3D(1, 0, 1.69407e-21, 0, 1, 0, -1.69407e-21, 0, 1, -5.02052, 1.5, 0)
+
+[node name="Interactable" parent="Door/TestDoor2Door5" index="2"]
+is_show_description_info = false
+object_name = "Test room 2"
+object_description = ""
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door5/Interactable" index="0"]
+transform = Transform3D(1, 0, 1.69407e-21, 0, 1, 0, -1.69407e-21, 0, 1, -5.02052, 1.5, 0)
+
+[node name="TestDoor2Door7" parent="Door" instance=ExtResource("3_xr6j2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 0, 19.743)
+_scene_to_load = "res://scenes/rooms/test_room_2.tscn"
+
+[node name="10057_wooden_door_v002" parent="Door/TestDoor2Door7/DoorModel" index="0"]
+transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
+
+[node name="10057_wooden_door_frame_v002" parent="Door/TestDoor2Door7/DoorModel" index="1"]
+transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door7" index="1"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 5.02052, 1.5, -1.90735e-06)
+
+[node name="Interactable" parent="Door/TestDoor2Door7" index="2"]
+is_show_description_info = false
+object_name = "Test room 2"
+object_description = ""
+
+[node name="CollisionShape3D" parent="Door/TestDoor2Door7/Interactable" index="0"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 5.02052, 1.5, -1.90735e-06)
+
+[node name="WestWall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1.01161, 0, 0, 0, 1.01161, 0, 0, 0, 1.01161, -19.7367, 2.49, 0.0530701)
+physics_material_override = ExtResource("2_xim0o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WestWall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99164, 0, 0)
+mesh = SubResource("BoxMesh_qr8te")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WestWall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99164, 0, 0)
+shape = SubResource("BoxShape3D_uk3fi")
+
+[node name="Snake_plant2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.17606, 0, -8.25535)
+
+[node name="Snake_plant" parent="Snake_plant2" instance=ExtResource("7_cba74")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0003, 0, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snake_plant2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0553, 3.15473, -0.281921)
+shape = SubResource("BoxShape3D_kyf1c")
+
+[node name="Areca2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.61155, 0, 8.08525)
+
+[node name="Areca" parent="Areca2" instance=ExtResource("5_vbydp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0992, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areca2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2513, 2.7934, -0.069809)
+shape = SubResource("BoxShape3D_nemqs")
+
+[node name="Orchid" type="StaticBody3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.0558, 0, 3.17356)
+
+[node name="Orchid2" parent="Orchid" instance=ExtResource("6_xf3w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0992, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Orchid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5747, 1.49365, 0)
+shape = SubResource("BoxShape3D_o3x7s")
+
+[node name="Locker1" type="StaticBody3D" parent="."]
+transform = Transform3D(6.55671e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 6.55671e-08, -18.8472, 0, 4.85955)
+
+[node name="locker2" parent="Locker1" instance=ExtResource("8_mkqr0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53674e-07, 0, -10.0992)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Locker1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257868, 2.44049, -10.007)
+shape = SubResource("BoxShape3D_svgo7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Locker1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83675, 2.5842, -9.05728)
+shape = SubResource("BoxShape3D_o3kxh")
+
+[node name="Locker2" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, -1.19442, 0, 8.69179)
+
+[node name="locker2" parent="Locker2" instance=ExtResource("8_mkqr0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0992, 0, -1.90735e-06)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Locker2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.72616, 2.44049, 0.0922222)
+shape = SubResource("BoxShape3D_svgo7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Locker2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9359, 2.5842, 1.0419)
+shape = SubResource("BoxShape3D_o3kxh")
+
+[node name="Locker3" type="StaticBody3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 9.21128, 0, -4.29131)
+
+[node name="locker2" parent="Locker3" instance=ExtResource("8_mkqr0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, 10.0992)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Locker3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373018, 2.44049, 10.1914)
+shape = SubResource("BoxShape3D_svgo7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Locker3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83675, 2.5842, 11.1411)
+shape = SubResource("BoxShape3D_o3kxh")
+
+[node name="BookShelf2" type="StaticBody3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -24.049, 0.03, -3.243)
+
+[node name="uploads_files_2446965_GeometricBookcase" parent="BookShelf2" instance=ExtResource("14_ofill")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BookShelf2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0405884, 0.484131, -0.174292)
+shape = SubResource("BoxShape3D_6lwy6")
+
+[node name="BookShelf" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.546, 0.05, -8.694)
+
+[node name="uploads_files_2446965_GeometricBookcase" parent="BookShelf" instance=ExtResource("14_ofill")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BookShelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0405884, 0.484131, -0.174292)
+shape = SubResource("BoxShape3D_6lwy6")
+
+[editable path="Door/TestDoor2Door"]
+[editable path="Door/TestDoor2Door/DoorModel"]
+[editable path="Door/TestDoor2Door3"]
+[editable path="Door/TestDoor2Door3/DoorModel"]
+[editable path="Door/TestDoor2Door4"]
+[editable path="Door/TestDoor2Door4/DoorModel"]
+[editable path="Door/TestDoor2Door6"]
+[editable path="Door/TestDoor2Door6/DoorModel"]
+[editable path="Door/TestDoor2Door5"]
+[editable path="Door/TestDoor2Door5/DoorModel"]
+[editable path="Door/TestDoor2Door7"]
+[editable path="Door/TestDoor2Door7/DoorModel"]
