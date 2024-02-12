@@ -72,6 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 91, -44.725)
 shape = SubResource("BoxShape3D_si7ts")
 
 [node name="Interactable" parent="Monitor" instance=ExtResource("3_x34ws")]
+is_show_description_info = false
 object_name = "Monitor"
 
 [node name="PC" type="StaticBody3D" parent="."]
@@ -88,6 +89,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.8233, 0)
 shape = SubResource("BoxShape3D_tkme3")
 
 [node name="Interactable" parent="PC" instance=ExtResource("3_x34ws")]
+is_show_description_info = false
 object_name = "System unit"
 
 [node name="KeyboardModel" parent="." instance=ExtResource("4_t7if8")]
