@@ -18,6 +18,8 @@ func _ready() -> void:
 	PlayerController.player_control_enable_changed.connect(_on_player_control_enable_changed)
 	CameraController.player_camera_3d = self
 	_change_cursor_visible()
+	_mouseDelta.x = -rotation_degrees.y
+	_mouseDelta.y = -rotation_degrees.x
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("change_cursor_visible"):

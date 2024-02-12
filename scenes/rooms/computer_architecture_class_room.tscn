@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://7vkplxfjvovq"]
+[gd_scene load_steps=24 format=3 uid="uid://7vkplxfjvovq"]
 
-[ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="1_q6r4e"]
+[ext_resource type="Script" path="res://scripts/room/room.gd" id="1_n3jyl"]
 [ext_resource type="Texture2D" uid="uid://l5pwmdhagk72" path="res://assets/textures/floor/light_parquet texture_2.jpg" id="1_qiptn"]
 [ext_resource type="Material" uid="uid://rpt1453qlpxn" path="res://materials/surface_materials/wall_material_1.tres" id="3_5emb8"]
 [ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="3_wbvgj"]
@@ -53,22 +53,9 @@ size = Vector3(22, 1, 18)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6hrjg"]
 size = Vector3(22, 1, 18)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bee2b"]
-sky_top_color = Color(0.427451, 0.603922, 0.803922, 1)
-sky_horizon_color = Color(0.529412, 0.686275, 0.72549, 1)
-ground_bottom_color = Color(0.223529, 0.329412, 0.133333, 1)
-ground_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
-ground_curve = 0.01024
-
-[sub_resource type="Sky" id="Sky_a3xo5"]
-sky_material = SubResource("ProceduralSkyMaterial_bee2b")
-
-[sub_resource type="Environment" id="Environment_e5kfw"]
-background_mode = 2
-sky = SubResource("Sky_a3xo5")
-reflected_light_source = 2
-
-[node name="ComputerArchitectureClassRoom" type="Node3D"]
+[node name="ComputerArchitectureClassRoom" type="Node3D" node_paths=PackedStringArray("_player_start_position")]
+script = ExtResource("1_n3jyl")
+_player_start_position = NodePath("PlayerStartPosition")
 
 [node name="RoomBox" type="Node3D" parent="."]
 
@@ -154,77 +141,78 @@ mesh = SubResource("BoxMesh_qxr4v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomBox/Roof"]
 shape = SubResource("BoxShape3D_6hrjg")
 
-[node name="PCs" type="Node3D" parent="."]
+[node name="Enviroment" type="Node3D" parent="."]
 
-[node name="PC1" parent="PCs" instance=ExtResource("6_vc07b")]
+[node name="PCs" type="Node3D" parent="Enviroment"]
+
+[node name="PC1" parent="Enviroment/PCs" instance=ExtResource("6_vc07b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.75, -7)
 
-[node name="PC2" parent="PCs" instance=ExtResource("6_vc07b")]
+[node name="PC2" parent="Enviroment/PCs" instance=ExtResource("6_vc07b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.75, -7)
 
-[node name="PC3" parent="PCs" instance=ExtResource("6_vc07b")]
+[node name="PC3" parent="Enviroment/PCs" instance=ExtResource("6_vc07b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.75, -7)
 
-[node name="PC4" parent="PCs" instance=ExtResource("6_vc07b")]
+[node name="PC4" parent="Enviroment/PCs" instance=ExtResource("6_vc07b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.75, -7)
 
-[node name="PC5" parent="PCs" instance=ExtResource("6_vc07b")]
+[node name="PC5" parent="Enviroment/PCs" instance=ExtResource("6_vc07b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.75, -7)
 
-[node name="PC6" parent="PCs" instance=ExtResource("6_vc07b")]
+[node name="PC6" parent="Enviroment/PCs" instance=ExtResource("6_vc07b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.75, -7)
 
-[node name="WallSockets" type="Node3D" parent="."]
+[node name="WallSockets" type="Node3D" parent="Enviroment"]
 
-[node name="WallSocket1" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+[node name="WallSocket1" parent="Enviroment/WallSockets" instance=ExtResource("11_nyk2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, -7.95)
 
-[node name="WallSocket2" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+[node name="WallSocket2" parent="Enviroment/WallSockets" instance=ExtResource("11_nyk2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -7.95)
 
-[node name="WallSocket3" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+[node name="WallSocket3" parent="Enviroment/WallSockets" instance=ExtResource("11_nyk2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -7.95)
 
-[node name="WallSocket4" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+[node name="WallSocket4" parent="Enviroment/WallSockets" instance=ExtResource("11_nyk2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -7.95)
 
-[node name="WallSocket5" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+[node name="WallSocket5" parent="Enviroment/WallSockets" instance=ExtResource("11_nyk2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -7.95)
 
-[node name="WallSocket6" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+[node name="WallSocket6" parent="Enviroment/WallSockets" instance=ExtResource("11_nyk2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -7.95)
 
-[node name="Lighting" type="Node3D" parent="."]
+[node name="Lighting" type="Node3D" parent="Enviroment"]
 
-[node name="OtherEnviroment" type="Node3D" parent="."]
+[node name="OtherEnviroment" type="Node3D" parent="Enviroment"]
 
-[node name="ArchitecturePCTable" parent="OtherEnviroment" instance=ExtResource("8_nsgk0")]
+[node name="ArchitecturePCTable" parent="Enviroment/OtherEnviroment" instance=ExtResource("8_nsgk0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 6)
 
-[node name="ExitDoor" parent="OtherEnviroment" instance=ExtResource("5_xw2nb")]
+[node name="ExitDoor" parent="Enviroment/OtherEnviroment" instance=ExtResource("5_xw2nb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+_scene_to_load = "res://scenes/rooms/hallway.tscn"
 
-[node name="ClassBoard" parent="OtherEnviroment" instance=ExtResource("8_q1ubn")]
+[node name="Interactable" parent="Enviroment/OtherEnviroment/ExitDoor" index="2"]
+is_show_description_info = false
+object_name = "Hallway"
+object_description = ""
+
+[node name="ClassBoard" parent="Enviroment/OtherEnviroment" instance=ExtResource("8_q1ubn")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -9.94, 1.25, 0)
 
-[node name="Interactable" parent="OtherEnviroment/ClassBoard" index="2"]
+[node name="Interactable" parent="Enviroment/OtherEnviroment/ClassBoard" index="2"]
 object_description = "This is the computer architecture class"
 
-[node name="LightSwitch" parent="OtherEnviroment" instance=ExtResource("9_7hulf")]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 6.6886, 1.70003, 7.98649)
+[node name="LightSwitch" parent="Enviroment/OtherEnviroment" instance=ExtResource("9_7hulf")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 6.7, 1.7, 7.986)
 
-[node name="Player" parent="." instance=ExtResource("1_q6r4e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11802, 2.19866, 0.892789)
+[node name="PlayerStartPosition" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 1.4, 7)
+gizmo_extents = 1.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_e5kfw")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.919006, -0.354223, 0.173072, -0.256096, 0.87014, 0.421035, -0.299738, 0.342611, -0.890379, 0, 15, 0)
-shadow_enabled = true
-
-[editable path="OtherEnviroment/ExitDoor"]
-[editable path="OtherEnviroment/ExitDoor/DoorModel"]
-[editable path="OtherEnviroment/ClassBoard"]
-[editable path="OtherEnviroment/ClassBoard/BoardModel"]
-[editable path="Player"]
+[editable path="Enviroment/OtherEnviroment/ExitDoor"]
+[editable path="Enviroment/OtherEnviroment/ExitDoor/DoorModel"]
+[editable path="Enviroment/OtherEnviroment/ClassBoard"]
+[editable path="Enviroment/OtherEnviroment/ClassBoard/BoardModel"]

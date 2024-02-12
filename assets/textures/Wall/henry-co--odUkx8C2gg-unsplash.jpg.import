@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://l202r47tduqh"
-path.s3tc="res://.godot/imported/henry-co--odUkx8C2gg-unsplash.jpg-bb99d78c9987999c4fad2742d3392e6d.s3tc.ctex"
+path.s3tc="res://.godot/imported/henry-co--odUkx8C2gg-unsplash.jpg-9c057f0975ce4836043c4c35d25b8f4a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Wall/henry-co--odUkx8C2gg-unsplash.jpg"
-dest_files=["res://.godot/imported/henry-co--odUkx8C2gg-unsplash.jpg-bb99d78c9987999c4fad2742d3392e6d.s3tc.ctex"]
+source_file="res://assets/textures/wall/henry-co--odUkx8C2gg-unsplash.jpg"
+dest_files=["res://.godot/imported/henry-co--odUkx8C2gg-unsplash.jpg-9c057f0975ce4836043c4c35d25b8f4a.s3tc.ctex"]
 
 [params]
 
