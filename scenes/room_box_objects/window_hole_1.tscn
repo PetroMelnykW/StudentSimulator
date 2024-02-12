@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://wnglsown5uuu"]
+
+[ext_resource type="PackedScene" uid="uid://n8gujy0gc76m" path="res://assets/models/room_box/window.glb" id="1_xda3e"]
+[ext_resource type="Material" uid="uid://c5v5on82h166j" path="res://materials/surface_materials/glass_material.tres" id="2_fdae7"]
+
+[node name="WindowHole" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.234, -0.108, 0)
+operation = 2
+size = Vector3(2, 2, 1)
+
+[node name="Window" parent="." instance=ExtResource("1_xda3e")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0)
+
+[node name="B_2_4_1Exterior_Glass" parent="Window/PVC Window – Fixed" index="8"]
+visible = false
+material_override = ExtResource("2_fdae7")
+
+[node name="B_2_4_2_Exterior_Glass_" parent="Window/PVC Window – Fixed" index="9"]
+visible = false
+material_override = ExtResource("2_fdae7")
+transparency = 0.75
+
+[node name="B_2_4_3_Interior_Glass_" parent="Window/PVC Window – Fixed" index="10"]
+material_override = ExtResource("2_fdae7")
+
+[node name="B_2_4_4_Interior_Glass" parent="Window/PVC Window – Fixed" index="11"]
+material_override = ExtResource("2_fdae7")
+
+[editable path="Window"]

@@ -12,7 +12,7 @@ func change_room(scene_path : String) -> void:
 	add_child(_current_room)
 	_current_room.position = Vector3.ZERO
 	_player.global_position = _current_room.get_player_start_global_position()
-	var player_camera : CameraControl = _player.main_camera
+	var player_camera : Camera3D = _player.main_camera
 	player_camera.set_camera_rotation(_current_room.get_player_start_global_rotation())
 	_player.show()
 

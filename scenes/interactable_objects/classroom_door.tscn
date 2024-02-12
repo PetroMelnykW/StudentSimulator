@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dm3mgcdspc851"]
 
 [ext_resource type="Script" path="res://scripts/interactable_objects/classroom_door.gd" id="1_2ti44"]
-[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/wall_physics_material.tres" id="1_5f5tu"]
 [ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="1_jlp11"]
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="1_lw2v0"]
 [ext_resource type="PackedScene" uid="uid://c23vrs2nkxfm0" path="res://assets/models/interactable_objects/door/door1.glb" id="3_piylg"]
 [ext_resource type="Texture2D" uid="uid://w33c1h3bu463" path="res://assets/textures/interactable_objects/door/door1.jpg" id="4_nf4sw"]
 
@@ -16,8 +16,9 @@ albedo_texture = ExtResource("4_nf4sw")
 size = Vector3(1.5, 3, 0.1)
 
 [node name="ClassroomDoor" type="StaticBody3D"]
+collision_layer = 5
 collision_mask = 0
-physics_material_override = ExtResource("1_5f5tu")
+physics_material_override = ExtResource("1_lw2v0")
 script = ExtResource("1_2ti44")
 
 [node name="DoorModel" parent="." instance=ExtResource("3_piylg")]
@@ -37,10 +38,7 @@ shape = SubResource("BoxShape3D_e20hl")
 object_name = "Some room"
 object_description = "Some description"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("BoxShape3D_e20hl")
-
+[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 
 [editable path="DoorModel"]

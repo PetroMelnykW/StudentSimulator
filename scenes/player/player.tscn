@@ -1,15 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://cn8hnpa52k4l3"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lq20q"]
-[ext_resource type="Script" path="res://scripts/player/camera_control.gd" id="2_cd6t1"]
+[ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_ejk8q"]
 [ext_resource type="Script" path="res://scripts/player/interact_ray.gd" id="3_8x4dw"]
 [ext_resource type="PackedScene" uid="uid://dkpt0qjfyyp54" path="res://scenes/ui/player_ui.tscn" id="3_hthig"]
 [ext_resource type="Script" path="res://scripts/player/outline_camera.gd" id="5_r01rv"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rme7s"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uirc5"]
 height = 2.8
 
-[sub_resource type="Shader" id="Shader_wj7ev"]
+[sub_resource type="Shader" id="Shader_r2686"]
 code = "shader_type canvas_item;
 
 uniform vec4 line_color : source_color = vec4(1.0);
@@ -38,7 +38,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_35jmj"]
-shader = SubResource("Shader_wj7ev")
+shader = SubResource("Shader_r2686")
 shader_parameter/line_color = Color(0.329412, 0.647059, 0.776471, 1)
 shader_parameter/line_thickness = 4.0
 
@@ -50,17 +50,17 @@ axis_lock_angular_z = true
 script = ExtResource("1_lq20q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_rme7s")
+shape = SubResource("CapsuleShape3D_uirc5")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
-script = ExtResource("2_cd6t1")
+current = true
+script = ExtResource("2_ejk8q")
 
 [node name="InteractRay" type="RayCast3D" parent="PlayerCamera" node_paths=PackedStringArray("_player", "_name_panel", "_name_label", "_description_panel", "_description_label", "_interact_button_tip")]
 target_position = Vector3(0, 0, -4)
-collision_mask = 4
+collision_mask = 5
 collide_with_areas = true
-collide_with_bodies = false
 script = ExtResource("3_8x4dw")
 _player = NodePath("../..")
 _name_panel = NodePath("../../PlayerUI/InteractableInfoUI/NamePanel")
@@ -90,7 +90,7 @@ handle_input_locally = false
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
-[node name="OutlineCamera" type="Camera3D" parent="OutlineCanvas/SubViewportContainer/OutlineViewport" node_paths=PackedStringArray("_player_camera")]
+[node name="OutlineCamera" type="Camera3D" parent="OutlineCanvas/SubViewportContainer/OutlineViewport" node_paths=PackedStringArray("_main_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 cull_mask = 2
 script = ExtResource("5_r01rv")

@@ -1,5 +1,5 @@
 class_name Interactable
-extends Area3D
+extends Node
 
 signal focused
 signal unfocused

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddx5c6n7jne6u"]
+
+[ext_resource type="Script" path="res://scripts/interactable_objects/light_switch.gd" id="1_h35q8"]
+[ext_resource type="PackedScene" uid="uid://b3flssn24yj6m" path="res://assets/models/interactable_objects/light_switch/light_switch.glb" id="1_pnp2x"]
+[ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="3_le0tw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_63x4h"]
+size = Vector3(0.08, 0.02, 0.08)
+
+[node name="LightSwitch" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2.38498e-08, 2, 0, -2, 2.38498e-08, 0, 0, 0)
+script = ExtResource("1_h35q8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+shape = SubResource("BoxShape3D_63x4h")
+
+[node name="LightSwitchModel" parent="." instance=ExtResource("1_pnp2x")]
+
+[node name="Interactable" parent="." instance=ExtResource("3_le0tw")]
+is_show_description_info = false
+object_name = "Light switch"
+
+[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+
+[editable path="LightSwitchModel"]
