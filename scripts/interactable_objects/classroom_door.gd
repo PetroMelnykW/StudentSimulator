@@ -3,6 +3,7 @@ extends StaticBody3D
 
 @export_file("*.tscn") var _scene_to_load : String
 
+
 @onready var _doorMesh : MeshInstance3D = $"DoorModel/10057_wooden_door_v002"
 @onready var _doorFrame : MeshInstance3D = $"DoorModel/10057_wooden_door_frame_v002"
 
