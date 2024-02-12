@@ -1,0 +1,230 @@
+[gd_scene load_steps=27 format=3 uid="uid://7vkplxfjvovq"]
+
+[ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="1_q6r4e"]
+[ext_resource type="Texture2D" uid="uid://l5pwmdhagk72" path="res://assets/textures/floor/light_parquet texture_2.jpg" id="1_qiptn"]
+[ext_resource type="Material" uid="uid://rpt1453qlpxn" path="res://materials/surface_materials/wall_material_1.tres" id="3_5emb8"]
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="3_wbvgj"]
+[ext_resource type="PackedScene" uid="uid://wnglsown5uuu" path="res://scenes/room_box_objects/window_hole_1.tscn" id="4_bbj6l"]
+[ext_resource type="PackedScene" uid="uid://dm3mgcdspc851" path="res://scenes/interactable_objects/classroom_door.tscn" id="5_xw2nb"]
+[ext_resource type="PackedScene" uid="uid://5mftt45cnxg3" path="res://scenes/enviroment/furniture/pc.tscn" id="6_vc07b"]
+[ext_resource type="PackedScene" uid="uid://b45kqawwu4uxd" path="res://scenes/interactable_objects/architecture_pc_table.tscn" id="8_nsgk0"]
+[ext_resource type="PackedScene" uid="uid://devh745qqm317" path="res://scenes/interactable_objects/class_board.tscn" id="8_q1ubn"]
+[ext_resource type="PackedScene" uid="uid://ddx5c6n7jne6u" path="res://scenes/interactable_objects/light_switch.tscn" id="9_7hulf"]
+[ext_resource type="PackedScene" uid="uid://b0c4qow81i8kq" path="res://scenes/enviroment/decor/wall_socket.tscn" id="11_nyk2q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5thw"]
+albedo_texture = ExtResource("1_qiptn")
+uv1_scale = Vector3(5, 4, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yeejr"]
+material = SubResource("StandardMaterial3D_s5thw")
+size = Vector2(20, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tovub"]
+size = Vector3(20, 0, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rnwj0"]
+size = Vector3(20, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_klxx6"]
+material = ExtResource("3_5emb8")
+size = Vector3(1, 5, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c7gld"]
+size = Vector3(1, 5, 18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ysrcy"]
+material = ExtResource("3_5emb8")
+size = Vector3(20, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5dqxx"]
+size = Vector3(20, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ejoji"]
+material = ExtResource("3_5emb8")
+size = Vector3(1, 5, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_icarj"]
+size = Vector3(1, 5, 18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qxr4v"]
+size = Vector3(22, 1, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hrjg"]
+size = Vector3(22, 1, 18)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bee2b"]
+sky_top_color = Color(0.427451, 0.603922, 0.803922, 1)
+sky_horizon_color = Color(0.529412, 0.686275, 0.72549, 1)
+ground_bottom_color = Color(0.223529, 0.329412, 0.133333, 1)
+ground_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
+ground_curve = 0.01024
+
+[sub_resource type="Sky" id="Sky_a3xo5"]
+sky_material = SubResource("ProceduralSkyMaterial_bee2b")
+
+[sub_resource type="Environment" id="Environment_e5kfw"]
+background_mode = 2
+sky = SubResource("Sky_a3xo5")
+reflected_light_source = 2
+
+[node name="ComputerArchitectureClassRoom" type="Node3D"]
+
+[node name="RoomBox" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="RoomBox"]
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoomBox/Floor"]
+mesh = SubResource("PlaneMesh_yeejr")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomBox/Floor"]
+shape = SubResource("BoxShape3D_tovub")
+
+[node name="NorthWall" type="StaticBody3D" parent="RoomBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.35)
+collision_mask = 0
+physics_material_override = ExtResource("3_wbvgj")
+
+[node name="WallMesh" type="CSGBox3D" parent="RoomBox/NorthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+size = Vector3(20, 5, 0.7)
+material = ExtResource("3_5emb8")
+
+[node name="WindowHole1" parent="RoomBox/NorthWall/WallMesh" instance=ExtResource("4_bbj6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0)
+
+[node name="WindowHole2" parent="RoomBox/NorthWall/WallMesh" instance=ExtResource("4_bbj6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="WindowHole3" parent="RoomBox/NorthWall/WallMesh" instance=ExtResource("4_bbj6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomBox/NorthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_rnwj0")
+
+[node name="WestWall" type="StaticBody3D" parent="RoomBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0)
+collision_mask = 0
+physics_material_override = ExtResource("3_wbvgj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoomBox/WestWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("BoxMesh_klxx6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomBox/WestWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_c7gld")
+
+[node name="SouthWall" type="StaticBody3D" parent="RoomBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.5)
+collision_mask = 0
+physics_material_override = ExtResource("3_wbvgj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoomBox/SouthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("BoxMesh_ysrcy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomBox/SouthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_5dqxx")
+
+[node name="EastWall" type="StaticBody3D" parent="RoomBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
+collision_mask = 0
+physics_material_override = ExtResource("3_wbvgj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoomBox/EastWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("BoxMesh_ejoji")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomBox/EastWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_icarj")
+
+[node name="Roof" type="StaticBody3D" parent="RoomBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+physics_material_override = ExtResource("3_wbvgj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoomBox/Roof"]
+mesh = SubResource("BoxMesh_qxr4v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomBox/Roof"]
+shape = SubResource("BoxShape3D_6hrjg")
+
+[node name="PCs" type="Node3D" parent="."]
+
+[node name="PC1" parent="PCs" instance=ExtResource("6_vc07b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.75, -7)
+
+[node name="PC2" parent="PCs" instance=ExtResource("6_vc07b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.75, -7)
+
+[node name="PC3" parent="PCs" instance=ExtResource("6_vc07b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.75, -7)
+
+[node name="PC4" parent="PCs" instance=ExtResource("6_vc07b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.75, -7)
+
+[node name="PC5" parent="PCs" instance=ExtResource("6_vc07b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.75, -7)
+
+[node name="PC6" parent="PCs" instance=ExtResource("6_vc07b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.75, -7)
+
+[node name="WallSockets" type="Node3D" parent="."]
+
+[node name="WallSocket1" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, -7.95)
+
+[node name="WallSocket2" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -7.95)
+
+[node name="WallSocket3" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -7.95)
+
+[node name="WallSocket4" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -7.95)
+
+[node name="WallSocket5" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -7.95)
+
+[node name="WallSocket6" parent="WallSockets" instance=ExtResource("11_nyk2q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -7.95)
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="OtherEnviroment" type="Node3D" parent="."]
+
+[node name="ArchitecturePCTable" parent="OtherEnviroment" instance=ExtResource("8_nsgk0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 6)
+
+[node name="ExitDoor" parent="OtherEnviroment" instance=ExtResource("5_xw2nb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+
+[node name="ClassBoard" parent="OtherEnviroment" instance=ExtResource("8_q1ubn")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -9.94, 1.25, 0)
+
+[node name="Interactable" parent="OtherEnviroment/ClassBoard" index="2"]
+object_description = "This is the computer architecture class"
+
+[node name="LightSwitch" parent="OtherEnviroment" instance=ExtResource("9_7hulf")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 6.6886, 1.70003, 7.98649)
+
+[node name="Player" parent="." instance=ExtResource("1_q6r4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11802, 2.19866, 0.892789)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e5kfw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.919006, -0.354223, 0.173072, -0.256096, 0.87014, 0.421035, -0.299738, 0.342611, -0.890379, 0, 15, 0)
+shadow_enabled = true
+
+[editable path="OtherEnviroment/ExitDoor"]
+[editable path="OtherEnviroment/ExitDoor/DoorModel"]
+[editable path="OtherEnviroment/ClassBoard"]
+[editable path="OtherEnviroment/ClassBoard/BoardModel"]
+[editable path="Player"]

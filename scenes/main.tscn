@@ -5,18 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="2_pxwtv"]
 [ext_resource type="PackedScene" uid="uid://bv06xksf6tsl4" path="res://scenes/ui/panda_os/load_screen_panda_os.tscn" id="2_w8tcm"]
 [ext_resource type="PackedScene" uid="uid://cqwwgwkjsln7a" path="res://scenes/ui/panda_os/desktop_panda_os.tscn" id="3_mxtna"]
-
-[ext_resource type="PackedScene" uid="uid://bl7fshtyji8s1" path="res://scenes/interactable_objects/pc_stand.tscn" id="4_4hyv1"]
+[ext_resource type="PackedScene" uid="uid://bkifymd3o1rrs" path="res://scenes/interactable_objects/pc_stand.tscn" id="4_4hyv1"]
 [ext_resource type="Theme" uid="uid://datgq1ubxoewq" path="res://themes/forms/auth.tres" id="7_0uptl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rsgos"]
 
-[sub_resource type="Sky" id="Sky_a3xo5"]
+[sub_resource type="Sky" id="Sky_ixwcn"]
 sky_material = SubResource("ProceduralSkyMaterial_rsgos")
 
 [sub_resource type="Environment" id="Environment_gm0u6"]
 background_mode = 2
-sky = SubResource("Sky_a3xo5")
+sky = SubResource("Sky_ixwcn")
 reflected_light_source = 2
 
 [sub_resource type="GDScript" id="GDScript_3s4p5"]

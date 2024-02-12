@@ -1,0 +1,217 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj0h5tiskow7a"]
+
+[ext_resource type="Script" path="res://scripts/computer_architecture_game/computer_architecture_game_ui.gd" id="1_wyon3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc2qa"]
+bg_color = Color(0.0941176, 0.219608, 0.121569, 0.705882)
+
+[node name="ComputerArchitectureGameUI" type="CanvasLayer"]
+script = ExtResource("1_wyon3")
+
+[node name="GameNameCenterContainer" type="CenterContainer" parent="."]
+offset_right = 1280.0
+offset_bottom = 120.0
+
+[node name="GameNameLabel" type="Label" parent="GameNameCenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "PC Building simulator"
+
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+offset_left = 20.0
+offset_top = 480.0
+offset_right = 180.0
+offset_bottom = 700.0
+alignment = 2
+
+[node name="ExitButton" type="Button" parent="MenuButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Exit"
+metadata/_edit_lock_ = true
+
+[node name="LevelCenterContainer" type="CenterContainer" parent="."]
+offset_left = 880.0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="LevelsPanel" type="Panel" parent="LevelCenterContainer"]
+custom_minimum_size = Vector2(300, 520)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fc2qa")
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel"]
+offset_right = 300.0
+offset_bottom = 501.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="LevelsLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Levels"
+horizontal_alignment = 1
+
+[node name="LevelsGridContainer" type="GridContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Level1" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 80.0
+offset_bottom = 80.0
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 0
+
+[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1/VBoxContainer/LevelIconMarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0.207843, 0.45098, 0.505882, 1)
+
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 12
+text = "Basics"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level2" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 80.0
+offset_bottom = 80.0
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 0
+
+[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2/VBoxContainer/LevelIconMarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0.486275, 0.341176, 0.580392, 1)
+
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 12
+text = "Motherboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Level3" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 80.0
+offset_bottom = 80.0
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 0
+
+[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3/VBoxContainer/LevelIconMarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0.329412, 0.388235, 0.662745, 1)
+
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 12
+text = "Basics 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level4" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 80.0
+offset_bottom = 80.0
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 0
+
+[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4/VBoxContainer/LevelIconMarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0.466667, 0.411765, 0.176471, 1)
+
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 12
+text = "CPU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]

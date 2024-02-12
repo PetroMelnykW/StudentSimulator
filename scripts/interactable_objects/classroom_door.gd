@@ -15,5 +15,6 @@ func _on_interactable_unfocused() -> void:
 	_doorFrame.set_layer_mask_value(2, false)
 
 func _on_interactable_interacted(interactor : Player) -> void:
+	if not _scene_to_load: return
 	var main_scene : Main = get_tree().current_scene
 	main_scene.change_room(_scene_to_load)

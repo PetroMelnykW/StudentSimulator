@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://b45kqawwu4uxd"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="1_m7a02"]
+[ext_resource type="PackedScene" uid="uid://do46xh8p3raqm" path="res://assets/models/enviroment/furniture/coffe_table_1.glb" id="1_t74ny"]
+[ext_resource type="Script" path="res://scripts/interactable_objects/architecture_pc_table.gd" id="2_763wr"]
+[ext_resource type="PackedScene" uid="uid://3n60t8woo6ol" path="res://assets/models/pc_parts/pc_case.glb" id="4_3g26p"]
+[ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="4_flb3s"]
+[ext_resource type="PackedScene" uid="uid://bj0h5tiskow7a" path="res://scenes/ui/computer_architecture_game_ui/computer_architecture_game_ui.tscn" id="6_wwua0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_06he5"]
+size = Vector3(1, 0.45, 0.695)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6rey"]
+size = Vector3(0.475, 0.21, 0.54)
+
+[node name="ArchitecturePCTable" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 5
+collision_mask = 0
+physics_material_override = ExtResource("1_m7a02")
+script = ExtResource("2_763wr")
+
+[node name="CofeeTableModel" parent="." instance=ExtResource("1_t74ny")]
+
+[node name="TableCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00337601, 0.225, -0.000147462)
+shape = SubResource("BoxShape3D_06he5")
+
+[node name="PCCaseModel" parent="." instance=ExtResource("4_3g26p")]
+transform = Transform3D(-0.9, -7.86805e-08, -3.43923e-15, 0, -3.93403e-08, 0.9, -7.86805e-08, 0.9, 3.93403e-08, 0.03, 0.549, -0.24)
+
+[node name="Kasa_001" parent="PCCaseModel/CorsairCase" index="1"]
+visible = false
+
+[node name="PCCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0.555, 0)
+shape = SubResource("BoxShape3D_l6rey")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.5, -3.78552e-08, 2.18557e-08, 0, 0.25, 0.433013, -4.37114e-08, 0.433013, -0.25, 0, 1, -0.3)
+
+[node name="Interactable" parent="." instance=ExtResource("4_flb3s")]
+is_show_description_info = false
+object_name = "PC-Building"
+
+[node name="ComputerArchitectureGameUI" parent="." instance=ExtResource("6_wwua0")]
+visible = false
+
+[connection signal="focused" from="Interactable" to="." method="_on_table_focused"]
+[connection signal="interacted" from="Interactable" to="." method="_on_table_interacted"]
+[connection signal="unfocused" from="Interactable" to="." method="_on_table_unfocused"]
+
+[editable path="CofeeTableModel"]
+[editable path="PCCaseModel"]
