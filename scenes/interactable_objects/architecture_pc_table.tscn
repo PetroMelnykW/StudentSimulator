@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b45kqawwu4uxd"]
+[gd_scene load_steps=13 format=3 uid="uid://b45kqawwu4uxd"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="1_m7a02"]
 [ext_resource type="PackedScene" uid="uid://do46xh8p3raqm" path="res://assets/models/enviroment/furniture/coffe_table_1.glb" id="1_t74ny"]
@@ -6,12 +6,23 @@
 [ext_resource type="PackedScene" uid="uid://3n60t8woo6ol" path="res://assets/models/pc_parts/pc_case.glb" id="4_3g26p"]
 [ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="4_flb3s"]
 [ext_resource type="PackedScene" uid="uid://bj0h5tiskow7a" path="res://scenes/ui/computer_architecture_game_ui/computer_architecture_game_ui.tscn" id="6_wwua0"]
+[ext_resource type="PackedScene" uid="uid://bqaho3bx3qbad" path="res://assets/models/pc_parts/motherboard_amd_1.glb" id="7_t8udp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_06he5"]
 size = Vector3(1, 0.45, 0.695)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l6rey"]
 size = Vector3(0.475, 0.21, 0.54)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogiyv"]
+albedo_color = Color(0.623529, 0.305882, 0.309804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2o2gr"]
+material = SubResource("StandardMaterial3D_ogiyv")
+size = Vector3(0.54, 0.05, 0.68)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l520y"]
+size = Vector3(0.5, 0.05, 0.6)
 
 [node name="ArchitecturePCTable" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -38,6 +49,7 @@ shape = SubResource("BoxShape3D_l6rey")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.5, -3.78552e-08, 2.18557e-08, 0, 0.25, 0.433013, -4.37114e-08, 0.433013, -0.25, 0, 1, -0.3)
+cull_mask = 3
 
 [node name="Interactable" parent="." instance=ExtResource("4_flb3s")]
 is_show_description_info = false
@@ -45,6 +57,25 @@ object_name = "PC-Building"
 
 [node name="ComputerArchitectureGameUI" parent="." instance=ExtResource("6_wwua0")]
 visible = false
+
+[node name="Levels" type="Node3D" parent="."]
+
+[node name="Level1" type="Node3D" parent="Levels"]
+
+[node name="MotherboardPlace" type="Area3D" parent="Levels/Level1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.135, 0.46, 0.05)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Levels/Level1/MotherboardPlace"]
+layers = 4
+mesh = SubResource("BoxMesh_2o2gr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Levels/Level1/MotherboardPlace"]
+shape = SubResource("BoxShape3D_l520y")
+
+[node name="motherboard_amd_1" parent="." instance=ExtResource("7_t8udp")]
+transform = Transform3D(-1.1, 0, -1.66095e-07, 0, 1.1, 0, 1.66095e-07, 0, -1.1, 0.135, 0.46, 0.05)
 
 [connection signal="focused" from="Interactable" to="." method="_on_table_focused"]
 [connection signal="interacted" from="Interactable" to="." method="_on_table_interacted"]

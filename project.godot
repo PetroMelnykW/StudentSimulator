@@ -82,6 +82,7 @@ interact={
 
 3d_render/layer_1="Default"
 3d_render/layer_2="Outline"
+3d_render/layer_3="MainCameraIgnore"
 3d_physics/layer_1="Enviroment"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Interactables"

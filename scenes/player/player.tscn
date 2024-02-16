@@ -54,6 +54,7 @@ shape = SubResource("CapsuleShape3D_uirc5")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+cull_mask = 3
 current = true
 script = ExtResource("2_ejk8q")
 
@@ -101,7 +102,7 @@ render_target_update_mode = 4
 
 [node name="OutlineCamera" type="Camera3D" parent="OutlineCanvas/SubViewportContainer/OutlineViewport" node_paths=PackedStringArray("_main_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
-cull_mask = 2
+cull_mask = 6
 script = ExtResource("5_r01rv")
 _main_camera = NodePath("../../../../PlayerCamera")
 
