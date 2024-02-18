@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxwia034ljwdy"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="1_t5qww"]
+[ext_resource type="PackedScene" uid="uid://7edfxg6ikwp4" path="res://assets/models/interactable_objects/pc_stand/monitor.glb" id="2_xgq20"]
+[ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="3_w161k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_si7ts"]
+size = Vector3(307, 210, 56)
+
+[node name="Monitor" type="StaticBody3D"]
+transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 0, 0, 0)
+collision_layer = 5
+collision_mask = 0
+physics_material_override = ExtResource("1_t5qww")
+
+[node name="MonitorModel" parent="." instance=ExtResource("2_xgq20")]
+transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 0, 0)
+
+[node name="WhiteScreen" parent="MonitorModel" index="4"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 91, -44.725)
+shape = SubResource("BoxShape3D_si7ts")
+
+[node name="Interactable" parent="." instance=ExtResource("3_w161k")]
+is_show_description_info = false
+object_name = "Monitor"
+
+[editable path="MonitorModel"]

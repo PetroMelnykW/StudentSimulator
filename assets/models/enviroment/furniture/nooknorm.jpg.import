@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwehhi1a2681n"
-path.s3tc="res://.godot/imported/plaster_wall_texture.jpg-2066194ad05b27f1aa64f3374035f1f4.s3tc.ctex"
+uid="uid://dn2iejkhh7h35"
+path="res://.godot/imported/nooknorm.jpg-4ab221ea6181547ca562c7c6ac85272e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Wall/plaster_wall_texture.jpg"
-dest_files=["res://.godot/imported/plaster_wall_texture.jpg-2066194ad05b27f1aa64f3374035f1f4.s3tc.ctex"]
+source_file="res://assets/models/enviroment/furniture/nooknorm.jpg"
+dest_files=["res://.godot/imported/nooknorm.jpg-4ab221ea6181547ca562c7c6ac85272e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

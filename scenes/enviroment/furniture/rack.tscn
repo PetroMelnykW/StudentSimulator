@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhuqgm427gr48"]
+
+[ext_resource type="PackedScene" uid="uid://c0yl2vo45jq68" path="res://assets/models/enviroment/furniture/Shelf(stelaj).glb" id="1_n7jh5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dawlr"]
+size = Vector3(0.593262, 1.94702, 2.19107)
+
+[node name="Rack" type="StaticBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0060157, 0.118194, 0.00192648)
+shape = SubResource("BoxShape3D_dawlr")
+
+[node name="Shelf(stelaj)" parent="." instance=ExtResource("1_n7jh5")]

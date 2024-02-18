@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfoiwwrcea7fi"
-path.s3tc="res://.godot/imported/cabinet_8_Wood058_2K_Roughness.jpg-a57b5ec3a948f5f238d9e38d61595a6b.s3tc.ctex"
+uid="uid://7vp6cgundger"
+path.s3tc="res://.godot/imported/office_table_with_pc_1.jpg-439c3f2b0535c62af9c273e2c42f9d7f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/models/enviroment/furniture/cabinet_8_Wood058_2K_Roughness.jpg"
-dest_files=["res://.godot/imported/cabinet_8_Wood058_2K_Roughness.jpg-a57b5ec3a948f5f238d9e38d61595a6b.s3tc.ctex"]
+source_file="res://assets/models/enviroment/decor/office_table_with_pc_1.jpg"
+dest_files=["res://.godot/imported/office_table_with_pc_1.jpg-439c3f2b0535c62af9c273e2c42f9d7f.s3tc.ctex"]
 
 [params]
 

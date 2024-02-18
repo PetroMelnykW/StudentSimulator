@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://e2wuary5dmru"]
+
+[ext_resource type="PackedScene" uid="uid://b8dapere26hf6" path="res://assets/models/enviroment/decor/office_table_with_pc.glb" id="1_3ttyi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5axkx"]
+size = Vector3(1.34979, 0.369873, 0.403381)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pcve4"]
+size = Vector3(0.530008, 0.483154, 0.403381)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5soft"]
+size = Vector3(0.0650582, 0.5914, 0.47002)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dwjn5"]
+size = Vector3(0.2833, 0.166977, 0.314468)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v4tgr"]
+size = Vector3(0.372095, 0.329098, 0.156144)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8snr"]
+size = Vector3(0.566467, 0.626465, 1.80676)
+
+[node name="Teacher_table" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431798, 0.068778, -0.61725)
+shape = SubResource("BoxShape3D_5axkx")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.683419, 0.120996, 0.15117)
+shape = SubResource("BoxShape3D_pcve4")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.982758, 0.184895, 0, -0.184895, 0.982758, 0, 0, 0, 1, 0.932151, 0.607371, 0.222506)
+shape = SubResource("BoxShape3D_5soft")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.759422, 0.359474, -0.61948)
+shape = SubResource("BoxShape3D_dwjn5")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0747251, 0.67912, -0.350107)
+shape = SubResource("BoxShape3D_v4tgr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0401354, 0.197074, 0.0844409)
+shape = SubResource("BoxShape3D_i8snr")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_3ttyi")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="Box01" parent="Sketchfab_Scene/Sketchfab_model/Collada visual scene group" index="6"]
+visible = false
+
+[editable path="Sketchfab_Scene"]

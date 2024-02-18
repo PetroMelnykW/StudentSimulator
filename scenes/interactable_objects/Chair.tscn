@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkvr8nijpcvqx"]
+
+[ext_resource type="PackedScene" uid="uid://brru3s2u2j1td" path="res://assets/models/enviroment/furniture/chair.glb" id="1_eqeol"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ehpjt"]
+size = Vector3(0.939545, 0.94873, 1.08442)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2fdn"]
+size = Vector3(0.136749, 0.613525, 0.899796)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.729538, 0.478467, 0.883482)
+shape = SubResource("BoxShape3D_ehpjt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.952236, 0.305363, 0, -0.305363, 0.952236, 0, 0, 0, 1, 1.356, 1.31961, 0.900948)
+shape = SubResource("BoxShape3D_h2fdn")
+
+[node name="chair" parent="." instance=ExtResource("1_eqeol")]
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 0.789572, 0, 0.882517)

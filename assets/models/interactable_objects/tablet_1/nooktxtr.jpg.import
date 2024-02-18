@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfoiwwrcea7fi"
-path.s3tc="res://.godot/imported/cabinet_8_Wood058_2K_Roughness.jpg-a57b5ec3a948f5f238d9e38d61595a6b.s3tc.ctex"
+uid="uid://bbhwec0078x8f"
+path.s3tc="res://.godot/imported/nooktxtr.jpg-f8f7e4abb8abb245a01ad16a384be308.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/models/enviroment/furniture/cabinet_8_Wood058_2K_Roughness.jpg"
-dest_files=["res://.godot/imported/cabinet_8_Wood058_2K_Roughness.jpg-a57b5ec3a948f5f238d9e38d61595a6b.s3tc.ctex"]
+source_file="res://assets/models/interactable_objects/tablet_1/nooktxtr.jpg"
+dest_files=["res://.godot/imported/nooktxtr.jpg-f8f7e4abb8abb245a01ad16a384be308.s3tc.ctex"]
 
 [params]
 

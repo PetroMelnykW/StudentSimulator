@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkd8srm83yh84"]
+
+[ext_resource type="PackedScene" uid="uid://cka7f3nfysu2a" path="res://assets/models/interactable_objects/tablet_1/nook wifi 002.glb" id="1_d83bd"]
+[ext_resource type="Texture2D" uid="uid://ia54e56qf3jk" path="res://assets/textures/interactable_objects/tablet/scen.jpg" id="2_lgujs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4f7d8"]
+size = Vector3(12.6489, 0.914001, 19.6179)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnmto"]
+albedo_texture = ExtResource("2_lgujs")
+
+[node name="Tablet" type="StaticBody3D"]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.721436, 0.426968, -0.271717)
+shape = SubResource("BoxShape3D_4f7d8")
+
+[node name="Mesh" parent="." instance=ExtResource("1_d83bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.727101, 2.38419e-07, -0.339725)
+
+[node name="nook" parent="Mesh" index="0"]
+material_override = SubResource("StandardMaterial3D_mnmto")
+
+[editable path="Mesh"]

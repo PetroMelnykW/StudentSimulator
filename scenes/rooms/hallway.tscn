@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bsnaqbc82g3rv" path="res://assets/models/enviroment/plants/Orchid.glb" id="6_xf3w0"]
 [ext_resource type="PackedScene" uid="uid://dbtbuuopxriv3" path="res://assets/models/enviroment/plants/Snake_plant.glb" id="7_cba74"]
 [ext_resource type="PackedScene" uid="uid://wnglsown5uuu" path="res://scenes/room_box_objects/window_hole_1.tscn" id="8_avaln"]
-[ext_resource type="Texture2D" uid="uid://d2dhsm056w3jt" path="res://assets/textures/wall/olga-thelavart-5Xkaq7I1iEk-unsplash.jpg" id="8_ik8nm"]
+[ext_resource type="Texture2D" uid="uid://d2dhsm056w3jt" path="res://assets/textures/Wall/olga-thelavart-5Xkaq7I1iEk-unsplash.jpg" id="8_ik8nm"]
 [ext_resource type="PackedScene" uid="uid://bw5wrhnotoeio" path="res://assets/models/enviroment/plants/locker.glb" id="8_mkqr0"]
 [ext_resource type="PackedScene" uid="uid://bpm80ixdgids0" path="res://assets/models/enviroment/decor/GeometricBookcase.glb" id="14_ofill"]
 [ext_resource type="PackedScene" uid="uid://brev7xkfoi0i4" path="res://assets/models/enviroment/decor/wall_pictures.glb" id="14_rr4ay"]
@@ -375,6 +375,7 @@ object_description = ""
 
 [node name="Door5" parent="Doors" instance=ExtResource("3_xr6j2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 0, 11.641)
+_scene_to_load = "res://scenes/rooms/quest_targaniys_room.tscn"
 
 [node name="10057_wooden_door_v002" parent="Doors/Door5/DoorModel" index="0"]
 transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
@@ -386,9 +387,8 @@ transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 5.02052, 1.5, -1.90735e-06)
 
 [node name="Interactable" parent="Doors/Door5" index="2"]
-is_can_interacted = false
 is_show_description_info = false
-object_name = "Room 5"
+object_name = "Quest room"
 object_description = ""
 
 [node name="ComputerArchitectureDoor" parent="Doors" instance=ExtResource("3_xr6j2")]

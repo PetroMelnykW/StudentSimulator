@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bkifymd3o1rrs"]
+[gd_scene load_steps=14 format=3 uid="uid://bkifymd3o1rrs"]
 
 [ext_resource type="PackedScene" uid="uid://cpingn2l2q7ne" path="res://assets/models/enviroment/furniture/table_1.glb" id="1_3hk7h"]
 [ext_resource type="Script" path="res://scripts/interactable_objects/pc_stand.gd" id="1_xtiv6"]
 [ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="2_ioimj"]
 [ext_resource type="PackedScene" uid="uid://cep5qma1pvo0b" path="res://assets/models/interactable_objects/pc_stand/pc.glb" id="2_rjndb"]
-[ext_resource type="PackedScene" uid="uid://7edfxg6ikwp4" path="res://assets/models/interactable_objects/pc_stand/monitor.glb" id="3_enukn"]
 [ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="3_x34ws"]
+[ext_resource type="PackedScene" uid="uid://dxwia034ljwdy" path="res://scenes/interactable_objects/monitor.tscn" id="4_lp8vy"]
 [ext_resource type="PackedScene" uid="uid://dqui4cii4xh6r" path="res://assets/models/enviroment/decor/keyboard.glb" id="4_t7if8"]
 [ext_resource type="PackedScene" uid="uid://y3xrdmjl1tir" path="res://assets/models/enviroment/decor/mouse.glb" id="5_oa35p"]
 
@@ -21,16 +21,13 @@ size = Vector3(8, 365, 280)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hq8so"]
 size = Vector3(8, 365, 280)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_si7ts"]
-size = Vector3(307, 210, 56)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkme3"]
 size = Vector3(115, 230, 275)
 
 [node name="PCStand" type="Node3D" node_paths=PackedStringArray("_monitor_meshes", "_pc_meshes")]
 transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 0, 0, 0)
 script = ExtResource("1_xtiv6")
-_monitor_meshes = [NodePath("Monitor/MonitorModel/Screen"), NodePath("Monitor/MonitorModel/Holder"), NodePath("Monitor/MonitorModel/Stand"), NodePath("Monitor/MonitorModel/BlackScreen"), NodePath("Monitor/MonitorModel/WhiteScreen")]
+_monitor_meshes = [null, null, null, null, null]
 _pc_meshes = [NodePath("PC/PCModel/Cube")]
 
 [node name="Table" type="StaticBody3D" parent="."]
@@ -55,25 +52,8 @@ shape = SubResource("BoxShape3D_ths75")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278.8, 0, 0)
 shape = SubResource("BoxShape3D_hq8so")
 
-[node name="Monitor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 198, -50)
-collision_layer = 5
-collision_mask = 0
-physics_material_override = ExtResource("2_ioimj")
-
-[node name="MonitorModel" parent="Monitor" instance=ExtResource("3_enukn")]
-transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 0, 0)
-
-[node name="WhiteScreen" parent="Monitor/MonitorModel" index="4"]
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Monitor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 91, -44.725)
-shape = SubResource("BoxShape3D_si7ts")
-
-[node name="Interactable" parent="Monitor" instance=ExtResource("3_x34ws")]
-is_show_description_info = false
-object_name = "Monitor"
+[node name="Monitor" parent="." instance=ExtResource("4_lp8vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, -45)
 
 [node name="PC" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, -70, 0)
@@ -98,13 +78,9 @@ transform = Transform3D(19.9701, 0, -1.09308, 0, 20, 0, 1.09308, 0, 19.9701, -90
 [node name="MouseModel" parent="." instance=ExtResource("5_oa35p")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 150, 194, 60.67)
 
-[connection signal="focused" from="Monitor/Interactable" to="." method="_on_monitor_focused"]
-[connection signal="interacted" from="Monitor/Interactable" to="." method="_on_monitor_interacted"]
-[connection signal="unfocused" from="Monitor/Interactable" to="." method="_on_monitor_unfocused"]
 [connection signal="focused" from="PC/Interactable" to="." method="_on_pc_focused"]
 [connection signal="interacted" from="PC/Interactable" to="." method="_on_pc_interacted"]
 [connection signal="unfocused" from="PC/Interactable" to="." method="_on_pc_unfocused"]
 
 [editable path="Table/TableModel"]
-[editable path="Monitor/MonitorModel"]
 [editable path="PC/PCModel"]
