@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://da05pweq3iuuh"]
+
+[node name="TextLabel" type="Label"]
+custom_minimum_size = Vector2(760, 0)
+autowrap_mode = 3

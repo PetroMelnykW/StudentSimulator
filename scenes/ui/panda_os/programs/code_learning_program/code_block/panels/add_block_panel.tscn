@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8lq2u30khlob"]
+
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/panels/add_block_panel.gd" id="1_q0ops"]
+
+[node name="AddBlockPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(368, 0)
+size_flags_horizontal = 0
+script = ExtResource("1_q0ops")
+init_var_panel_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/init_var_panel.tscn"
+if_panel_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/if_panel.tscn"
+if_else_panel_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/if_else_panel.tscn"
+while_panel_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/while_panel.tscn"
+for_panel_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/for_panel.tscn"
+init_function_panel_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/init_function_panel.tscn"
+print_panel_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/print_panel.tscn"
+call_function_panel_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/call_function_panel.tscn"
+reassignment_var_panel_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/reassignment_var_panel.tscn"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 2
+item_count = 9
+popup/item_0/text = "Variable initialization"
+popup/item_0/id = 0
+popup/item_1/text = "\"if\" construction"
+popup/item_1/id = 1
+popup/item_2/text = "\"if-else\" construction"
+popup/item_2/id = 2
+popup/item_3/text = "\"while\" loop"
+popup/item_3/id = 3
+popup/item_4/text = "\"for\" loop"
+popup/item_4/id = 4
+popup/item_5/text = "Function initialization"
+popup/item_5/id = 5
+popup/item_6/text = "Print"
+popup/item_6/id = 6
+popup/item_7/text = "Call function"
+popup/item_7/id = 7
+popup/item_8/text = "Reassignment variable"
+popup/item_8/id = 8
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "+"
+horizontal_alignment = 1
+
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]

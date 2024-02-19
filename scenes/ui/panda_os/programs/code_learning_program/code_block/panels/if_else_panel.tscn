@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2hbnvadpulvd"]
+
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/panels/if_else_panel.gd" id="1_3jrlr"]
+[ext_resource type="PackedScene" uid="uid://dbbdr7jskc6mt" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_input_button.tscn" id="1_ytqep"]
+[ext_resource type="PackedScene" uid="uid://irqn81a3iolw" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/delete_block_button.tscn" id="2_1ksxb"]
+[ext_resource type="PackedScene" uid="uid://c8lq2u30khlob" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/add_block_panel.tscn" id="3_g74gr"]
+
+[node name="IfElsePanel" type="PanelContainer"]
+size_flags_horizontal = 0
+script = ExtResource("1_3jrlr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(384, 48)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="IfBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/IfBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer"]
+custom_minimum_size = Vector2(392, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="IfLabel" type="Label" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "If"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme_override_constants/separation = 8
+
+[node name="ChooseInputButton" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer/HBoxContainer/HBoxContainer" instance=ExtResource("1_ytqep")]
+layout_mode = 2
+
+[node name="ChooseLogicOperatorButton" type="OptionButton" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+item_count = 4
+popup/item_0/text = "=="
+popup/item_0/id = 0
+popup/item_1/text = "!="
+popup/item_1/id = 1
+popup/item_2/text = "<="
+popup/item_2/id = 2
+popup/item_3/text = ">="
+popup/item_3/id = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme_override_constants/separation = 8
+
+[node name="ChooseInputButton" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer/HBoxContainer/HBoxContainer2" instance=ExtResource("1_ytqep")]
+layout_mode = 2
+
+[node name="DeleteBlockButton" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer" instance=ExtResource("2_1ksxb")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/IfBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+theme_override_constants/separation = 8
+
+[node name="Blocks" type="VBoxContainer" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AddBlockPanel" parent="MarginContainer/VBoxContainer/IfBox/HBoxContainer2/VBoxContainer" instance=ExtResource("3_g74gr")]
+layout_mode = 2
+
+[node name="ElseBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ElseLabel" type="Label" parent="MarginContainer/VBoxContainer/ElseBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "else:"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ElseBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/ElseBox/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ElseBox/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+theme_override_constants/separation = 8
+
+[node name="Blocks" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ElseBox/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AddBlockPanel" parent="MarginContainer/VBoxContainer/ElseBox/HBoxContainer2/VBoxContainer" instance=ExtResource("3_g74gr")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/IfBox/HBoxContainer/DeleteBlockButton" to="." method="_on_delete_block_button_pressed"]

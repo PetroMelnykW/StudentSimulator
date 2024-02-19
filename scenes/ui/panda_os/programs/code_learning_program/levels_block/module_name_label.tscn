@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://6mtf0sexu8ad"]
+
+[node name="ModuleNameLabel" type="Label"]

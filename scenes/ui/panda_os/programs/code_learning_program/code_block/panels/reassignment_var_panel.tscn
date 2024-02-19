@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://jfy1d458or20"]
+
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/panels/reassignment_var_panel.gd" id="1_0iiki"]
+[ext_resource type="PackedScene" uid="uid://cdamtk1n6ckeb" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_var_button.tscn" id="1_572f5"]
+[ext_resource type="PackedScene" uid="uid://dbbdr7jskc6mt" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_input_button.tscn" id="2_1qepp"]
+[ext_resource type="PackedScene" uid="uid://irqn81a3iolw" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/delete_block_button.tscn" id="3_1mavn"]
+
+[node name="ReassignmentVarPanel" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+script = ExtResource("1_0iiki")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ChooseVarButton" parent="MarginContainer/HBoxContainer/HBoxContainer" instance=ExtResource("1_572f5")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "="
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ChooseInputButton" parent="MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer" instance=ExtResource("2_1qepp")]
+layout_mode = 2
+
+[node name="DeleteBlockButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_1mavn")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/DeleteBlockButton" to="." method="_on_delete_block_button_pressed"]

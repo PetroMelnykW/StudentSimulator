@@ -1,0 +1,44 @@
+{
+	"1": {
+		"name": "Test module",
+		"lessons": {
+			"1": {
+				"name": "Test lesson 1",
+				"theoretical_text": ["\tFugiat laborum aute qui et aliqua commodo in aliquip adipisicing magna reprehenderit cupidatat commodo\ncommodo minim irure cupidatat quis in quis ut exercitation ex pariatur aliquip officia occaecat enim incididunt eiusmod cillum nulla minim minim enim aliqua ut.",
+					"res://assets/sprites/os/background_os_1.png",
+					"Ut culpa laborum veniam adipisicing dolore laborum laboris laboris minim amet ullamco deserunt ut ad aliqua ullamco exercitation in."
+				],
+				"available_blocks": [],
+			},
+			"2": {
+				"name": "Test lesson 2",
+				"theoretical_text": ["\tFugiat laborum aute qui et aliqua commodo in aliquip adipisicing magna reprehenderit cupidatat commodo\ncommodo minim irure cupidatat quis in quis ut exercitation ex pariatur aliquip officia occaecat enim incididunt eiusmod cillum nulla minim minim enim aliqua ut.",
+					"res://assets/sprites/os/background_os_2.jpg",
+					"Ut culpa laborum veniam adipisicing dolore laborum laboris laboris minim amet ullamco deserunt ut ad aliqua ullamco exercitation in."
+				],
+				"available_blocks": [],
+			},
+		}
+	},
+	"2": {
+		"name": "Test module 2",
+		"lessons": {
+			"1": {
+				"name": "Test lesson 3",
+				"theoretical_text": ["\tFugiat laborum aute qui et aliqua commodo in aliquip adipisicing magna reprehenderit cupidatat commodo\ncommodo minim irure cupidatat quis in quis ut exercitation ex pariatur aliquip officia occaecat enim incididunt eiusmod cillum nulla minim minim enim aliqua ut.",
+					"res://assets/sprites/os/background_os_1.png",
+					"Ut culpa laborum veniam adipisicing dolore laborum laboris laboris minim amet ullamco deserunt ut ad aliqua ullamco exercitation in."
+				],
+				"available_blocks": [],
+			},
+			"2": {
+				"name": "Test lesson 4",
+				"theoretical_text": ["\tFugiat laborum aute qui et aliqua commodo in aliquip adipisicing magna reprehenderit cupidatat commodo\ncommodo minim irure cupidatat quis in quis ut exercitation ex pariatur aliquip officia occaecat enim incididunt eiusmod cillum nulla minim minim enim aliqua ut.",
+					"res://assets/sprites/os/background_os_2.jpg",
+					"Dolor ea consectetur enim. Ut culpa laborum veniam adipisicing dolore laborum laboris laboris minim amet ullamco deserunt ut ad aliqua ullamco exercitation in."
+				],
+				"available_blocks": [],
+			}
+		}
+	}
+}

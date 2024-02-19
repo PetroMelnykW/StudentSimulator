@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dqui4cii4xh6r" path="res://assets/models/enviroment/decor/keyboard.glb" id="4_t7if8"]
 [ext_resource type="PackedScene" uid="uid://y3xrdmjl1tir" path="res://assets/models/enviroment/decor/mouse.glb" id="5_oa35p"]
 
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_eg0ec"]
 size = Vector3(3.84546, 2.62152, 1.12183)
 

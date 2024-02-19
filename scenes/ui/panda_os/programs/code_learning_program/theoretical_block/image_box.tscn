@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://hmy2n1t1mabe"]
+
+[node name="ImageBox" type="Control"]
+custom_minimum_size = Vector2(0, 218)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_top = 8.0
+offset_right = 760.0
+offset_bottom = 208.0
+expand_mode = 3
+stretch_mode = 5

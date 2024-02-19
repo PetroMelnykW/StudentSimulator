@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://ikxnrbacp8ec"]
+
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/panels/init_var_panel.gd" id="1_gqlsr"]
+[ext_resource type="PackedScene" uid="uid://dbbdr7jskc6mt" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_input_button.tscn" id="1_uf0rh"]
+[ext_resource type="PackedScene" uid="uid://irqn81a3iolw" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/delete_block_button.tscn" id="4_1lcx1"]
+
+[node name="InitVarPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(384, 48)
+size_flags_horizontal = 0
+script = ExtResource("1_gqlsr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="ChooseVarTypeButton" type="OptionButton" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+item_count = 4
+popup/item_0/text = "int"
+popup/item_0/id = 0
+popup/item_1/text = "float"
+popup/item_1/id = 1
+popup/item_2/text = "str"
+popup/item_2/id = 2
+popup/item_3/text = "bool"
+popup/item_3/id = 3
+
+[node name="VarNameEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Equal" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "="
+
+[node name="ChooseInputButton" parent="MarginContainer/HBoxContainer/HBoxContainer" instance=ExtResource("1_uf0rh")]
+layout_mode = 2
+
+[node name="DeleteBlockButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("4_1lcx1")]
+layout_mode = 2
+
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/HBoxContainer/ChooseVarTypeButton" to="." method="_on_choose_var_type_button_item_selected"]
+[connection signal="block_created" from="MarginContainer/HBoxContainer/HBoxContainer/ChooseInputButton" to="." method="_on_choose_input_button_block_created"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/DeleteBlockButton" to="." method="_on_delete_block_button_pressed"]

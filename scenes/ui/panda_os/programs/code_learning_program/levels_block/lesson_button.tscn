@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv3tjfvya882b"]
+
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/lesson_button.gd" id="1_omsdk"]
+
+[node name="LessonButton" type="Button"]
+focus_mode = 0
+text = "Lesson 1"
+script = ExtResource("1_omsdk")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
