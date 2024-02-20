@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://7vkplxfjvovq"]
+[gd_scene load_steps=25 format=3 uid="uid://7vkplxfjvovq"]
 
 [ext_resource type="Script" path="res://scripts/room/room.gd" id="1_n3jyl"]
 [ext_resource type="Texture2D" uid="uid://l5pwmdhagk72" path="res://assets/textures/floor/light_parquet texture_2.jpg" id="1_qiptn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dm3mgcdspc851" path="res://scenes/interactable_objects/classroom_door.tscn" id="5_xw2nb"]
 [ext_resource type="PackedScene" uid="uid://5mftt45cnxg3" path="res://scenes/enviroment/furniture/pc.tscn" id="6_vc07b"]
 [ext_resource type="PackedScene" uid="uid://b45kqawwu4uxd" path="res://scenes/interactable_objects/architecture_pc_table.tscn" id="8_nsgk0"]
+[ext_resource type="PackedScene" uid="uid://baqk0y5anlrvq" path="res://scenes/enviroment/light/roof_light.tscn" id="8_oty3x"]
 [ext_resource type="PackedScene" uid="uid://devh745qqm317" path="res://scenes/interactable_objects/class_board.tscn" id="8_q1ubn"]
 [ext_resource type="PackedScene" uid="uid://ddx5c6n7jne6u" path="res://scenes/interactable_objects/light_switch.tscn" id="9_7hulf"]
 [ext_resource type="PackedScene" uid="uid://b0c4qow81i8kq" path="res://scenes/enviroment/decor/wall_socket.tscn" id="11_nyk2q"]
@@ -185,6 +186,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -7.95)
 
 [node name="Lighting" type="Node3D" parent="Enviroment"]
 
+[node name="RoofLight" parent="Enviroment/Lighting" instance=ExtResource("8_oty3x")]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, -3.87548, 5, -3.11819)
+
+[node name="RoofLight2" parent="Enviroment/Lighting" instance=ExtResource("8_oty3x")]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, 5.12452, 5, -3.11819)
+
+[node name="RoofLight3" parent="Enviroment/Lighting" instance=ExtResource("8_oty3x")]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, -3.87548, 5, 3.88181)
+
+[node name="RoofLight4" parent="Enviroment/Lighting" instance=ExtResource("8_oty3x")]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, 5.12452, 5, 3.88181)
+
 [node name="OtherEnviroment" type="Node3D" parent="Enviroment"]
 
 [node name="ArchitecturePCTable" parent="Enviroment/OtherEnviroment" instance=ExtResource("8_nsgk0")]
@@ -205,8 +218,9 @@ transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -9.94,
 [node name="Interactable" parent="Enviroment/OtherEnviroment/ClassBoard" index="2"]
 object_description = "This is the computer architecture class"
 
-[node name="LightSwitch" parent="Enviroment/OtherEnviroment" instance=ExtResource("9_7hulf")]
+[node name="LightSwitch" parent="Enviroment/OtherEnviroment" node_paths=PackedStringArray("_luminaires") instance=ExtResource("9_7hulf")]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 6.7, 1.7, 7.986)
+_luminaires = NodePath("../../Lighting")
 
 [node name="PlayerStartPosition" type="Marker3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 1.4, 7)
