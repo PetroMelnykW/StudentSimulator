@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bewgm88os46bm"]
+[gd_scene load_steps=38 format=3 uid="uid://bewgm88os46bm"]
 
 [ext_resource type="Script" path="res://scripts/room/room.gd" id="1_ealnm"]
 [ext_resource type="Texture2D" uid="uid://bw06wvjiw0dfk" path="res://assets/textures/floor/laminate_floor_02_diff_4k.jpg" id="1_o4wb3"]
@@ -10,10 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://bsnaqbc82g3rv" path="res://assets/models/enviroment/plants/Orchid.glb" id="6_xf3w0"]
 [ext_resource type="PackedScene" uid="uid://dbtbuuopxriv3" path="res://assets/models/enviroment/plants/Snake_plant.glb" id="7_cba74"]
 [ext_resource type="PackedScene" uid="uid://wnglsown5uuu" path="res://scenes/room_box_objects/window_hole_1.tscn" id="8_avaln"]
-[ext_resource type="Texture2D" uid="uid://d2dhsm056w3jt" path="res://assets/textures/wall/olga-thelavart-5Xkaq7I1iEk-unsplash.jpg" id="8_ik8nm"]
+[ext_resource type="Texture2D" uid="uid://d2dhsm056w3jt" path="res://assets/textures/Wall/olga-thelavart-5Xkaq7I1iEk-unsplash.jpg" id="8_ik8nm"]
 [ext_resource type="PackedScene" uid="uid://bw5wrhnotoeio" path="res://assets/models/enviroment/plants/locker.glb" id="8_mkqr0"]
 [ext_resource type="PackedScene" uid="uid://bpm80ixdgids0" path="res://assets/models/enviroment/decor/GeometricBookcase.glb" id="14_ofill"]
 [ext_resource type="PackedScene" uid="uid://brev7xkfoi0i4" path="res://assets/models/enviroment/decor/wall_pictures.glb" id="14_rr4ay"]
+[ext_resource type="PackedScene" uid="uid://baqk0y5anlrvq" path="res://scenes/enviroment/light/roof_light.tscn" id="14_t40mv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8erdw"]
 albedo_texture = ExtResource("1_o4wb3")
@@ -100,7 +101,7 @@ _player_start_position = NodePath("PlayerStartPosition")
 transform = Transform3D(-4.39645e-08, 0, 1.00579, 0, 1.00579, 0, -1.00579, 0, -4.39645e-08, -7.81215, 0, -0.525)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Floor"]
-transform = Transform3D(1, 0, -6.75016e-14, 0, 1, 0, 6.75016e-14, 0, 1, -0.285883, 0, -2.05308)
+transform = Transform3D(1, 0, -8.17124e-14, 0, 1, 0, 8.17124e-14, 0, 1, -0.285883, 0, -2.05308)
 mesh = SubResource("PlaneMesh_y2gnq")
 skeleton = NodePath("../../..")
 
@@ -140,8 +141,9 @@ skeleton = NodePath("../../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02052, 0, 0)
 shape = SubResource("BoxShape3D_gyh6o")
 
-[node name="LightSwitch" parent="Room/SouthWall" instance=ExtResource("6_iko7u")]
+[node name="LightSwitch" parent="Room/SouthWall" node_paths=PackedStringArray("_luminaires") instance=ExtResource("6_iko7u")]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, -9, -0.9, -18.41)
+_luminaires = NodePath("../../../Enviroment/Lighting")
 
 [node name="NorthWall" type="StaticBody3D" parent="Room"]
 transform = Transform3D(1.00579, 0, 0, 0, 1.00579, 0, 0, 0, 1.00579, -4.90783, 2.506, -9.47599)
@@ -295,6 +297,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/BookShelf"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0405884, 0.484131, -0.174292)
 shape = SubResource("BoxShape3D_6lwy6")
+
+[node name="Lighting" type="Node3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 5, 0)
+
+[node name="RoofLight" parent="Enviroment/Lighting" instance=ExtResource("14_t40mv")]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, -9, 0, -3)
+
+[node name="RoofLight2" parent="Enviroment/Lighting" instance=ExtResource("14_t40mv")]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, -9, 0, 3)
+
+[node name="RoofLight3" parent="Enviroment/Lighting" instance=ExtResource("14_t40mv")]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, 7, 0, -3)
+
+[node name="RoofLight4" parent="Enviroment/Lighting" instance=ExtResource("14_t40mv")]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, 7, 0, 3)
+
+[node name="RoofLight5" parent="Enviroment/Lighting" instance=ExtResource("14_t40mv")]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, -1, 0, 3)
+
+[node name="RoofLight6" parent="Enviroment/Lighting" instance=ExtResource("14_t40mv")]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, -1, 0, -3)
 
 [node name="Doors" type="MultiMeshInstance3D" parent="."]
 transform = Transform3D(-4.39645e-08, 0, -1.00579, 0, 1.00579, 0, 1.00579, 0, -4.39645e-08, 9.55, 0, -22)
