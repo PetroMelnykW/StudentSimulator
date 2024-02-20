@@ -10,7 +10,7 @@ func _on_interactable_focused() -> void:
 func _on_interactable_unfocused() -> void:
 	$LightSwitchModel/Cube_003.set_layer_mask_value(2, false);
 
-func _on_interactable_interacted(interactor : Player) -> void:
+func _on_interactable_interacted() -> void:
 	_is_turn_on = not _is_turn_on
 	for luminaire : Luminaire in _luminaires:
 		luminaire.switch(_is_turn_on)

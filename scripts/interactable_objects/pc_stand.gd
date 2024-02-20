@@ -5,16 +5,16 @@ extends Node3D
 
 var _is_pc_turn_on : bool = false
 
-func _on_pc_interacted(interactor : Player) -> void:
+func _on_pc_interacted() -> void:
 	_is_pc_turn_on = not _is_pc_turn_on
 	$Monitor/MonitorModel/BlackScreen.visible = not _is_pc_turn_on
 	$Monitor/MonitorModel/WhiteScreen.visible = _is_pc_turn_on
 
-func _on_monitor_interacted(interactor : Player) -> void:
+func _on_monitor_interacted() -> void:
 	if _is_pc_turn_on:
-		_show_os(interactor)
+		_show_os()
 
-func _show_os(interactor : Player) -> void:
+func _show_os() -> void:
 	var main : Main = get_tree().current_scene
 	main.switch_os(true)
 

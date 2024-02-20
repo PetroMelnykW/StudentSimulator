@@ -63,7 +63,7 @@ func _apply_ray() -> void:
 func _check_inputs() -> void:
 	if Input.is_action_just_pressed("interact"):
 		if _last_interactable_object != null and _last_interactable_object.is_can_interacted:
-			_last_interactable_object.interact(_player)
+			_last_interactable_object.interact()
 
 func _on_player_control_enable_changed(is_enable : bool) -> void:
 	_enable = is_enable

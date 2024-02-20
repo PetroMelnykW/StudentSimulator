@@ -3,7 +3,7 @@ extends Node
 
 signal focused
 signal unfocused
-signal interacted(interactor : Player)
+signal interacted()
 
 @export_category("ObjectInfo")
 @export var is_can_interacted : bool = true
@@ -18,5 +18,5 @@ func focus() -> void:
 func unfocus() -> void:
 	unfocused.emit()
 
-func interact(interactor : Player) -> void:
-	interacted.emit(interactor)
+func interact() -> void:
+	interacted.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b45kqawwu4uxd"]
+[gd_scene load_steps=14 format=3 uid="uid://b45kqawwu4uxd"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="1_m7a02"]
 [ext_resource type="PackedScene" uid="uid://do46xh8p3raqm" path="res://assets/models/enviroment/furniture/coffe_table_1.glb" id="1_t74ny"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://3n60t8woo6ol" path="res://assets/models/pc_parts/pc_case.glb" id="4_3g26p"]
 [ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="4_flb3s"]
 [ext_resource type="PackedScene" uid="uid://bj0h5tiskow7a" path="res://scenes/ui/computer_architecture_game_ui/computer_architecture_game_ui.tscn" id="6_wwua0"]
+[ext_resource type="Script" path="res://scripts/computer_architecture_game/architecture_core.gd" id="7_20aro"]
 [ext_resource type="PackedScene" uid="uid://bqaho3bx3qbad" path="res://assets/models/pc_parts/motherboard_amd_1.glb" id="7_t8udp"]
+[ext_resource type="PackedScene" uid="uid://gpmk1mfwjw47" path="res://scenes/pc_components/motherboard_amd.tscn" id="8_wb20d"]
+[ext_resource type="Script" path="res://scripts/computer_architecture_game/motherboard_place.gd" id="8_wtshf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_06he5"]
 size = Vector3(1, 0.45, 0.695)
@@ -14,15 +17,8 @@ size = Vector3(1, 0.45, 0.695)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l6rey"]
 size = Vector3(0.475, 0.21, 0.54)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogiyv"]
-albedo_color = Color(0.623529, 0.305882, 0.309804, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2o2gr"]
-material = SubResource("StandardMaterial3D_ogiyv")
-size = Vector3(0.54, 0.05, 0.68)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_l520y"]
-size = Vector3(0.5, 0.05, 0.6)
+size = Vector3(0.27, 0.025, 0.34)
 
 [node name="ArchitecturePCTable" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -49,7 +45,7 @@ shape = SubResource("BoxShape3D_l6rey")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.5, -3.78552e-08, 2.18557e-08, 0, 0.25, 0.433013, -4.37114e-08, 0.433013, -0.25, 0, 1, -0.3)
-cull_mask = 3
+cull_mask = 1
 
 [node name="Interactable" parent="." instance=ExtResource("4_flb3s")]
 is_show_description_info = false
@@ -58,28 +54,112 @@ object_name = "PC-Building"
 [node name="ComputerArchitectureGameUI" parent="." instance=ExtResource("6_wwua0")]
 visible = false
 
-[node name="Levels" type="Node3D" parent="."]
+[node name="ArchitectureCore" type="Node3D" parent="."]
+script = ExtResource("7_20aro")
 
-[node name="Level1" type="Node3D" parent="Levels"]
+[node name="PCBuildingCanvas" type="CanvasLayer" parent="ArchitectureCore"]
+visible = false
 
-[node name="MotherboardPlace" type="Area3D" parent="Levels/Level1"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.135, 0.46, 0.05)
-collision_layer = 4
+[node name="Control" type="Control" parent="ArchitectureCore/PCBuildingCanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NamePanel" type="ColorRect" parent="ArchitectureCore/PCBuildingCanvas/Control"]
+visible = false
+layout_mode = 0
+offset_left = 550.0
+offset_top = 340.0
+offset_right = 730.0
+offset_bottom = 380.0
+color = Color(0.454902, 0.454902, 0.454902, 0.784314)
+
+[node name="NameLabel" type="Label" parent="ArchitectureCore/PCBuildingCanvas/Control/NamePanel"]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 25
+text = "Component"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="DescriptionPanel" type="ColorRect" parent="ArchitectureCore/PCBuildingCanvas/Control"]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 480.0
+offset_right = 200.0
+offset_bottom = 700.0
+color = Color(0.454902, 0.454902, 0.454902, 0.784314)
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchitectureCore/PCBuildingCanvas/Control/DescriptionPanel"]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 220.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ArchitectureCore/PCBuildingCanvas/Control/DescriptionPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="PanelNameLabel" type="Label" parent="ArchitectureCore/PCBuildingCanvas/Control/DescriptionPanel/MarginContainer/VBoxContainer"]
+modulate = Color(0.190762, 0.190762, 0.190762, 1)
+layout_mode = 2
+text = "Description"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContentLabel" type="Label" parent="ArchitectureCore/PCBuildingCanvas/Control/DescriptionPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "HOIIIIHOIIIIHOIIII HOIIIIHOIt tret tret IIIHOIIII tretreewertrt"
+autowrap_mode = 2
+
+[node name="MotherboardPlace" type="Area3D" parent="ArchitectureCore"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.135, 0.46, 0.05)
+collision_layer = 8
 collision_mask = 0
+monitoring = false
+script = ExtResource("8_wtshf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Levels/Level1/MotherboardPlace"]
-layers = 4
-mesh = SubResource("BoxMesh_2o2gr")
+[node name="OutlineModel" parent="ArchitectureCore/MotherboardPlace" instance=ExtResource("7_t8udp")]
+transform = Transform3D(-1.1, 0, -1.66095e-07, 0, 1.1, 0, 1.66095e-07, 0, -1.1, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Levels/Level1/MotherboardPlace"]
+[node name="Battery" parent="ArchitectureCore/MotherboardPlace/OutlineModel" index="0"]
+layers = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ArchitectureCore/MotherboardPlace"]
 shape = SubResource("BoxShape3D_l520y")
 
-[node name="motherboard_amd_1" parent="." instance=ExtResource("7_t8udp")]
-transform = Transform3D(-1.1, 0, -1.66095e-07, 0, 1.1, 0, 1.66095e-07, 0, -1.1, 0.135, 0.46, 0.05)
+[node name="Camera3D" type="Camera3D" parent="ArchitectureCore/MotherboardPlace"]
+transform = Transform3D(-4.37114e-08, 0.819152, -0.573576, 0, 0.573576, 0.819152, 1, 3.58063e-08, -2.50718e-08, -0.15, 0.18, 0)
+cull_mask = 1
+
+[node name="MotherboardAMD" parent="ArchitectureCore/MotherboardPlace" instance=ExtResource("8_wb20d")]
+visible = false
+
+[node name="Interactable" parent="ArchitectureCore/MotherboardPlace" instance=ExtResource("4_flb3s")]
+is_can_interacted = false
+object_name = "Motherboard"
+object_description = "This is place for motherboard"
 
 [connection signal="focused" from="Interactable" to="." method="_on_table_focused"]
 [connection signal="interacted" from="Interactable" to="." method="_on_table_interacted"]
 [connection signal="unfocused" from="Interactable" to="." method="_on_table_unfocused"]
+[connection signal="pressed" from="ComputerArchitectureGameUI/MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="ComputerArchitectureGameUI/LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1/LevelButton" to="." method="_on_level_1_button_pressed"]
+[connection signal="focused" from="ArchitectureCore/MotherboardPlace/Interactable" to="ArchitectureCore/MotherboardPlace" method="_on_interactable_focused"]
+[connection signal="interacted" from="ArchitectureCore/MotherboardPlace/Interactable" to="ArchitectureCore/MotherboardPlace" method="_on_interactable_interacted"]
+[connection signal="unfocused" from="ArchitectureCore/MotherboardPlace/Interactable" to="ArchitectureCore/MotherboardPlace" method="_on_interactable_unfocused"]
 
 [editable path="CofeeTableModel"]
 [editable path="PCCaseModel"]
+[editable path="ComputerArchitectureGameUI"]
+[editable path="ArchitectureCore/MotherboardPlace/OutlineModel"]
