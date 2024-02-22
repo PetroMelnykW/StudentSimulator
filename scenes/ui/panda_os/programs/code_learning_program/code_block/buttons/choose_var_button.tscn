@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdamtk1n6ckeb"]
+
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/buttons/choose_var_button.gd" id="1_87yy0"]
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="1_qhkfb"]
+
+[node name="ChooseVarButton" type="OptionButton"]
+offset_right = 45.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme_override_fonts/font = ExtResource("1_qhkfb")
+script = ExtResource("1_87yy0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

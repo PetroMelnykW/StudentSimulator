@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://sxev8rh2a6oc"]
+
+[ext_resource type="PackedScene" uid="uid://dbbdr7jskc6mt" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_input_button.tscn" id="1_ghm2w"]
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/panels/expression_panel.gd" id="1_s85cv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au26c"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="ExpressionPanel" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_au26c")
+script = ExtResource("1_s85cv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme_override_constants/separation = 8
+
+[node name="ChooseInputButton" parent="HBoxContainer/HBoxContainer2" instance=ExtResource("1_ghm2w")]
+layout_mode = 2
+
+[node name="ChooseOperatorButton" type="OptionButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+item_count = 4
+popup/item_0/text = "+"
+popup/item_0/id = 0
+popup/item_1/text = "-"
+popup/item_1/id = 1
+popup/item_2/text = "*"
+popup/item_2/id = 2
+popup/item_3/text = "/"
+popup/item_3/id = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.4
+theme_override_constants/separation = 8
+
+[node name="ChooseInputButton" parent="HBoxContainer/HBoxContainer3" instance=ExtResource("1_ghm2w")]
+layout_mode = 2
+
+[connection signal="block_created" from="HBoxContainer/HBoxContainer2/ChooseInputButton" to="." method="_on_choose_input_button_block_created"]
+[connection signal="item_selected" from="HBoxContainer/ChooseOperatorButton" to="." method="_on_choose_operator_button_item_selected"]
+[connection signal="block_created" from="HBoxContainer/HBoxContainer3/ChooseInputButton" to="." method="_on_choose_input_button_block_created_2"]

@@ -27,6 +27,7 @@ func _send_account_data():
 		var data: Dictionary = {
 			"nickname": nickname,
 			"role": role,
+			"available_lessons": {"1": ["1"]}
 		}
 		var task: FirestoreTask = collection.update(auth.localid, data)
 

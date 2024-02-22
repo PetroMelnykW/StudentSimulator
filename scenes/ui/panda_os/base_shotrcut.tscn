@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfxlth8657x4"]
+[gd_scene load_steps=4 format=3 uid="uid://bfxlth8657x4"]
 
 [ext_resource type="Texture2D" uid="uid://hs8snjte0nju" path="res://assets/sprites/filler_icon.png" id="1_12slx"]
+[ext_resource type="Script" path="res://scripts/panda_os/base_shotrcut.gd" id="1_b2efo"]
+[ext_resource type="FontFile" uid="uid://cajonakxfadkd" path="res://assets/fonts/martian_mono_condensed_bold.ttf" id="2_vfx85"]
 
 [node name="BaseShotrcut" type="VBoxContainer"]
 custom_minimum_size = Vector2(128, 128)
 theme_override_constants/separation = 0
 alignment = 1
+script = ExtResource("1_b2efo")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
@@ -17,5 +20,10 @@ flat = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vfx85")
+theme_override_font_sizes/font_size = 24
 text = "Test"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
