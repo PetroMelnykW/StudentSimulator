@@ -13,6 +13,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0.25)
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -2.13163e-14, 0, 2.13163e-14, 1, 0, 0.12, 0)
 light_color = Color(1, 0.996078, 0.756863, 1)
-omni_range = 8.0
+shadow_enabled = true
+omni_range = 12.0
 
 [editable path="multi_circular_lamp"]
