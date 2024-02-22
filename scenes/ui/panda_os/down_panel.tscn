@@ -1,24 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://xf3j2x35hfxt"]
+[gd_scene load_steps=15 format=3 uid="uid://xf3j2x35hfxt"]
 
 [ext_resource type="Texture2D" uid="uid://csf3gjtdm1x3r" path="res://assets/sprites/os/start_button.png" id="1_5ushc"]
 [ext_resource type="Script" path="res://scripts/panda_os/down_panel.gd" id="1_iw8fc"]
 [ext_resource type="Texture2D" uid="uid://d3rktqgrvojvk" path="res://assets/sprites/os/settings.png" id="3_4lvvr"]
 [ext_resource type="PackedScene" uid="uid://caixn28wlj1c0" path="res://scenes/ui/panda_os/base_shotrcut_mini_button.tscn" id="3_lx6o3"]
 [ext_resource type="Texture2D" uid="uid://cvrcebbu0qa22" path="res://assets/sprites/os/power-switch.png" id="4_wj66y"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhgwf"]
-bg_color = Color(0.392157, 0.827451, 0.623529, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbqla"]
-bg_color = Color(0.47451, 0.905882, 0.698039, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fia6"]
-bg_color = Color(0.247059, 0.419608, 0.337255, 1)
-
-[sub_resource type="Theme" id="Theme_1ngx2"]
-Button/styles/hover = SubResource("StyleBoxFlat_vhgwf")
-Button/styles/normal = SubResource("StyleBoxFlat_bbqla")
-Button/styles/pressed = SubResource("StyleBoxFlat_8fia6")
+[ext_resource type="Texture2D" uid="uid://bssmdp42qxs11" path="res://assets/sprites/code_learning_icon.png" id="6_1lnur"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s230f"]
 content_margin_left = 2.0
@@ -85,11 +72,12 @@ anchors_preset = -1
 offset_right = 64.0
 offset_bottom = 48.0
 focus_mode = 0
-theme = SubResource("Theme_1ngx2")
 theme_override_constants/icon_max_width = 48
 toggle_mode = true
 icon = ExtResource("1_5ushc")
+flat = true
 icon_alignment = 1
+expand_icon = true
 
 [node name="Clock" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -169,5 +157,13 @@ layout_mode = 2
 [node name="BaseShortcutMiniButton" parent="StartMenu/HBoxContainer/ShortcutMenu/VBoxContainer" instance=ExtResource("3_lx6o3")]
 layout_mode = 2
 
+[node name="TextureRect" parent="StartMenu/HBoxContainer/ShortcutMenu/VBoxContainer/BaseShortcutMiniButton/HBoxContainer" index="0"]
+texture = ExtResource("6_1lnur")
+
+[node name="Label" parent="StartMenu/HBoxContainer/ShortcutMenu/VBoxContainer/BaseShortcutMiniButton/HBoxContainer" index="1"]
+text = "Bamboo+"
+
 [connection signal="toggled" from="StartButton" to="." method="_on_start_button_toggled"]
 [connection signal="pressed" from="StartMenu/HBoxContainer/ToolMenu/SwitchButton" to="." method="_on_switch_button_pressed"]
+
+[editable path="StartMenu/HBoxContainer/ShortcutMenu/VBoxContainer/BaseShortcutMiniButton"]
