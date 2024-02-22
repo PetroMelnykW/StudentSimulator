@@ -1,10 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dov5i3renx7ay"]
 
 [ext_resource type="Texture2D" uid="uid://gqytf5vsccef" path="res://assets/ui/label_plate.png" id="1_nd8d7"]
-[ext_resource type="FontFile" uid="uid://ck18d1g324xia" path="res://assets/fonts/Montserrat-Medium.ttf" id="2_0e66t"]
-
-[sub_resource type="FontVariation" id="FontVariation_hrm4o"]
-base_font = ExtResource("2_0e66t")
+[ext_resource type="FontFile" uid="uid://cajonakxfadkd" path="res://assets/fonts/martian_mono_condensed_bold.ttf" id="2_rswtg"]
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="3_v5mdf"]
 
 [node name="InteractableInfoUI" type="Control"]
 layout_mode = 3
@@ -16,20 +14,21 @@ grow_vertical = 2
 
 [node name="InteractButtonTipPanel" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 552.0
-offset_top = 527.0
-offset_right = 728.0
-offset_bottom = 566.0
+offset_left = 528.0
+offset_top = 528.0
+offset_right = 752.0
+offset_bottom = 567.0
 texture = ExtResource("1_nd8d7")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="InteractButtonTipPanel"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 8.0
-offset_right = 168.0
-offset_bottom = 28.0
-theme_override_fonts/font = ExtResource("2_0e66t")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_rswtg")
 theme_override_font_sizes/font_size = 15
 text = "Press \"E\" to interact"
 horizontal_alignment = 1
@@ -37,7 +36,7 @@ vertical_alignment = 1
 
 [node name="DescriptionPanel" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 494.0
+offset_left = 488.0
 offset_top = 633.0
 offset_right = 792.0
 offset_bottom = 699.0
@@ -45,32 +44,44 @@ texture = ExtResource("1_nd8d7")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="DescriptionPanel"]
-layout_mode = 0
-offset_top = -2.0
-offset_right = 300.0
-offset_bottom = 68.0
-theme_override_fonts/font = ExtResource("2_0e66t")
-text = "Description
-"
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.079
+anchor_top = -0.015
+anchor_right = 0.921
+anchor_bottom = 1.0
+offset_left = -0.0160007
+offset_top = -0.00999999
+offset_right = 0.0159912
+offset_bottom = -2.0
+theme_override_fonts/font = ExtResource("3_v5mdf")
+text = "Description"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
 
 [node name="NamePanel" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 567.0
-offset_top = 22.0
-offset_right = 712.0
-offset_bottom = 54.0
+offset_left = 528.0
+offset_top = 24.0
+offset_right = 752.0
+offset_bottom = 64.0
 texture = ExtResource("1_nd8d7")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="NamePanel"]
-layout_mode = 0
-offset_left = 12.0
-offset_right = 132.0
-offset_bottom = 30.0
-theme_override_fonts/font = SubResource("FontVariation_hrm4o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_rswtg")
 theme_override_font_sizes/font_size = 16
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
+clip_text = true

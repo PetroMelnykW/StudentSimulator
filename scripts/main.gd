@@ -18,7 +18,6 @@ func change_room(scene_path : String) -> void:
 
 func switch_os(turning_on : bool) -> void:
 	$"3DWorld".visible = not turning_on
-	$"3DWorld/CanvasLayer".visible = not turning_on
 	$"3DWorld/Player/PlayerUI".visible = not turning_on
 	$PandaOS.visible = turning_on
 	$PandaOS/LoadScreenPandaOS.visible = turning_on
@@ -33,5 +32,5 @@ func _on_game_mode_changed(mode: PlayerState.GameMode):
 	match mode:
 		PlayerState.GameMode.WALK, PlayerState.GameMode.TRANSITION_CAMERA:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		PlayerState.GameMode.PANDA, PlayerState.GameMode.PC_BUILDING:
+		PlayerState.GameMode.PANDA, PlayerState.GameMode.PC_BUILDING, PlayerState.GameMode.MAIN_MENU:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

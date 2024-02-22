@@ -6,7 +6,8 @@ enum GameMode {
 	WALK,
 	PANDA,
 	PC_BUILDING,
-	TRANSITION_CAMERA
+	TRANSITION_CAMERA,
+	MAIN_MENU
 }
 
 var current_mode: GameMode = GameMode.WALK

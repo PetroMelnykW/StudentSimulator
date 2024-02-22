@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cmqy68qhvq2re"]
+
+[ext_resource type="FontFile" uid="uid://biebeoeoqia3f" path="res://assets/fonts/martian_mono_semi_expanded_bold.ttf" id="1_5f6qr"]
+[ext_resource type="StyleBox" uid="uid://cv8w4aqnqxfu4" path="res://themes/main_menu/style_box_flat/hover_button.tres" id="2_cowvd"]
+[ext_resource type="StyleBox" uid="uid://odhclxml8o7u" path="res://themes/main_menu/style_box_flat/normal_button.tres" id="3_q1hke"]
+[ext_resource type="StyleBox" uid="uid://cyda5mhjg1t04" path="res://themes/main_menu/style_box_flat/pressed_button.tres" id="4_b4ipt"]
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="5_ge0rf"]
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.886275, 0.886275, 0.886275, 1)
+Button/colors/font_pressed_color = Color(0.764706, 0.764706, 0.764706, 1)
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_5f6qr")
+Button/styles/hover = ExtResource("2_cowvd")
+Button/styles/normal = ExtResource("3_q1hke")
+Button/styles/pressed = ExtResource("4_b4ipt")
+Label/fonts/font = ExtResource("5_ge0rf")
