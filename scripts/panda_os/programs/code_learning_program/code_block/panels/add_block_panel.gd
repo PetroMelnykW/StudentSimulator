@@ -10,6 +10,11 @@ extends PanelContainer
 @export_file("*.tscn") var call_function_panel_scene
 @export_file("*.tscn") var reassignment_var_panel_scene
 
+func _ready():
+	await get_tree().process_frame
+	_on_data_changed(CodeLearning.instance.available_blocks)
+	CodeLearning.instance.data_changed.connect(_on_data_changed)
+
 func _on_option_button_item_selected(index):
 	var add_block: Control
 	match index:
@@ -36,3 +41,7 @@ func _on_option_button_item_selected(index):
 	
 	$"../Blocks".add_child(add_block)
 	$OptionButton.selected = -1
+
+func _on_data_changed(available_blocks: Array):
+	for i in range($OptionButton.item_count):
+		$OptionButton.set_item_disabled(i, not available_blocks.has(float(i)))

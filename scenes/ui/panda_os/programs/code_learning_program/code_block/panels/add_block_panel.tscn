@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8lq2u30khlob"]
+[gd_scene load_steps=3 format=3 uid="uid://c8lq2u30khlob"]
 
 [ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/panels/add_block_panel.gd" id="1_q0ops"]
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="2_6upiv"]
 
 [node name="AddBlockPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(368, 0)
@@ -40,8 +41,9 @@ popup/item_8/id = 8
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6upiv")
 theme_override_font_sizes/font_size = 22
-text = "+"
+text = "Add a new component"
 horizontal_alignment = 1
 
 [connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]

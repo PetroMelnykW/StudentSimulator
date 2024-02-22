@@ -1,9 +1,10 @@
 class_name InitFunction
 extends PanelContainer
 
-@export_file("*.tscn") var choose_input_button_scene
+@export_file("*.tscn") var argument_scene
 
 var function_name
+var function_local_variables: Array[LocalVariable]
 
 @onready var returt_value = $MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Return
 @onready var blocks = $MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Blocks
@@ -33,7 +34,6 @@ func _on_delete_block_button_pressed():
 	queue_free()
 
 func _on_add_arguments_button_pressed():
-	var choose_input_button = load(choose_input_button_scene).instantiate()
-	var new_hbox = HBoxContainer.new()
-	$MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Arguments.add_child(new_hbox)
-	$MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Arguments.get_children()[-1].add_child(choose_input_button)
+	var argument = load(argument_scene).instantiate()
+	function_local_variables.append(argument)
+	$MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Arguments.add_child(argument)

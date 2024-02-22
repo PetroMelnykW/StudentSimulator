@@ -1,5 +1,8 @@
-[gd_scene format=3 uid="uid://da05pweq3iuuh"]
+[gd_scene load_steps=2 format=3 uid="uid://da05pweq3iuuh"]
+
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="1_xkoe7"]
 
 [node name="TextLabel" type="Label"]
-custom_minimum_size = Vector2(760, 0)
-autowrap_mode = 3
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_xkoe7")
+autowrap_mode = 2

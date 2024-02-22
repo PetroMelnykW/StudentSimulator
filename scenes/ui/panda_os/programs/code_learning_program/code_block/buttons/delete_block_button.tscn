@@ -1,5 +1,8 @@
-[gd_scene format=3 uid="uid://irqn81a3iolw"]
+[gd_scene load_steps=2 format=3 uid="uid://irqn81a3iolw"]
+
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="1_2if5b"]
 
 [node name="DeleteBlockButton" type="Button"]
 custom_minimum_size = Vector2(32, 32)
+theme_override_fonts/font = ExtResource("1_2if5b")
 text = "X"

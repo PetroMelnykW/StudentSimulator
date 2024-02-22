@@ -21,13 +21,17 @@ func code_reader(blocks):
 			block.run_block()
 
 func console_print(text: String):
-	$"../VisualCodeBlock/ConsoleLabel".text += "\n" + text
+	if $"../VisualCodeBlock/ScrollContainer/MarginContainer/ConsoleLabel".text == "":
+		$"../VisualCodeBlock/ScrollContainer/MarginContainer/ConsoleLabel".text += text
+	else:
+		$"../VisualCodeBlock/ScrollContainer/MarginContainer/ConsoleLabel".text += "\n" + text		
 
 func _ready():
 	instance = self
 
 func _on_run_code_button_pressed():
-	$"../VisualCodeBlock/ConsoleLabel".text = ""
+	$"../VisualCodeBlock/ScrollContainer/MarginContainer/ConsoleLabel".text = ""
 	code_reader(blocks)
 	for variable: InitVariable in variables:
 		variable.variable_value = null
+	CodeLearning.instance.check_task_result()

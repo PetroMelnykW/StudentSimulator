@@ -18,6 +18,9 @@ func _on_function_array_updated():
 	for index in range(len(CodeEditor.instance.functions)):
 		add_item(CodeEditor.instance.functions[index].function_name, index)
 	
+	for index in range(len(CodeEditor.instance.functions)):
+		add_item(CodeEditor.instance.functions[index].function_name, index)
+	
 	for i in range(item_count):
 		if _last_choose_item == get_item_text(i):
 			selected = i

@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://6mtf0sexu8ad"]
+[gd_scene load_steps=2 format=3 uid="uid://6mtf0sexu8ad"]
+
+[ext_resource type="FontFile" uid="uid://cajonakxfadkd" path="res://assets/fonts/martian_mono_condensed_bold.ttf" id="1_drtvc"]
 
 [node name="ModuleNameLabel" type="Label"]
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_drtvc")

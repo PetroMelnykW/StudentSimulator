@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://diuoikngfpc7c"]
+[gd_scene load_steps=3 format=3 uid="uid://diuoikngfpc7c"]
 
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="1_g74un"]
 [ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/buttons/go_to_choose_button.gd" id="1_lppjt"]
 
 [node name="GoToChooseButton" type="Button"]
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
+theme_override_fonts/font = ExtResource("1_g74un")
 text = "<"
 script = ExtResource("1_lppjt")
 

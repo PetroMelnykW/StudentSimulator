@@ -1,15 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://ogjhgylofxq0"]
+[gd_scene load_steps=7 format=3 uid="uid://ogjhgylofxq0"]
 
 [ext_resource type="PackedScene" uid="uid://irqn81a3iolw" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/delete_block_button.tscn" id="1_31spi"]
 [ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/panels/init_function_panel.gd" id="1_n7tek"]
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="2_480bx"]
 [ext_resource type="PackedScene" uid="uid://c8lq2u30khlob" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/add_block_panel.tscn" id="2_7243n"]
 [ext_resource type="PackedScene" uid="uid://dbbdr7jskc6mt" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_input_button.tscn" id="4_t4v8x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_soyqq"]
+bg_color = Color(0.141176, 0.431373, 0.65098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="InitFunctionPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(392, 0)
 size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_soyqq")
 script = ExtResource("1_n7tek")
-choose_input_button_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_input_button.tscn"
+argument_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/argument.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -35,6 +44,7 @@ theme_override_constants/separation = 8
 
 [node name="FunctionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_480bx")
 theme_override_font_sizes/font_size = 22
 text = "function"
 
@@ -42,9 +52,11 @@ text = "function"
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_480bx")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_480bx")
 theme_override_font_sizes/font_size = 22
 text = "("
 
@@ -54,10 +66,12 @@ layout_mode = 2
 [node name="AddArgumentsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_480bx")
 text = "+"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_480bx")
 theme_override_font_sizes/font_size = 22
 text = "):"
 
@@ -87,6 +101,7 @@ layout_mode = 2
 
 [node name="ReturnLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Return"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_480bx")
 theme_override_font_sizes/font_size = 22
 text = "return"
 

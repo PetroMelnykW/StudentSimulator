@@ -1,12 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmodk1s8lb58p"]
+[gd_scene load_steps=7 format=3 uid="uid://cmodk1s8lb58p"]
 
 [ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/panels/while_panel.gd" id="1_camvf"]
 [ext_resource type="PackedScene" uid="uid://dbbdr7jskc6mt" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_input_button.tscn" id="2_1kau3"]
 [ext_resource type="PackedScene" uid="uid://irqn81a3iolw" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/delete_block_button.tscn" id="2_3qlw3"]
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="2_82fh2"]
 [ext_resource type="PackedScene" uid="uid://c8lq2u30khlob" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/add_block_panel.tscn" id="3_e1jd5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30tbg"]
+bg_color = Color(0.760784, 0.176471, 0.427451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="WhilePanel" type="PanelContainer"]
 size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_30tbg")
 script = ExtResource("1_camvf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -31,6 +40,7 @@ theme_override_constants/separation = 8
 
 [node name="WhileLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_82fh2")
 theme_override_font_sizes/font_size = 22
 text = "while"
 
@@ -47,6 +57,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
+theme_override_fonts/font = ExtResource("2_82fh2")
 item_count = 4
 popup/item_0/text = "=="
 popup/item_0/id = 0
@@ -68,6 +79,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_82fh2")
 theme_override_font_sizes/font_size = 22
 text = ":"
 

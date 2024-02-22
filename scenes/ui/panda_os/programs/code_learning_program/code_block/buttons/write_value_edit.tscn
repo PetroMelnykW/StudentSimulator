@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5lidfp5noc85"]
+[gd_scene load_steps=3 format=3 uid="uid://c5lidfp5noc85"]
 
 [ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/buttons/write_value_edit.gd" id="1_4omlj"]
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="1_atbcb"]
 
 [node name="WriteValueEdit" type="LineEdit"]
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.4
+theme_override_fonts/font = ExtResource("1_atbcb")
 script = ExtResource("1_4omlj")
 
 [connection signal="text_changed" from="." to="." method="_on_text_changed"]

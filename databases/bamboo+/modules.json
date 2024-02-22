@@ -1,44 +1,53 @@
 {
 	"1": {
-		"name": "Test module",
+		"name": "Variables and data types",
 		"lessons": {
 			"1": {
-				"name": "Test lesson 1",
-				"theoretical_text": ["\tFugiat laborum aute qui et aliqua commodo in aliquip adipisicing magna reprehenderit cupidatat commodo\ncommodo minim irure cupidatat quis in quis ut exercitation ex pariatur aliquip officia occaecat enim incididunt eiusmod cillum nulla minim minim enim aliqua ut.",
-					"res://assets/sprites/os/background_os_1.png",
-					"Ut culpa laborum veniam adipisicing dolore laborum laboris laboris minim amet ullamco deserunt ut ad aliqua ullamco exercitation in."
+				"name": "Variables and data types",
+				"theoretical_text": ["In programming, a variable is a name used to store data.",
+					"For a better understanding, let's look at the following image. Boxes symbolize memory cells in which data is placed. The names of such boxes will be variable",
+					"",
+					"res://assets/sprites/bamboo+/lesson_1/boxes.png",
+					"",
+					"Each variable has a data type that defines the characteristics of the data that can be stored in that variable, as well as the operations that can be performed on that data.",
+					"",
+					"Data types:",
+					"1. Integers (int): These are used to store whole numbers without a decimal part. For example: 5, -10, 1000.",
+					"2. Real numbers (float): These are used to store numbers with a decimal part. For example: 3.14, -0.001, 2.71828.",
+					"3. Strings (str): They are used to store text information. Lines are surrounded by single or double quotes. For example: \"Hello world!\", \"This is a line of text\"",
+					"4. Boolean values (bool): They can take only two values: True or False. They are often used for conditional logic expressions.",
+					"",
+					"To initialize a variable, you need to specify the following parameters: data type, name, and value",
+					"",
+					"res://assets/sprites/bamboo+/lesson_1/init_variable_example.png",
+					"",
+					"Task 1",
+					"Initialize 4 variables with arbitrary names and values.",
 				],
-				"available_blocks": [],
+				"available_blocks": [0],
+				"console_result": "",
 			},
 			"2": {
-				"name": "Test lesson 2",
+				"name": "Function print()",
+				"theoretical_text": ["Let's consider one of the built-in functions - print(). print() is used to output data to the console. All you need to do is just transfer what you want to output",
+					"",
+					"res://assets/sprites/bamboo+/lesson_2/print.png",
+					"",
+					"Task 1",
+					"This time your task will be to create a variable of type String with the value \"Hello world!\" and display it using print() in the console",
+				],
+				"available_blocks": [0, 6],
+				"console_result": "Hello world!",
+			},
+			"3": {
+				"name": "Test",
 				"theoretical_text": ["\tFugiat laborum aute qui et aliqua commodo in aliquip adipisicing magna reprehenderit cupidatat commodo\ncommodo minim irure cupidatat quis in quis ut exercitation ex pariatur aliquip officia occaecat enim incididunt eiusmod cillum nulla minim minim enim aliqua ut.",
 					"res://assets/sprites/os/background_os_2.jpg",
 					"Ut culpa laborum veniam adipisicing dolore laborum laboris laboris minim amet ullamco deserunt ut ad aliqua ullamco exercitation in."
 				],
-				"available_blocks": [],
+				"available_blocks": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+				"console_result": "Hello world!",
 			},
 		}
 	},
-	"2": {
-		"name": "Test module 2",
-		"lessons": {
-			"1": {
-				"name": "Test lesson 3",
-				"theoretical_text": ["\tFugiat laborum aute qui et aliqua commodo in aliquip adipisicing magna reprehenderit cupidatat commodo\ncommodo minim irure cupidatat quis in quis ut exercitation ex pariatur aliquip officia occaecat enim incididunt eiusmod cillum nulla minim minim enim aliqua ut.",
-					"res://assets/sprites/os/background_os_1.png",
-					"Ut culpa laborum veniam adipisicing dolore laborum laboris laboris minim amet ullamco deserunt ut ad aliqua ullamco exercitation in."
-				],
-				"available_blocks": [],
-			},
-			"2": {
-				"name": "Test lesson 4",
-				"theoretical_text": ["\tFugiat laborum aute qui et aliqua commodo in aliquip adipisicing magna reprehenderit cupidatat commodo\ncommodo minim irure cupidatat quis in quis ut exercitation ex pariatur aliquip officia occaecat enim incididunt eiusmod cillum nulla minim minim enim aliqua ut.",
-					"res://assets/sprites/os/background_os_2.jpg",
-					"Dolor ea consectetur enim. Ut culpa laborum veniam adipisicing dolore laborum laboris laboris minim amet ullamco deserunt ut ad aliqua ullamco exercitation in."
-				],
-				"available_blocks": [],
-			}
-		}
-	}
 }
