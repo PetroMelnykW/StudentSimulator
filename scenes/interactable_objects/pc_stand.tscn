@@ -1,65 +1,110 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl7fshtyji8s1"]
+[gd_scene load_steps=15 format=3 uid="uid://bkifymd3o1rrs"]
 
 [ext_resource type="PackedScene" uid="uid://cpingn2l2q7ne" path="res://assets/models/enviroment/furniture/table_1.glb" id="1_3hk7h"]
 [ext_resource type="Script" path="res://scripts/interactable_objects/pc_stand.gd" id="1_xtiv6"]
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="2_ioimj"]
 [ext_resource type="PackedScene" uid="uid://cep5qma1pvo0b" path="res://assets/models/interactable_objects/pc_stand/pc.glb" id="2_rjndb"]
 [ext_resource type="PackedScene" uid="uid://7edfxg6ikwp4" path="res://assets/models/interactable_objects/pc_stand/monitor.glb" id="3_enukn"]
 [ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="3_x34ws"]
 [ext_resource type="PackedScene" uid="uid://dqui4cii4xh6r" path="res://assets/models/enviroment/decor/keyboard.glb" id="4_t7if8"]
 [ext_resource type="PackedScene" uid="uid://y3xrdmjl1tir" path="res://assets/models/enviroment/decor/mouse.glb" id="5_oa35p"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eg0ec"]
-size = Vector3(3.84546, 2.62152, 1.12183)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qtal3"]
-size = Vector3(1.17041, 0.977783, 0.482239)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_jwdou"]
-size = Vector3(563.494, 578.825, 276.762)
+size = Vector3(565, 15, 280)
 
-[node name="PCStand" type="StaticBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_t07mt"]
+size = Vector3(205, 70, 280)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ths75"]
+size = Vector3(8, 365, 280)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hq8so"]
+size = Vector3(8, 365, 280)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_si7ts"]
+size = Vector3(307, 210, 56)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tkme3"]
+size = Vector3(115, 230, 275)
+
+[node name="PCStand" type="Node3D" node_paths=PackedStringArray("_monitor_meshes", "_pc_meshes")]
 transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 0, 0, 0)
-collision_mask = 0
 script = ExtResource("1_xtiv6")
+_monitor_meshes = [NodePath("Monitor/MonitorModel/Screen"), NodePath("Monitor/MonitorModel/Holder"), NodePath("Monitor/MonitorModel/Stand"), NodePath("Monitor/MonitorModel/BlackScreen"), NodePath("Monitor/MonitorModel/WhiteScreen")]
+_pc_meshes = [NodePath("PC/PCModel/Cube")]
 
-[node name="table_1" parent="." instance=ExtResource("1_3hk7h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016261, 0, 0.0473063)
+[node name="Table" type="StaticBody3D" parent="."]
+collision_mask = 0
+physics_material_override = ExtResource("2_ioimj")
 
-[node name="monitor" parent="." instance=ExtResource("3_enukn")]
-transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 198, -50)
+[node name="TableModel" parent="Table" instance=ExtResource("1_3hk7h")]
 
-[node name="WhiteScreen" parent="monitor" index="4"]
-visible = false
-
-[node name="Interactable" parent="monitor" instance=ExtResource("3_x34ws")]
-object_name = "Monitor"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="monitor/Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000610352, 1.14517, -0.384888)
-shape = SubResource("BoxShape3D_eg0ec")
-
-[node name="pc" parent="." instance=ExtResource("2_rjndb")]
-transform = Transform3D(-1.00536e-05, 0, -230, 0, 230, 0, 230, 0, -1.00536e-05, 290, -265, 0)
-
-[node name="Interactable" parent="pc" instance=ExtResource("3_x34ws")]
-object_name = "System unit"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pc/Interactable"]
-transform = Transform3D(1, 0, -1.77636e-14, 0, 1, 0, 1.77636e-14, 0, 1, 0.0114746, 0.858277, 0.34671)
-shape = SubResource("BoxShape3D_qtal3")
-
-[node name="keyboard" parent="." instance=ExtResource("4_t7if8")]
-transform = Transform3D(19.9701, 0, -1.09308, 0, 20, 0, 1.09308, 0, 19.9701, -90, 188, 40)
-
-[node name="mouse" parent="." instance=ExtResource("5_oa35p")]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 150, 194, 60.67)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.868256, 105.106, -1.65265)
+[node name="TableColliderTop" type="CollisionShape3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 176, 0)
 shape = SubResource("BoxShape3D_jwdou")
 
-[connection signal="interacted" from="monitor/Interactable" to="." method="_on_monitor_interacted"]
-[connection signal="interacted" from="pc/Interactable" to="." method="_on_pc_interacted"]
+[node name="TableColliderBox" type="CollisionShape3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.45, 147.683, 0)
+shape = SubResource("BoxShape3D_t07mt")
 
-[editable path="monitor"]
-[editable path="pc"]
+[node name="TableColliderLeft" type="CollisionShape3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -278.8, 0, 0)
+shape = SubResource("BoxShape3D_ths75")
+
+[node name="TableColliderRight" type="CollisionShape3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278.8, 0, 0)
+shape = SubResource("BoxShape3D_hq8so")
+
+[node name="Monitor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 198, -50)
+collision_layer = 5
+collision_mask = 0
+physics_material_override = ExtResource("2_ioimj")
+
+[node name="MonitorModel" parent="Monitor" instance=ExtResource("3_enukn")]
+transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 0, 0)
+
+[node name="WhiteScreen" parent="Monitor/MonitorModel" index="4"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monitor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 91, -44.725)
+shape = SubResource("BoxShape3D_si7ts")
+
+[node name="Interactable" parent="Monitor" instance=ExtResource("3_x34ws")]
+is_show_description_info = false
+object_name = "Monitor"
+
+[node name="PC" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, -70, 0)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = ExtResource("2_ioimj")
+
+[node name="PCModel" parent="PC" instance=ExtResource("2_rjndb")]
+transform = Transform3D(-1.00536e-05, 0, -230, 0, 230, 0, 230, 0, -1.00536e-05, 81.5, -186, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.8233, 0)
+shape = SubResource("BoxShape3D_tkme3")
+
+[node name="Interactable" parent="PC" instance=ExtResource("3_x34ws")]
+is_show_description_info = false
+object_name = "System unit"
+
+[node name="KeyboardModel" parent="." instance=ExtResource("4_t7if8")]
+transform = Transform3D(19.9701, 0, -1.09308, 0, 20, 0, 1.09308, 0, 19.9701, -90, 188, 40)
+
+[node name="MouseModel" parent="." instance=ExtResource("5_oa35p")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 150, 194, 60.67)
+
+[connection signal="focused" from="Monitor/Interactable" to="." method="_on_monitor_focused"]
+[connection signal="interacted" from="Monitor/Interactable" to="." method="_on_monitor_interacted"]
+[connection signal="unfocused" from="Monitor/Interactable" to="." method="_on_monitor_unfocused"]
+[connection signal="focused" from="PC/Interactable" to="." method="_on_pc_focused"]
+[connection signal="interacted" from="PC/Interactable" to="." method="_on_pc_interacted"]
+[connection signal="unfocused" from="PC/Interactable" to="." method="_on_pc_unfocused"]
+
+[editable path="Table/TableModel"]
+[editable path="Monitor/MonitorModel"]
+[editable path="PC/PCModel"]

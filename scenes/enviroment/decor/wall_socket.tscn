@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0c4qow81i8kq"]
+
+[ext_resource type="PackedScene" uid="uid://cds0k11xwd0qo" path="res://assets/models/enviroment/decor/wall_socket.glb" id="1_ngu48"]
+
+[node name="WallSocket" type="Node3D"]
+
+[node name="WallSocketModel" parent="." instance=ExtResource("1_ngu48")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0)

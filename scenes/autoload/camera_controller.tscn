@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsfpd21s6cqcb"]
+
+[ext_resource type="Script" path="res://scripts/autoload/camera_controller.gd" id="1_ng14r"]
+
+[node name="CameraContoller" type="Node"]
+script = ExtResource("1_ng14r")
+
+[node name="TransitionCamera" type="Camera3D" parent="."]

@@ -1,12 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn8hnpa52k4l3"]
+[gd_scene load_steps=9 format=3 uid="uid://cn8hnpa52k4l3"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lq20q"]
-[ext_resource type="Script" path="res://scripts/player/camera_control.gd" id="2_cd6t1"]
+[ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_ejk8q"]
 [ext_resource type="Script" path="res://scripts/player/interact_ray.gd" id="3_8x4dw"]
 [ext_resource type="PackedScene" uid="uid://dkpt0qjfyyp54" path="res://scenes/ui/player_ui.tscn" id="3_hthig"]
+[ext_resource type="Script" path="res://scripts/player/outline_camera.gd" id="5_r01rv"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rme7s"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uirc5"]
 height = 2.8
+
+[sub_resource type="Shader" id="Shader_r2686"]
+code = "shader_type canvas_item;
+
+uniform vec4 line_color : source_color = vec4(1.0);
+uniform float line_thickness : hint_range(0, 10) = 1.0;
+
+const vec2 OFFSETS[8] = {
+	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1), 
+	vec2(1, -1), vec2(1, 0), vec2(1, 1)
+};
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	float outline = 0.0;
+	
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
+	}
+	outline = min(outline, 1.0);
+	
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, line_color, outline - color.a);
+	
+	if (abs(outline - color.a) <= 0.5) { 
+		COLOR.a = 0.0;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35jmj"]
+shader = SubResource("Shader_r2686")
+shader_parameter/line_color = Color(0.329412, 0.647059, 0.776471, 1)
+shader_parameter/line_thickness = 4.0
 
 [node name="Player" type="RigidBody3D"]
 collision_layer = 2
@@ -16,17 +50,17 @@ axis_lock_angular_z = true
 script = ExtResource("1_lq20q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_rme7s")
+shape = SubResource("CapsuleShape3D_uirc5")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
-script = ExtResource("2_cd6t1")
+current = true
+script = ExtResource("2_ejk8q")
 
 [node name="InteractRay" type="RayCast3D" parent="PlayerCamera" node_paths=PackedStringArray("_player", "_name_panel", "_name_label", "_description_panel", "_description_label", "_interact_button_tip")]
 target_position = Vector3(0, 0, -4)
-collision_mask = 4
+collision_mask = 5
 collide_with_areas = true
-collide_with_bodies = false
 script = ExtResource("3_8x4dw")
 _player = NodePath("../..")
 _name_panel = NodePath("../../PlayerUI/InteractableInfoUI/NamePanel")
@@ -39,3 +73,37 @@ _interact_button_tip = NodePath("../../PlayerUI/InteractableInfoUI/InteractButto
 target_position = Vector3(0, -1.5, 0)
 
 [node name="PlayerUI" parent="." instance=ExtResource("3_hthig")]
+
+[node name="InteractButtonTipPanel" parent="PlayerUI/InteractableInfoUI" index="0"]
+visible = false
+
+[node name="DescriptionPanel" parent="PlayerUI/InteractableInfoUI" index="1"]
+visible = false
+
+[node name="NamePanel" parent="PlayerUI/InteractableInfoUI" index="2"]
+visible = false
+
+[node name="OutlineCanvas" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="OutlineCanvas"]
+material = SubResource("ShaderMaterial_35jmj")
+offset_right = 1280.0
+offset_bottom = 720.0
+stretch = true
+
+[node name="OutlineViewport" type="SubViewport" parent="OutlineCanvas/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="OutlineCamera" type="Camera3D" parent="OutlineCanvas/SubViewportContainer/OutlineViewport" node_paths=PackedStringArray("_main_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+cull_mask = 2
+script = ExtResource("5_r01rv")
+_main_camera = NodePath("../../../../PlayerCamera")
+
+[editable path="PlayerUI"]
+[editable path="PlayerUI/InteractableInfoUI"]

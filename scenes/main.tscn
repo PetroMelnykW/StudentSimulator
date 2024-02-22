@@ -1,21 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://m87r43ydtf7"]
+[gd_scene load_steps=11 format=3 uid="uid://m87r43ydtf7"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5icmi"]
-[ext_resource type="PackedScene" uid="uid://dij6ajyuubjvp" path="res://scenes/rooms/test_room.tscn" id="1_tfrpf"]
 [ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="2_pxwtv"]
 [ext_resource type="PackedScene" uid="uid://bv06xksf6tsl4" path="res://scenes/ui/panda_os/load_screen_panda_os.tscn" id="2_w8tcm"]
 [ext_resource type="PackedScene" uid="uid://cqwwgwkjsln7a" path="res://scenes/ui/panda_os/desktop_panda_os.tscn" id="3_mxtna"]
-[ext_resource type="PackedScene" uid="uid://bl7fshtyji8s1" path="res://scenes/interactable_objects/pc_stand.tscn" id="4_4hyv1"]
+[ext_resource type="PackedScene" uid="uid://bewgm88os46bm" path="res://scenes/rooms/hallway.tscn" id="6_2kv5s"]
 [ext_resource type="Theme" uid="uid://datgq1ubxoewq" path="res://themes/forms/auth.tres" id="7_0uptl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rsgos"]
 
-[sub_resource type="Sky" id="Sky_a3xo5"]
+[sub_resource type="Sky" id="Sky_jdu1x"]
 sky_material = SubResource("ProceduralSkyMaterial_rsgos")
 
 [sub_resource type="Environment" id="Environment_gm0u6"]
 background_mode = 2
-sky = SubResource("Sky_a3xo5")
+sky = SubResource("Sky_jdu1x")
 reflected_light_source = 2
 
 [sub_resource type="GDScript" id="GDScript_3s4p5"]
@@ -29,7 +28,7 @@ func _on_pressed():
 [node name="Main" type="Node3D" node_paths=PackedStringArray("_player", "_current_room")]
 script = ExtResource("1_5icmi")
 _player = NodePath("3DWorld/Player")
-_current_room = NodePath("3DWorld/TestRoom")
+_current_room = NodePath("3DWorld/Hallway")
 
 [node name="PandaOS" type="CanvasLayer" parent="."]
 visible = false
@@ -45,16 +44,15 @@ visible = false
 environment = SubResource("Environment_gm0u6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="3DWorld"]
-transform = Transform3D(0.902686, -0.234862, 0.360553, -0.0893363, 0.717362, 0.690949, -0.420925, -0.655921, 0.62657, 0, 15, 0)
+transform = Transform3D(-0.121064, -0.696338, 0.70743, -0.0893598, 0.717424, 0.690882, -0.988615, 0.0204252, -0.149079, 0, 15, 0)
 shadow_enabled = true
 
 [node name="Player" parent="3DWorld" instance=ExtResource("2_pxwtv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 3)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.5, 1.4, 0)
+mass = 1.2
+gravity_scale = 1.4
 
-[node name="TestRoom" parent="3DWorld" instance=ExtResource("1_tfrpf")]
-
-[node name="PCStand" parent="3DWorld" instance=ExtResource("4_4hyv1")]
-transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 7.94369, 0.736722, 0)
+[node name="Hallway" parent="3DWorld" instance=ExtResource("6_2kv5s")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="3DWorld"]
 
@@ -71,3 +69,5 @@ script = SubResource("GDScript_3s4p5")
 
 [editable path="PandaOS/LoadScreenPandaOS"]
 [editable path="3DWorld/Player"]
+[editable path="3DWorld/Player/PlayerUI"]
+[editable path="3DWorld/Player/PlayerUI/InteractableInfoUI"]
