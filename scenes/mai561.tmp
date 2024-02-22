@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://m87r43ydtf7"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_5icmi"]
+[ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="2_pxwtv"]
+[ext_resource type="PackedScene" uid="uid://bv06xksf6tsl4" path="res://scenes/ui/panda_os/load_screen_panda_os.tscn" id="2_w8tcm"]
+[ext_resource type="PackedScene" uid="uid://cqwwgwkjsln7a" path="res://scenes/ui/panda_os/desktop_panda_os.tscn" id="3_mxtna"]
+[ext_resource type="Texture2D" uid="uid://cje6180r6k5qk" path="res://assets/textures/skybox/urban_courtyard_02_1k.hdr" id="4_kvjkh"]
+[ext_resource type="PackedScene" uid="uid://bewgm88os46bm" path="res://scenes/rooms/hallway.tscn" id="6_2kv5s"]
+[ext_resource type="Theme" uid="uid://datgq1ubxoewq" path="res://themes/forms/auth.tres" id="7_0uptl"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c5joo"]
+panorama = ExtResource("4_kvjkh")
+
+[sub_resource type="Sky" id="Sky_jdu1x"]
+sky_material = SubResource("PanoramaSkyMaterial_c5joo")
+
+[sub_resource type="Environment" id="Environment_gm0u6"]
+background_mode = 2
+background_energy_multiplier = 0.3
+sky = SubResource("Sky_jdu1x")
+reflected_light_source = 2
+ssao_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_3s4p5"]
+script/source = "extends Button
+
+func _on_pressed():
+	Firebase.Auth.logout()
+	get_tree().change_scene_to_file(\"res://scenes/ui/auth/login.tscn\")
+"
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("_player", "_current_room")]
+script = ExtResource("1_5icmi")
+_player = NodePath("3DWorld/Player")
+_current_room = NodePath("3DWorld/Hallway")
+
+[node name="PandaOS" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DesktopPandaOS" parent="PandaOS" instance=ExtResource("3_mxtna")]
+
+[node name="LoadScreenPandaOS" parent="PandaOS" instance=ExtResource("2_w8tcm")]
+visible = false
+
+[node name="3DWorld" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3DWorld"]
+environment = SubResource("Environment_gm0u6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="3DWorld"]
+transform = Transform3D(-0.121064, -0.696338, 0.70743, -0.0893598, 0.717424, 0.690882, -0.988615, 0.0204252, -0.149079, 0, 15, 0)
+visible = false
+shadow_enabled = true
+
+[node name="Player" parent="3DWorld" instance=ExtResource("2_pxwtv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.5, 1.4, 0)
+mass = 1.2
+gravity_scale = 1.4
+
+[node name="InteractRay" parent="3DWorld/Player/PlayerCamera" index="0"]
+_player = Object(RigidBody3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.5, 1.4, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":2,"collision_mask":1,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"axis_lock_linear_x":false,"axis_lock_linear_y":false,"axis_lock_linear_z":false,"axis_lock_angular_x":true,"axis_lock_angular_y":true,"axis_lock_angular_z":true,"mass":1.2,"physics_material_override":null,"gravity_scale":1.4,"center_of_mass_mode":0,"center_of_mass":Vector3(0, 0, 0),"inertia":Vector3(0, 0, 0),"sleeping":false,"can_sleep":true,"lock_rotation":false,"freeze":false,"freeze_mode":0,"custom_integrator":false,"continuous_cd":false,"max_contacts_reported":0,"contact_monitor":false,"linear_velocity":Vector3(0, 0, 0),"linear_damp_mode":0,"linear_damp":0.0,"angular_velocity":Vector3(0, 0, 0),"angular_damp_mode":0,"angular_damp":0.0,"constant_force":Vector3(0, 0, 0),"constant_torque":Vector3(0, 0, 0),"script":Resource("res://scripts/player/player.gd"),"_speed":5.0,"_jump_force":5.0)
+
+_name_panel = Object(TextureRect,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":0,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":567.0,"offset_top":22.0,"offset_right":712.0,"offset_bottom":54.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","texture":Resource("res://assets/ui/label_plate.png"),"expand_mode":1,"stretch_mode":0,"flip_h":false,"flip_v":false,"script":null)
+
+_name_label = Object(Label,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":0,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":12.0,"offset_top":0.0,"offset_right":132.0,"offset_bottom":30.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_fonts/font":null,"theme_override_font_sizes/font_size":16,"text":"Name","label_settings":null,"horizontal_alignment":1,"vertical_alignment":1,"autowrap_mode":0,"justification_flags":163,"clip_text":false,"text_overrun_behavior":0,"uppercase":false,"tab_stops":PackedFloat32Array(),"lines_skipped":0,"max_lines_visible":-1,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+
+_description_panel = Object(TextureRect,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":0,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":494.0,"offset_top":633.0,"offset_right":792.0,"offset_bottom":699.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","texture":Resource("res://assets/ui/label_plate.png"),"expand_mode":1,"stretch_mode":0,"flip_h":false,"flip_v":false,"script":null)
+
+_description_label = Object(Label,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":0,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":0.0,"offset_top":-2.0,"offset_right":300.0,"offset_bottom":68.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_fonts/font":Resource("res://assets/fonts/Montserrat-Medium.ttf"),"text":"Description
+","label_settings":null,"horizontal_alignment":1,"vertical_alignment":1,"autowrap_mode":0,"justification_flags":163,"clip_text":false,"text_overrun_behavior":0,"uppercase":false,"tab_stops":PackedFloat32Array(),"lines_skipped":0,"max_lines_visible":-1,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+
+_interact_button_tip = Object(TextureRect,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":0,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":552.0,"offset_top":527.0,"offset_right":728.0,"offset_bottom":566.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","texture":Resource("res://assets/ui/label_plate.png"),"expand_mode":1,"stretch_mode":0,"flip_h":false,"flip_v":false,"script":null)
+
+
+[node name="Hallway" parent="3DWorld" instance=ExtResource("6_2kv5s")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="3DWorld"]
+
+[node name="LogoutButton" type="Button" parent="3DWorld/CanvasLayer"]
+offset_left = 1120.0
+offset_top = 32.0
+offset_right = 1246.0
+offset_bottom = 65.0
+theme = ExtResource("7_0uptl")
+text = "Logout"
+script = SubResource("GDScript_3s4p5")
+
+[connection signal="pressed" from="3DWorld/CanvasLayer/LogoutButton" to="3DWorld/CanvasLayer/LogoutButton" method="_on_pressed"]
+
+[editable path="PandaOS/LoadScreenPandaOS"]
+[editable path="3DWorld/Player"]
+[editable path="3DWorld/Player/PlayerUI"]
+[editable path="3DWorld/Player/PlayerUI/InteractableInfoUI"]
