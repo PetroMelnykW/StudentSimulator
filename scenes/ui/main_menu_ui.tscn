@@ -1,0 +1,197 @@
+[gd_scene load_steps=11 format=3 uid="uid://cc0w40lhvmpvy"]
+
+[ext_resource type="Script" path="res://scripts/main_menu/main_menu_ui.gd" id="1_4sitg"]
+[ext_resource type="Texture2D" uid="uid://8214exs7eeml" path="res://assets/ui/main_menu/student_simulator.png" id="1_e5m04"]
+[ext_resource type="Theme" uid="uid://cmqy68qhvq2re" path="res://themes/main_menu/main_menu_theme.tres" id="2_ggd3n"]
+
+[sub_resource type="Shader" id="Shader_q1m7y"]
+code = "shader_type canvas_item;
+
+uniform float separate_point: hint_range(0.0, 1.0) = 0.8;
+uniform vec4 color1: source_color;
+uniform vec4 color2: source_color;
+
+void fragment() {
+  if (UV.x > separate_point) {
+    float alpha_segment_length = 1.0 - separate_point;
+    float coef = 1.0 / alpha_segment_length;
+    float segment_current_point = UV.x - separate_point;
+    float invert_point = alpha_segment_length - segment_current_point;
+    float alpha = invert_point * coef;
+    
+    COLOR.a = alpha * COLOR.a;
+    
+  }
+  COLOR.rgb = mix(color1, color2, UV.x).rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h774p"]
+shader = SubResource("Shader_q1m7y")
+shader_parameter/separate_point = 0.0
+shader_parameter/color1 = Color(0.188235, 0.819608, 0.705882, 1)
+shader_parameter/color2 = Color(0.654902, 0.603922, 0.729412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6bsp"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_os2e4"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_l47yh"]
+resource_name = "hide"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-168, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dwguu"]
+resource_name = "show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-168, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u22e1"]
+_data = {
+"RESET": SubResource("Animation_os2e4"),
+"hide": SubResource("Animation_l47yh"),
+"show": SubResource("Animation_dwguu")
+}
+
+[node name="MainMenuUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4sitg")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+material = SubResource("ShaderMaterial_h774p")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.35
+anchor_bottom = 1.0
+offset_right = 575.998
+theme_override_styles/panel = SubResource("StyleBoxFlat_t6bsp")
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(448, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_e5m04")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(272, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("2_ggd3n")
+text = "Resume"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="SettingsButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_ggd3n")
+text = "Settings"
+
+[node name="CreatorsButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_ggd3n")
+text = "Creators"
+
+[node name="LogOutButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_ggd3n")
+text = "Log out"
+
+[node name="ExitButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_ggd3n")
+text = "Exit"
+
+[node name="Control2" type="Control" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ProjectVersionLabel" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ggd3n")
+text = "Version: alpha 0.1.0"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u22e1")
+}
+
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer/CreatorsButton" to="." method="_on_creators_button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer/LogOutButton" to="." method="_on_log_out_button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
