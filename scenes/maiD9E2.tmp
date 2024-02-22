@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://m87r43ydtf7"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_5icmi"]
+[ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="2_pxwtv"]
+[ext_resource type="PackedScene" uid="uid://bv06xksf6tsl4" path="res://scenes/ui/panda_os/load_screen_panda_os.tscn" id="2_w8tcm"]
+[ext_resource type="PackedScene" uid="uid://cqwwgwkjsln7a" path="res://scenes/ui/panda_os/desktop_panda_os.tscn" id="3_mxtna"]
+[ext_resource type="Texture2D" uid="uid://cje6180r6k5qk" path="res://assets/textures/skybox/urban_courtyard_02_1k.hdr" id="4_kvjkh"]
+[ext_resource type="PackedScene" uid="uid://bewgm88os46bm" path="res://scenes/rooms/hallway.tscn" id="6_2kv5s"]
+[ext_resource type="Theme" uid="uid://datgq1ubxoewq" path="res://themes/forms/auth.tres" id="7_0uptl"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c5joo"]
+panorama = ExtResource("4_kvjkh")
+
+[sub_resource type="Sky" id="Sky_jdu1x"]
+sky_material = SubResource("PanoramaSkyMaterial_c5joo")
+
+[sub_resource type="Environment" id="Environment_gm0u6"]
+background_mode = 2
+background_energy_multiplier = 0.3
+sky = SubResource("Sky_jdu1x")
+reflected_light_source = 2
+ssao_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_3s4p5"]
+script/source = "extends Button
+
+func _on_pressed():
+	Firebase.Auth.logout()
+	get_tree().change_scene_to_file(\"res://scenes/ui/auth/login.tscn\")
+"
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("_player", "_current_room")]
+script = ExtResource("1_5icmi")
+_player = NodePath("3DWorld/Player")
+_current_room = NodePath("3DWorld/Hallway")
+
+[node name="PandaOS" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DesktopPandaOS" parent="PandaOS" instance=ExtResource("3_mxtna")]
+
+[node name="LoadScreenPandaOS" parent="PandaOS" instance=ExtResource("2_w8tcm")]
+visible = false
+
+[node name="3DWorld" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3DWorld"]
+environment = SubResource("Environment_gm0u6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="3DWorld"]
+transform = Transform3D(-0.121064, -0.696338, 0.70743, -0.0893598, 0.717424, 0.690882, -0.988615, 0.0204252, -0.149079, 0, 15, 0)
+visible = false
+shadow_enabled = true
+
+[node name="Player" parent="3DWorld" instance=ExtResource("2_pxwtv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.5, 1.4, 0)
+mass = 1.2
+gravity_scale = 1.4
+
+[node name="Hallway" parent="3DWorld" instance=ExtResource("6_2kv5s")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="3DWorld"]
+
+[node name="LogoutButton" type="Button" parent="3DWorld/CanvasLayer"]
+offset_left = 1120.0
+offset_top = 32.0
+offset_right = 1246.0
+offset_bottom = 65.0
+theme = ExtResource("7_0uptl")
+text = "Logout"
+script = SubResource("GDScript_3s4p5")
+
+[connection signal="pressed" from="3DWorld/CanvasLayer/LogoutButton" to="3DWorld/CanvasLayer/LogoutButton" method="_on_pressed"]
+
+[editable path="PandaOS/LoadScreenPandaOS"]
+[editable path="3DWorld/Player"]
+[editable path="3DWorld/Player/PlayerUI"]
+[editable path="3DWorld/Player/PlayerUI/InteractableInfoUI"]

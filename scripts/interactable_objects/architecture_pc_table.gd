@@ -18,3 +18,4 @@ func _start_computer_architecture_game() -> void:
 	_on_table_unfocused()
 	await CameraController.transit_camera_3d(_architecture_camera)
 	_computer_architecture_game_ui.visible = true
+	PlayerState.change_mode(PlayerState.GameMode.PC_BUILDING)

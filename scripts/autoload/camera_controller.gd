@@ -12,8 +12,7 @@ var _current_camera_3d : Camera3D
 @onready var _transition_camera_3d : Camera3D = $TransitionCamera
 
 func transit_camera_3d(to : Camera3D, duration : float = 2) -> void:
-	if _current_camera_3d == player_camera_3d:
-		PlayerController.disable_player()
+	PlayerState.change_mode(PlayerState.GameMode.TRANSITION_CAMERA)
 	_transition_camera_3d.fov = _current_camera_3d.fov
 	_transition_camera_3d.cull_mask = _current_camera_3d.cull_mask
 	_transition_camera_3d.global_transform = _current_camera_3d.global_transform
@@ -32,7 +31,7 @@ func transit_camera_3d(to : Camera3D, duration : float = 2) -> void:
 	
 	_change_current_camera_3d(to)
 	if to == player_camera_3d:
-		PlayerController.enable_player()
+		PlayerState.change_mode(PlayerState.GameMode.WALK)
 
 func _change_current_camera_3d(new_camera : Camera3D) -> void:
 	_current_camera_3d = new_camera

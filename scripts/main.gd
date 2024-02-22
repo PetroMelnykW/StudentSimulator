@@ -23,6 +23,15 @@ func switch_os(turning_on : bool) -> void:
 	$PandaOS.visible = turning_on
 	$PandaOS/LoadScreenPandaOS.visible = turning_on
 	$PandaOS/LoadScreenPandaOS/VideoStreamPlayer.play()
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED 
-						if not turning_on
-						else Input.MOUSE_MODE_VISIBLE)
+	PlayerState.change_mode(PlayerState.GameMode.PANDA if turning_on else PlayerState.GameMode.WALK)
+
+func _ready():
+	PlayerState.game_mode_changed.connect(_on_game_mode_changed)
+	PlayerState.change_mode(PlayerState.GameMode.WALK)
+
+func _on_game_mode_changed(mode: PlayerState.GameMode):
+	match mode:
+		PlayerState.GameMode.WALK, PlayerState.GameMode.TRANSITION_CAMERA:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		PlayerState.GameMode.PANDA, PlayerState.GameMode.PC_BUILDING:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

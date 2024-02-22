@@ -12,7 +12,7 @@ var _last_interactable_object : Interactable = null
 var _enable : bool = true
 
 func _ready() -> void:
-	PlayerController.player_control_enable_changed.connect(_on_player_control_enable_changed)
+	PlayerState.game_mode_changed.connect(_on_game_mode_changed)
 
 func _process(_delta) -> void:
 	if _enable:
@@ -65,8 +65,8 @@ func _check_inputs() -> void:
 		if _last_interactable_object != null and _last_interactable_object.is_can_interacted:
 			_last_interactable_object.interact(_player)
 
-func _on_player_control_enable_changed(is_enable : bool) -> void:
-	_enable = is_enable
+func _on_game_mode_changed(mode: PlayerState.GameMode):
+	_enable = mode == PlayerState.GameMode.WALK
 	if _interact_button_tip: 
 		_interact_button_tip.visible = false
 	if _name_panel:
