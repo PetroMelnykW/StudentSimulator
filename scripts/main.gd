@@ -30,7 +30,7 @@ func _ready():
 
 func _on_game_mode_changed(mode: PlayerState.GameMode):
 	match mode:
-		PlayerState.GameMode.WALK, PlayerState.GameMode.TRANSITION_CAMERA:
+		PlayerState.GameMode.WALK:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		PlayerState.GameMode.PANDA, PlayerState.GameMode.PC_BUILDING, PlayerState.GameMode.MAIN_MENU:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
