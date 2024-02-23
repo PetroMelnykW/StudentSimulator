@@ -15,15 +15,10 @@ func set_camera_rotation(new_rotation : Vector3) -> void:
 	rotation_degrees.y = -_mouseDelta.x
 
 func _ready() -> void:
-	PlayerController.player_control_enable_changed.connect(_on_player_control_enable_changed)
+	PlayerState.game_mode_changed.connect(_on_game_mode_changed)
 	CameraController.player_camera_3d = self
-	_change_cursor_visible()
 	_mouseDelta.x = -rotation_degrees.y
 	_mouseDelta.y = -rotation_degrees.x
-
-func _process(_delta) -> void:
-	if Input.is_action_just_pressed("change_cursor_visible"):
-		_change_cursor_visible()
 
 func _input(event) -> void:
 	if event is InputEventMouseMotion and _enable:
@@ -39,10 +34,9 @@ func _update_camera_movement(event_data : InputEventMouseMotion) -> void:
 	rotation_degrees.x = -_mouseDelta.y
 	rotation_degrees.y = -_mouseDelta.x
 
-func _change_cursor_visible() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED 
-						if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED
-						else Input.MOUSE_MODE_VISIBLE)
-
-func _on_player_control_enable_changed(is_enable : bool) -> void:
-	_enable = is_enable
+func _on_game_mode_changed(mode: PlayerState.GameMode):
+	if mode == PlayerState.GameMode.WALK:
+		_enable = true
+	else:
+		_enable = false
+	

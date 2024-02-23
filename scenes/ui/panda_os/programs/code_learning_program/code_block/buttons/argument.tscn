@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://4w2wqw564xh7"]
+
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/buttons/argument.gd" id="1_rtmkg"]
+
+[node name="Argument" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_rtmkg")
+
+[node name="ChooseLocalVarTypeButton" type="OptionButton" parent="."]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "int"
+popup/item_0/id = 0
+popup/item_1/text = "float"
+popup/item_1/id = 1
+popup/item_2/text = "str"
+popup/item_2/id = 2
+popup/item_3/text = "bool"
+popup/item_3/id = 3
+
+[node name="LocalVarNameEdit" type="LineEdit" parent="."]
+layout_mode = 2
+
+[node name="DeleteLocalVarButton" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "X"
+
+[connection signal="item_selected" from="ChooseLocalVarTypeButton" to="." method="_on_choose_local_var_type_button_item_selected"]
+[connection signal="pressed" from="DeleteLocalVarButton" to="." method="_on_delete_local_var_button_pressed"]

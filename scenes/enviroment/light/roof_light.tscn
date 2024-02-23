@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://baqk0y5anlrvq"]
+
+[ext_resource type="PackedScene" uid="uid://bxod2n6pol1to" path="res://assets/models/enviroment/lighting/multi_circular_lamp.glb" id="1_6c4w3"]
+[ext_resource type="Script" path="res://scripts/enviroment/light/roof_light.gd" id="1_of4xl"]
+
+[node name="RoofLight" type="Node3D"]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, 2.26494e-07, 0, -2.26494e-07, -1.5, 0, 0, 0)
+script = ExtResource("1_of4xl")
+
+[node name="multi_circular_lamp" parent="." instance=ExtResource("1_6c4w3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0.25)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -2.13163e-14, 0, 2.13163e-14, 1, 0, 0.12, 0)
+light_color = Color(1, 0.996078, 0.756863, 1)
+shadow_enabled = true
+omni_range = 12.0
+
+[editable path="multi_circular_lamp"]

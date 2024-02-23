@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0im2djucg5gm"]
+
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/panels/call_function_panel.gd" id="1_8dvrc"]
+[ext_resource type="PackedScene" uid="uid://bx0qndwpgxq4r" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_function_button.tscn" id="1_22y7x"]
+[ext_resource type="PackedScene" uid="uid://irqn81a3iolw" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/delete_block_button.tscn" id="2_1e1bg"]
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="3_vqc7p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6g5t0"]
+bg_color = Color(0.288, 0.6624, 0.72, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="CallFunctionPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(392, 0)
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g5t0")
+script = ExtResource("1_8dvrc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ChooseFunctionButton" parent="MarginContainer/HBoxContainer/HBoxContainer" instance=ExtResource("1_22y7x")]
+custom_minimum_size = Vector2(176, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vqc7p")
+theme_override_font_sizes/font_size = 22
+text = "("
+
+[node name="Arguments" type="HBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vqc7p")
+theme_override_font_sizes/font_size = 22
+text = ")"
+
+[node name="DeleteBlockButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_1e1bg")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/DeleteBlockButton" to="." method="_on_delete_block_button_pressed"]

@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 CameraController="*res://scenes/autoload/camera_controller.tscn"
-PlayerController="*res://scripts/autoload/player_controller.gd"
+PlayerState="*res://scripts/autoload/player_state.gd"
 
 [display]
 

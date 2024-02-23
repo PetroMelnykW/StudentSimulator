@@ -1,0 +1,346 @@
+[gd_scene load_steps=16 format=3 uid="uid://bao6tebfwws"]
+
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_learning_program.gd" id="1_o65f1"]
+[ext_resource type="PackedScene" uid="uid://dxp7yn45qimkn" path="res://scenes/interface_nodes/code_edit_observer.tscn" id="2_3h4ts"]
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/code_editor.gd" id="2_80x66"]
+[ext_resource type="FontFile" uid="uid://cajonakxfadkd" path="res://assets/fonts/martian_mono_condensed_bold.ttf" id="3_nfak6"]
+[ext_resource type="PackedScene" uid="uid://c8lq2u30khlob" path="res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/add_block_panel.tscn" id="4_2xiwa"]
+[ext_resource type="FontFile" uid="uid://biebeoeoqia3f" path="res://assets/fonts/martian_mono_semi_expanded_bold.ttf" id="4_4fn66"]
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="7_qiovw"]
+
+[sub_resource type="Animation" id="Animation_jqut1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-768, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_bg7hn"]
+resource_name = "hide"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 64), Vector2(-768, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_4ishp"]
+resource_name = "show"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-768, 64), Vector2(0, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eqony"]
+_data = {
+"RESET": SubResource("Animation_jqut1"),
+"hide": SubResource("Animation_bg7hn"),
+"show": SubResource("Animation_4ishp")
+}
+
+[sub_resource type="Animation" id="Animation_lpa73"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_n7gsk"]
+resource_name = "hide"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 64), Vector2(1280, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_xir3g"]
+resource_name = "show"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1280, 64), Vector2(960, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1xysw"]
+_data = {
+"RESET": SubResource("Animation_lpa73"),
+"hide": SubResource("Animation_n7gsk"),
+"show": SubResource("Animation_xir3g")
+}
+
+[node name="CodeLearningProgram" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o65f1")
+
+[node name="CodeEditObserver" parent="." instance=ExtResource("2_3h4ts")]
+
+[node name="TopBar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 64.0
+color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="ModuleName" type="Label" parent="TopBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 408.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("3_nfak6")
+text = "Modul 1"
+vertical_alignment = 1
+
+[node name="ShowLevelsBlockButton" type="Button" parent="TopBar"]
+layout_mode = 0
+offset_left = 448.0
+offset_right = 832.0
+offset_bottom = 64.0
+focus_mode = 0
+toggle_mode = true
+
+[node name="LessonName" type="Label" parent="TopBar/ShowLevelsBlockButton"]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("3_nfak6")
+text = "Name"
+vertical_alignment = 1
+
+[node name="LessonNumber" type="Label" parent="TopBar/ShowLevelsBlockButton"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("3_nfak6")
+text = "Lesoon 1"
+vertical_alignment = 1
+
+[node name="LastLessonButton" type="Button" parent="TopBar"]
+layout_mode = 0
+offset_left = 416.0
+offset_right = 448.0
+offset_bottom = 64.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "<"
+
+[node name="NextLessonButton" type="Button" parent="TopBar"]
+layout_mode = 0
+offset_left = 832.0
+offset_right = 864.0
+offset_bottom = 64.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = ">"
+
+[node name="QuitButton" type="Button" parent="TopBar"]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 8.0
+offset_right = 1264.0
+offset_bottom = 56.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_4fn66")
+theme_override_font_sizes/font_size = 28
+text = "X"
+
+[node name="RunCodeButton" type="Button" parent="TopBar"]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 8.0
+offset_right = 1087.0
+offset_bottom = 55.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_4fn66")
+theme_override_font_sizes/font_size = 28
+text = "Run"
+
+[node name="CodeBlock" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 1280.0
+offset_bottom = 576.0
+color = Color(0.168627, 0.168627, 0.168627, 1)
+script = ExtResource("2_80x66")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CodeBlock"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CodeBlock/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="CodeBox" type="VBoxContainer" parent="CodeBlock/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Blocks" type="VBoxContainer" parent="CodeBlock/ScrollContainer/MarginContainer/CodeBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AddBlockPanel" parent="CodeBlock/ScrollContainer/MarginContainer/CodeBox" instance=ExtResource("4_2xiwa")]
+layout_mode = 2
+
+[node name="VisualCodeBlock" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 576.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VisualCodeBlock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VisualCodeBlock/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+
+[node name="ConsoleLabel" type="Label" parent="VisualCodeBlock/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_qiovw")
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 2
+
+[node name="TheoreticalBlock" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -768.0
+offset_top = 64.0
+offset_bottom = 720.0
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TheoreticalBlock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TheoreticalBlock/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TheoreticalBlock/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="ShowTheoreticalBlockButton" type="Button" parent="TheoreticalBlock"]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 264.0
+offset_right = 800.0
+offset_bottom = 392.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+toggle_mode = true
+text = ">"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TheoreticalBlock"]
+libraries = {
+"": SubResource("AnimationLibrary_eqony")
+}
+
+[node name="LevelsBlock" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 64.0
+offset_right = 1600.0
+offset_bottom = 720.0
+color = Color(0.101961, 0.101961, 0.101961, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LevelsBlock"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 656.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelsBlock/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelsBlock/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelsBlock"]
+libraries = {
+"": SubResource("AnimationLibrary_1xysw")
+}
+
+[connection signal="toggled" from="TopBar/ShowLevelsBlockButton" to="." method="_on_show_levels_block_toggled"]
+[connection signal="pressed" from="TopBar/LastLessonButton" to="." method="_on_last_lesson_button_pressed"]
+[connection signal="pressed" from="TopBar/NextLessonButton" to="." method="_on_next_lesson_button_pressed"]
+[connection signal="pressed" from="TopBar/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="TopBar/RunCodeButton" to="CodeBlock" method="_on_run_code_button_pressed"]
+[connection signal="toggled" from="TheoreticalBlock/ShowTheoreticalBlockButton" to="." method="_on_show_theoretical_block_button_toggled"]

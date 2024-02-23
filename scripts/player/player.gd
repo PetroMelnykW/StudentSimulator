@@ -16,7 +16,7 @@ var _running : bool = false
 var _enable : bool = true
 
 func _ready() -> void:
-	PlayerController.player_control_enable_changed.connect(_on_player_control_enable_changed)
+	PlayerState.game_mode_changed.connect(_on_game_mode_changed)
 
 func _process(delta) -> void:
 	if _enable:
@@ -48,10 +48,12 @@ func _movement() -> void:
 func _jump() -> void:
 	apply_central_impulse(Vector3.UP * _jump_force)
 
-func _on_player_control_enable_changed(is_enable : bool) -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if is_enable else Input.MOUSE_MODE_VISIBLE)	
-	_enable = is_enable
-	_ui_canvas.visible = is_enable
-	
-	linear_velocity.x = 0
-	linear_velocity.z = 0
+func _on_game_mode_changed(mode: PlayerState.GameMode):
+	if mode == PlayerState.GameMode.WALK:
+		_enable = true
+		_ui_canvas.visible = true
+	else:
+		_enable = false
+		_ui_canvas.visible = false
+		linear_velocity.x = 0
+		linear_velocity.z = 0

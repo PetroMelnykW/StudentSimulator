@@ -1,8 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqwwgwkjsln7a"]
+[gd_scene load_steps=12 format=3 uid="uid://cqwwgwkjsln7a"]
 
+[ext_resource type="Script" path="res://scripts/panda_os/desktop_panda_os.gd" id="1_hd6vl"]
 [ext_resource type="Texture2D" uid="uid://cg7xghh8cek6g" path="res://assets/sprites/os/background_os_2.jpg" id="1_s4agx"]
 [ext_resource type="PackedScene" uid="uid://bfxlth8657x4" path="res://scenes/ui/panda_os/base_shotrcut.tscn" id="2_8godm"]
+[ext_resource type="Texture2D" uid="uid://bssmdp42qxs11" path="res://assets/sprites/code_learning_icon.png" id="3_2culm"]
 [ext_resource type="PackedScene" uid="uid://xf3j2x35hfxt" path="res://scenes/ui/panda_os/down_panel.tscn" id="3_xel87"]
+[ext_resource type="PackedScene" uid="uid://bao6tebfwws" path="res://scenes/ui/panda_os/programs/code_learning_program/code_learning_program.tscn" id="5_laqu2"]
+[ext_resource type="FontFile" uid="uid://cajonakxfadkd" path="res://assets/fonts/martian_mono_condensed_bold.ttf" id="6_8xyqb"]
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="7_4gytd"]
+[ext_resource type="Texture2D" uid="uid://dwjmng6o3jkf3" path="res://assets/sprites/os/background_os_1.png" id="8_b4yv8"]
+
+[sub_resource type="Shader" id="Shader_w8j13"]
+code = "shader_type canvas_item;
+
+uniform vec4 topleft:source_color;
+uniform vec4 topright:source_color;
+uniform vec4 bottomleft:source_color;
+uniform vec4 bottomright:source_color;
+
+void fragment() {
+  vec4 top = mix(topleft, topright, UV.x);
+  vec4 bottom = mix(bottomleft, bottomright, UV.x);
+  COLOR =  mix(top, bottom, UV.y);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3tawt"]
+shader = SubResource("Shader_w8j13")
+shader_parameter/topleft = Color(0.145098, 0.8, 0.505882, 1)
+shader_parameter/topright = null
+shader_parameter/bottomleft = null
+shader_parameter/bottomright = Color(0.219608, 0.219608, 0.760784, 1)
 
 [node name="DesktopPandaOS" type="Control"]
 layout_mode = 3
@@ -11,6 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hd6vl")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -34,8 +62,15 @@ theme_override_constants/separation = 0
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="BaseShotrcut" parent="Background/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_8godm")]
+[node name="BaseShotrcut" parent="Background/MarginContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("program") instance=ExtResource("2_8godm")]
 layout_mode = 2
+program = NodePath("../../../../../CodeLearningProgram")
+
+[node name="Button" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/BaseShotrcut" index="0"]
+icon = ExtResource("3_2culm")
+
+[node name="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/BaseShotrcut" index="1"]
+text = "Bamboo+"
 
 [node name="DownPanel" parent="Background" instance=ExtResource("3_xel87")]
 layout_mode = 1
@@ -44,3 +79,99 @@ anchor_top = 0.933
 anchor_bottom = 0.933
 offset_top = 0.23999
 offset_bottom = 48.24
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+material = SubResource("ShaderMaterial_3tawt")
+custom_minimum_size = Vector2(384, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CloseSettingsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_8xyqb")
+theme_override_font_sizes/font_size = 18
+text = "❌"
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_8xyqb")
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_4gytd")
+theme_override_font_sizes/font_size = 17
+text = "Background"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Backgroung1Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(176, 128)
+layout_mode = 2
+icon = ExtResource("8_b4yv8")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Backgroung2Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(176, 128)
+layout_mode = 2
+icon = ExtResource("1_s4agx")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label3" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_4gytd")
+theme_override_font_sizes/font_size = 17
+text = "Taskbar color"
+horizontal_alignment = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="CodeLearningProgram" parent="." instance=ExtResource("5_laqu2")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Background/DownPanel/StartMenu/HBoxContainer/ToolMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Background/DownPanel/StartMenu/HBoxContainer/ShortcutMenu/VBoxContainer/BaseShortcutMiniButton" to="Background/MarginContainer/HBoxContainer/VBoxContainer/BaseShotrcut" method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/CloseSettingsButton" to="." method="_on_close_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Backgroung1Button" to="." method="_on_backgroung_1_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Backgroung2Button" to="." method="_on_backgroung_2_button_pressed"]
+[connection signal="color_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+
+[editable path="Background/MarginContainer/HBoxContainer/VBoxContainer/BaseShotrcut"]
+[editable path="Background/DownPanel"]
+[editable path="Background/DownPanel/StartMenu/HBoxContainer/ShortcutMenu/VBoxContainer/BaseShortcutMiniButton"]

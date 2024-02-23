@@ -22,6 +22,7 @@ func _start_computer_architecture_game() -> void:
 	_on_table_unfocused()
 	await CameraController.transit_camera_3d(_architecture_camera)
 	_computer_architecture_game_ui.visible = true
+	PlayerState.change_mode(PlayerState.GameMode.PC_BUILDING)
 
 func _on_exit_button_pressed() -> void:
 	_computer_architecture_game_ui.visible = false
@@ -33,3 +34,4 @@ func _start_level(level_name: String) -> void:
 	_computer_architecture_game_ui.visible = false
 	_architecture_core_ui.visible = true
 	_architecture_core.enable = true
+	

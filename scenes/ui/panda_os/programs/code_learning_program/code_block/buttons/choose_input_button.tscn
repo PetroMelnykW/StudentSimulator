@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbbdr7jskc6mt"]
+
+[ext_resource type="FontFile" uid="uid://ckxpopxuhyen" path="res://assets/fonts/martian_mono_variable_font.ttf" id="1_ay3bn"]
+[ext_resource type="Script" path="res://scripts/panda_os/programs/code_learning_program/code_block/buttons/choose_input_button.gd" id="1_fg61m"]
+
+[node name="ChooseInputButton" type="OptionButton"]
+offset_right = 130.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_fonts/font = ExtResource("1_ay3bn")
+item_count = 4
+popup/item_0/text = "Write"
+popup/item_0/id = 0
+popup/item_1/text = "Variables"
+popup/item_1/id = 1
+popup/item_2/text = "Expression"
+popup/item_2/id = 2
+popup/item_3/text = "Function"
+popup/item_3/id = 3
+script = ExtResource("1_fg61m")
+_write_value_edit_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/write_value_edit.tscn"
+_choose_var_button_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_var_button.tscn"
+_expression_panel_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/panels/expression_panel.tscn"
+_choose_function_button_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/choose_function_button.tscn"
+_go_to_choose_button_scene = "res://scenes/ui/panda_os/programs/code_learning_program/code_block/buttons/go_to_choose_button.tscn"
+
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]

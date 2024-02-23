@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxp7yn45qimkn"]
+
+[ext_resource type="Script" path="res://scripts/interface_nodes/code_edit_observer.gd" id="1_6vavq"]
+
+[node name="CodeEditObserver" type="Node"]
+script = ExtResource("1_6vavq")
