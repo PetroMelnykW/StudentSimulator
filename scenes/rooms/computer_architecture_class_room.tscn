@@ -13,12 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://ddx5c6n7jne6u" path="res://scenes/interactable_objects/light_switch.tscn" id="9_7hulf"]
 [ext_resource type="PackedScene" uid="uid://b0c4qow81i8kq" path="res://scenes/enviroment/decor/wall_socket.tscn" id="11_nyk2q"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5thw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5f0d2"]
 albedo_texture = ExtResource("1_qiptn")
 uv1_scale = Vector3(5, 4, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yeejr"]
-material = SubResource("StandardMaterial3D_s5thw")
+material = SubResource("StandardMaterial3D_5f0d2")
 size = Vector2(20, 16)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tovub"]

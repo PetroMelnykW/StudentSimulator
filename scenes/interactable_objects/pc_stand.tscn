@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bkifymd3o1rrs"]
+[gd_scene load_steps=16 format=3 uid="uid://bkifymd3o1rrs"]
 
 [ext_resource type="PackedScene" uid="uid://cpingn2l2q7ne" path="res://assets/models/enviroment/furniture/table_1.glb" id="1_3hk7h"]
 [ext_resource type="Script" path="res://scripts/interactable_objects/pc_stand.gd" id="1_xtiv6"]
@@ -22,7 +22,10 @@ size = Vector3(8, 365, 280)
 size = Vector3(8, 365, 280)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_si7ts"]
-size = Vector3(307, 210, 56)
+size = Vector3(307, 159.684, 20.7588)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r0nq5"]
+size = Vector3(34.3972, 102.566, 17.7969)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkme3"]
 size = Vector3(115, 230, 275)
@@ -68,8 +71,12 @@ transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 0, 0)
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Monitor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 91, -44.725)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 116.158, -27.1044)
 shape = SubResource("BoxShape3D_si7ts")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Monitor"]
+transform = Transform3D(1, 0, 0, 0, 0.967837, 0.25158, 0, -0.25158, 0.967837, -0.449091, 37.4616, -54.6915)
+shape = SubResource("BoxShape3D_r0nq5")
 
 [node name="Interactable" parent="Monitor" instance=ExtResource("3_x34ws")]
 is_show_description_info = false

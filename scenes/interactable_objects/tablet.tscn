@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgjr48bfgeu38"]
+
+[ext_resource type="Script" path="res://scripts/interactable_objects/tablet.gd" id="1_wkk8y"]
+[ext_resource type="PackedScene" uid="uid://b6kcyojgbs0qa" path="res://assets/models/interactable_objects/tablet/nook wifi 002.glb" id="1_yte32"]
+[ext_resource type="Texture2D" uid="uid://bv6i0f2fdm3g4" path="res://assets/models/interactable_objects/tablet/scen.jpg" id="2_sdmb0"]
+[ext_resource type="PackedScene" uid="uid://dsqdhouiy102q" path="res://scenes/interface_nodes/interactable.tscn" id="3_tc822"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4p1xs"]
+albedo_texture = ExtResource("2_sdmb0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_now2a"]
+size = Vector3(12.5899, 1, 19.6614)
+
+[node name="Tablet" type="Area3D"]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+collision_layer = 5
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_wkk8y")
+
+[node name="nook wifi 002" parent="." instance=ExtResource("1_yte32")]
+
+[node name="nook" parent="nook wifi 002" index="0"]
+material_override = SubResource("StandardMaterial3D_4p1xs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0430609, 0.431175, 0.129274)
+shape = SubResource("BoxShape3D_now2a")
+
+[node name="Interactable" parent="." instance=ExtResource("3_tc822")]
+is_can_interacted = false
+is_show_description_info = false
+object_name = "Tablet"
+
+[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
+[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+
+[editable path="nook wifi 002"]
