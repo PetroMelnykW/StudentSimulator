@@ -10,6 +10,14 @@ func _input(event):
 		show()
 		$AnimationPlayer.play("show")
 		PlayerState.change_mode(PlayerState.GameMode.MAIN_MENU)
+	elif (Input.is_action_just_pressed("change_cursor_visible")
+	and _is_open
+	and PlayerState.current_mode == PlayerState.GameMode.MAIN_MENU):
+		_is_open = false
+		$AnimationPlayer.play("hide")
+		await $AnimationPlayer.animation_finished
+		hide()
+		PlayerState.change_mode(PlayerState.GameMode.WALK)
 
 func _on_resume_button_pressed():
 	_is_open = false
