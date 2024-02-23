@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://gpmk1mfwjw47"]
 
-[ext_resource type="PackedScene" uid="uid://bqaho3bx3qbad" path="res://assets/models/pc_parts/motherboard_amd_1.glb" id="1_q652q"]
+[ext_resource type="PackedScene" uid="uid://d2sm3lui2n6qv" path="res://assets/models/pc_parts/motherboard_asus.glb" id="1_urgyk"]
 
 [node name="MotherboardAMD" type="Node3D"]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 
-[node name="MotherboardAMDModel" parent="." instance=ExtResource("1_q652q")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+[node name="MotherboardAsusModel" parent="." instance=ExtResource("1_urgyk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)

@@ -1,7 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj0h5tiskow7a"]
+[gd_scene load_steps=14 format=3 uid="uid://bj0h5tiskow7a"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc2qa"]
-bg_color = Color(0.0941176, 0.219608, 0.121569, 0.705882)
+[ext_resource type="FontFile" uid="uid://biebeoeoqia3f" path="res://assets/fonts/martian_mono_semi_expanded_bold.ttf" id="1_5r1mb"]
+[ext_resource type="Theme" uid="uid://cmqy68qhvq2re" path="res://themes/main_menu/main_menu_theme.tres" id="1_7oe2b"]
+[ext_resource type="Texture2D" uid="uid://dp4jm0582hpnl" path="res://assets/ui/rounded_button.png" id="3_pn3t6"]
+[ext_resource type="Texture2D" uid="uid://dwiq762730elg" path="res://assets/sprites/pc_building_simulator/level_icons/motherboard.png" id="4_mjnhq"]
+[ext_resource type="FontFile" uid="uid://bdxgtjypuhv4p" path="res://assets/fonts/MartianMono_Condensed-Medium.ttf" id="5_p8f8r"]
+[ext_resource type="Texture2D" uid="uid://bp7bk0a5k843g" path="res://assets/sprites/pc_building_simulator/level_icons/cpu.png" id="6_p6dhj"]
+[ext_resource type="Texture2D" uid="uid://rdl7q2qo2lrn" path="res://assets/sprites/pc_building_simulator/level_icons/ram.png" id="7_hfh3k"]
+[ext_resource type="Texture2D" uid="uid://b1iym4yg1cfiw" path="res://assets/sprites/pc_building_simulator/level_icons/ssdm.2.png" id="8_ev8pt"]
+[ext_resource type="Texture2D" uid="uid://jiqcxf3nr7qe" path="res://assets/sprites/pc_building_simulator/level_icons/ssd.png" id="9_5nkuw"]
+[ext_resource type="Texture2D" uid="uid://clhcds7rrvgro" path="res://assets/sprites/pc_building_simulator/level_icons/gpu.png" id="10_4ws26"]
+[ext_resource type="Texture2D" uid="uid://2dk4o17e5cn8" path="res://assets/sprites/pc_building_simulator/level_icons/power_supply.png" id="11_ad6cs"]
+
+[sub_resource type="Shader" id="Shader_wawsf"]
+code = "shader_type canvas_item;
+
+uniform vec4 color1: source_color;
+uniform vec4 color2: source_color;
+
+void fragment() {
+	COLOR = mix(color1, color2, UV.y);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s2ur7"]
+shader = SubResource("Shader_wawsf")
+shader_parameter/color1 = Color(0.211765, 0.701961, 0.576471, 1)
+shader_parameter/color2 = Color(0.168627, 0.309804, 0.439216, 1)
 
 [node name="ComputerArchitectureGameUI" type="CanvasLayer"]
 
@@ -11,6 +36,7 @@ offset_bottom = 120.0
 
 [node name="GameNameLabel" type="Label" parent="GameNameCenterContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_5r1mb")
 theme_override_font_sizes/font_size = 40
 text = "PC Building simulator"
 
@@ -19,6 +45,7 @@ offset_left = 20.0
 offset_top = 480.0
 offset_right = 180.0
 offset_bottom = 700.0
+theme = ExtResource("1_7oe2b")
 alignment = 2
 
 [node name="ExitButton" type="Button" parent="MenuButtons"]
@@ -32,26 +59,30 @@ metadata/_edit_lock_ = true
 offset_left = 880.0
 offset_right = 1280.0
 offset_bottom = 720.0
+mouse_filter = 2
 
 [node name="LevelsPanel" type="Panel" parent="LevelCenterContainer"]
+material = SubResource("ShaderMaterial_s2ur7")
 custom_minimum_size = Vector2(300, 520)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_fc2qa")
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel"]
 layout_mode = 0
 offset_right = 300.0
-offset_bottom = 501.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+offset_bottom = 520.0
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer"]
 layout_mode = 2
 
 [node name="LevelsLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_5r1mb")
 theme_override_font_sizes/font_size = 26
 text = "Levels"
 horizontal_alignment = 1
@@ -63,269 +94,345 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="Level1" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+[node name="Level1Button" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+flat = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1Button"]
 custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
+layout_mode = 1
 offset_right = 80.0
 offset_bottom = 80.0
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 
-[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1/VBoxContainer"]
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1Button/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1/VBoxContainer/LevelIconMarginContainer"]
+[node name="LevelIconBackground" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1Button/VBoxContainer/LevelIconMarginContainer"]
+self_modulate = Color(0.635294, 0.647059, 0.184314, 0.607843)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("3_pn3t6")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelIconTextureRect" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground/CenterContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-color = Color(0.207843, 0.45098, 0.505882, 1)
+texture = ExtResource("4_mjnhq")
+expand_mode = 1
 
-[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1/VBoxContainer"]
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1Button/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_p8f8r")
+theme_override_font_sizes/font_size = 10
 text = "Motherboard"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level1"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
+[node name="Level2Button" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 flat = true
 
-[node name="Level2" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2Button"]
 custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
+layout_mode = 1
 offset_right = 80.0
 offset_bottom = 80.0
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 
-[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2/VBoxContainer"]
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2Button/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2/VBoxContainer/LevelIconMarginContainer"]
+[node name="LevelIconBackground" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2Button/VBoxContainer/LevelIconMarginContainer"]
+self_modulate = Color(0.635294, 0.647059, 0.184314, 0.607843)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("3_pn3t6")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelIconTextureRect" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground/CenterContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-color = Color(0.486275, 0.341176, 0.580392, 1)
+texture = ExtResource("6_p6dhj")
+expand_mode = 1
 
-[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2/VBoxContainer"]
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2Button/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_p8f8r")
+theme_override_font_sizes/font_size = 10
 text = "CPU"
 horizontal_alignment = 1
 vertical_alignment = 1
-clip_text = true
 
-[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level2"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
+[node name="Level3Button" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 flat = true
 
-[node name="Level3" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3Button"]
 custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
+layout_mode = 1
 offset_right = 80.0
 offset_bottom = 80.0
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 
-[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3/VBoxContainer"]
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3Button/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3/VBoxContainer/LevelIconMarginContainer"]
+[node name="LevelIconBackground" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3Button/VBoxContainer/LevelIconMarginContainer"]
+self_modulate = Color(0.635294, 0.647059, 0.184314, 0.607843)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("3_pn3t6")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelIconTextureRect" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground/CenterContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-color = Color(0.329412, 0.388235, 0.662745, 1)
+texture = ExtResource("7_hfh3k")
+expand_mode = 1
 
-[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3/VBoxContainer"]
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3Button/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_p8f8r")
+theme_override_font_sizes/font_size = 10
 text = "RAM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level3"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
+[node name="Level4Button" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 flat = true
 
-[node name="Level4" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4Button"]
 custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
+layout_mode = 1
 offset_right = 80.0
 offset_bottom = 80.0
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 
-[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4/VBoxContainer"]
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4Button/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4/VBoxContainer/LevelIconMarginContainer"]
+[node name="LevelIconBackground" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4Button/VBoxContainer/LevelIconMarginContainer"]
+self_modulate = Color(0.635294, 0.647059, 0.184314, 0.607843)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("3_pn3t6")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelIconTextureRect" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground/CenterContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-color = Color(0.466667, 0.411765, 0.176471, 1)
+texture = ExtResource("8_ev8pt")
+expand_mode = 1
 
-[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4/VBoxContainer"]
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4Button/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_p8f8r")
+theme_override_font_sizes/font_size = 10
 text = "SSD M.2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level4"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
+[node name="Level5Button" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 flat = true
 
-[node name="Level5" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5Button"]
 custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
+layout_mode = 1
 offset_right = 80.0
 offset_bottom = 80.0
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 
-[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5/VBoxContainer"]
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5Button/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5/VBoxContainer/LevelIconMarginContainer"]
+[node name="LevelIconBackground" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5Button/VBoxContainer/LevelIconMarginContainer"]
+self_modulate = Color(0.635294, 0.647059, 0.184314, 0.607843)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("3_pn3t6")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelIconTextureRect" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground/CenterContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-color = Color(0.552941, 0.364706, 0.215686, 1)
+texture = ExtResource("9_5nkuw")
+expand_mode = 1
 
-[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5/VBoxContainer"]
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5Button/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_p8f8r")
+theme_override_font_sizes/font_size = 10
 text = "SSD/HDD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level5"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
+[node name="Level6Button" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 flat = true
 
-[node name="Level6" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6Button"]
 custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
+layout_mode = 1
 offset_right = 80.0
 offset_bottom = 80.0
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 
-[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6/VBoxContainer"]
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6Button/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6/VBoxContainer/LevelIconMarginContainer"]
+[node name="LevelIconBackground" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6Button/VBoxContainer/LevelIconMarginContainer"]
+self_modulate = Color(0.635294, 0.647059, 0.184314, 0.607843)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("3_pn3t6")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelIconTextureRect" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground/CenterContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-color = Color(0.333333, 0.596078, 0.372549, 1)
+texture = ExtResource("10_4ws26")
+expand_mode = 1
 
-[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6/VBoxContainer"]
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6Button/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_p8f8r")
+theme_override_font_sizes/font_size = 10
 text = "Videocard"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level6"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
+[node name="Level7Button" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 flat = true
 
-[node name="Level7" type="Control" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7Button"]
 custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
+layout_mode = 1
 offset_right = 80.0
 offset_bottom = 80.0
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 
-[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7/VBoxContainer"]
+[node name="LevelIconMarginContainer" type="MarginContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7Button/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="LevelIconColorRect" type="ColorRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7/VBoxContainer/LevelIconMarginContainer"]
+[node name="LevelIconBackground" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7Button/VBoxContainer/LevelIconMarginContainer"]
+self_modulate = Color(0.635294, 0.647059, 0.184314, 0.607843)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("3_pn3t6")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelIconTextureRect" type="TextureRect" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7Button/VBoxContainer/LevelIconMarginContainer/LevelIconBackground/CenterContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-color = Color(0.333333, 0.596078, 0.372549, 1)
+texture = ExtResource("11_ad6cs")
+expand_mode = 1
 
-[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7/VBoxContainer"]
+[node name="LevelNameLabel" type="Label" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7Button/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 12
-text = "Power Supply"
+theme_override_fonts/font = ExtResource("5_p8f8r")
+theme_override_font_sizes/font_size = 10
+text = "Power Suplly"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="LevelButton" type="Button" parent="LevelCenterContainer/LevelsPanel/MarginContainer/VBoxContainer/LevelsGridContainer/Level7"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-flat = true

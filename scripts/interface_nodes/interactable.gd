@@ -19,4 +19,5 @@ func unfocus() -> void:
 	unfocused.emit()
 
 func interact() -> void:
-	interacted.emit()
+	if is_can_interacted:
+		interacted.emit()

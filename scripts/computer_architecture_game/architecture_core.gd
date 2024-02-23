@@ -9,13 +9,16 @@ var _processor: Node3D
 var _last_interactable_object: Interactable
 
 @onready var _motherboard_place = $MotherboardPlace
-@onready var _main_camera = $"../Camera3D"
+@onready var _main_camera: Camera3D = $"../Camera3D"
 
 #ui
-@onready var _name_panel: Control = $PCBuildingCanvas/Control/NamePanel
-@onready var _description_panel: Control = $PCBuildingCanvas/Control/DescriptionPanel
-@onready var _name_label: Label = $PCBuildingCanvas/Control/NamePanel/NameLabel
-@onready var _description_label: Label = $PCBuildingCanvas/Control/DescriptionPanel/MarginContainer/VBoxContainer/ContentLabel
+@onready var _name_panel: Control = $PCBuildingInteracableCanvas/Control/NamePanel
+@onready var _description_panel: Control = $PCBuildingInteracableCanvas/Control/DescriptionPanel
+@onready var _name_label: Label = $PCBuildingInteracableCanvas/Control/NamePanel/NameLabel
+@onready var _description_label: Label = $PCBuildingInteracableCanvas/Control/DescriptionPanel/MarginContainer/VBoxContainer/ContentLabel
+
+func _ready() -> void:
+	CameraController.current_camera_3d_changed.connect(_on_current_camera_3d_changed)
 
 func _process(_delta: float) -> void:
 	if enable:
@@ -75,3 +78,7 @@ func _apply_ray() -> void:
 func _chech_inputs() -> void:
 	if Input.is_action_just_pressed("click") and _last_interactable_object:
 		_last_interactable_object.interact()
+
+func _on_current_camera_3d_changed(new_camera: Camera3D) -> void:
+	if enable:
+		_main_camera = new_camera
