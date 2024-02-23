@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxj7uno0x722"]
 
 [ext_resource type="Script" path="res://scripts/network/auth/sign_up.gd" id="1_kdj7x"]
-[ext_resource type="Texture2D" uid="uid://dqy5od5i7lfgs" path="res://assets/ui/bg_login_and_signup.png" id="2_vs3vg"]
+[ext_resource type="Texture2D" uid="uid://c0cwwsywslgxv" path="res://assets/ui/bg_login_and_signup.png" id="2_vs3vg"]
 [ext_resource type="FontFile" uid="uid://dd7rsw2pt3kqk" path="res://assets/fonts/life_is_goofy.ttf" id="3_grt1j"]
 [ext_resource type="Theme" uid="uid://bfer2qc5j02d3" path="res://themes/text/auth_label.tres" id="4_s5tr4"]
 [ext_resource type="Theme" uid="uid://datgq1ubxoewq" path="res://themes/forms/auth.tres" id="5_mmec5"]
