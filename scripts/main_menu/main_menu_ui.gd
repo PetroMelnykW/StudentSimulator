@@ -30,7 +30,7 @@ func _on_settings_button_pressed():
 	pass # Replace with function body.
 
 func _on_creators_button_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/ui/auth/leaderboard.tscn")
 
 func _on_log_out_button_pressed():
 	Firebase.Auth.logout()
