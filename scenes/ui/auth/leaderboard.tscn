@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcdlso85ltv0r"]
+
+[ext_resource type="Texture2D" uid="uid://davhc3ssp7308" path="res://scenes/ui/auth/image1_0.jpg" id="1_slksv"]
+[ext_resource type="Script" path="res://scripts/leaderboard/Leaderboard.gd" id="1_unhgb"]
+[ext_resource type="FontFile" uid="uid://dd7rsw2pt3kqk" path="res://assets/fonts/life_is_goofy.ttf" id="2_q6ufr"]
+[ext_resource type="Theme" uid="uid://cmqy68qhvq2re" path="res://themes/main_menu/main_menu_theme.tres" id="3_45ktk"]
+
+[sub_resource type="Gradient" id="Gradient_yqjnf"]
+offsets = PackedFloat32Array(0, 0.513043, 1)
+colors = PackedColorArray(0.188235, 0.321569, 0.580392, 0, 0.352941, 0.631373, 0.729412, 0.588235, 0.188235, 0.321569, 0.580392, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pjghs"]
+gradient = SubResource("Gradient_yqjnf")
+metadata/_snap_enabled = true
+metadata/_snap_count = 7
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_unhgb")
+
+[node name="Backgtound" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_slksv")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Backgtound"]
+layout_mode = 0
+offset_top = -56.0
+offset_right = 1280.0
+offset_bottom = 736.0
+texture = SubResource("GradientTexture2D_pjghs")
+
+[node name="BackToGameButton" type="Button" parent="Backgtound"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 178.0
+offset_bottom = 47.0
+focus_mode = 0
+theme = ExtResource("3_45ktk")
+text = "Back to Game"
+
+[node name="Leaderboard" type="Label" parent="Backgtound"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 16.0
+offset_right = 960.305
+offset_bottom = 93.0
+theme_override_colors/font_outline_color = Color(0.898039, 0.568627, 0.282353, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_q6ufr")
+theme_override_font_sizes/font_size = 95
+text = "Leaderboard"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Backgtound"]
+layout_mode = 2
+offset_left = 40.0
+offset_top = 120.0
+offset_right = 256.0
+offset_bottom = 456.0
+alignment = 1
+
+[node name="NikName" type="LineEdit" parent="Backgtound/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "NikName"
+
+[node name="Score" type="LineEdit" parent="Backgtound/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Scor"
+
+[node name="Button" type="Button" parent="Backgtound/VBoxContainer"]
+layout_mode = 2
+text = "add user and score"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Backgtound"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 104.0
+offset_right = 960.305
+offset_bottom = 656.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Backgtound/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Leaderboard" type="Label" parent="Backgtound/ScrollContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.898039, 0.568627, 0.282353, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_q6ufr")
+theme_override_font_sizes/font_size = 90
+horizontal_alignment = 1
+uppercase = true
+
+[connection signal="pressed" from="Backgtound/BackToGameButton" to="." method="_on_back_to_game_button_pressed"]
+[connection signal="pressed" from="Backgtound/VBoxContainer/Button" to="." method="_on_button_pressed"]
