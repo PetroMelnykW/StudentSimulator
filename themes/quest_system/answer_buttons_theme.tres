@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bik61h64rfvni"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfcln"]
+content_margin_left = 8.0
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f73e"]
+content_margin_left = 8.0
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n77na"]
+content_margin_left = 8.0
+bg_color = Color(0.470588, 0.470588, 0.470588, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydrql"]
+content_margin_left = 8.0
+bg_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[resource]
+CheckBox/styles/hover = SubResource("StyleBoxFlat_cfcln")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_4f73e")
+CheckBox/styles/normal = SubResource("StyleBoxFlat_n77na")
+CheckBox/styles/pressed = SubResource("StyleBoxFlat_ydrql")

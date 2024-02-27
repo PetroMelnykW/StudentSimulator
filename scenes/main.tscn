@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://m87r43ydtf7"]
+[gd_scene load_steps=11 format=3 uid="uid://m87r43ydtf7"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5icmi"]
 [ext_resource type="PackedScene" uid="uid://cn8hnpa52k4l3" path="res://scenes/player/player.tscn" id="2_pxwtv"]
+[ext_resource type="PackedScene" uid="uid://du22yivofarxw" path="res://scenes/ui/quest_mechanic/quest_canvas.tscn" id="2_ss4rm"]
 [ext_resource type="PackedScene" uid="uid://bv06xksf6tsl4" path="res://scenes/ui/panda_os/load_screen_panda_os.tscn" id="2_w8tcm"]
 [ext_resource type="PackedScene" uid="uid://cqwwgwkjsln7a" path="res://scenes/ui/panda_os/desktop_panda_os.tscn" id="3_mxtna"]
 [ext_resource type="Texture2D" uid="uid://cje6180r6k5qk" path="res://assets/textures/skybox/urban_courtyard_02_1k.hdr" id="4_kvjkh"]
@@ -24,6 +25,8 @@ ssao_enabled = true
 script = ExtResource("1_5icmi")
 _player = NodePath("3DWorld/Player")
 _current_room = NodePath("3DWorld/Hallway")
+
+[node name="QuestCanvas" parent="." instance=ExtResource("2_ss4rm")]
 
 [node name="PandaOS" type="CanvasLayer" parent="."]
 visible = false

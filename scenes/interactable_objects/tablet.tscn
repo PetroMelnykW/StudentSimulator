@@ -28,11 +28,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0430609, 0.431175, 0.129274
 shape = SubResource("BoxShape3D_now2a")
 
 [node name="Interactable" parent="." instance=ExtResource("3_tc822")]
-is_can_interacted = false
 is_show_description_info = false
 object_name = "Tablet"
 
 [connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
 
 [editable path="nook wifi 002"]

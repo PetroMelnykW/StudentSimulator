@@ -1,0 +1,12 @@
+{
+	"main_question" : {
+		"question" : "Is this game goat?",
+		"answers" : [
+			"Of course",
+			"No",
+			"Absolutely no",
+			"Maybe"
+		],
+		"correct_answer" : "Of course"
+	}
+}
