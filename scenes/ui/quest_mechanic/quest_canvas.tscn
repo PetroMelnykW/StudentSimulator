@@ -1,0 +1,354 @@
+[gd_scene load_steps=20 format=3 uid="uid://du22yivofarxw"]
+
+[ext_resource type="Texture2D" uid="uid://b7f6l2tv7rl2x" path="res://assets/sprites/quest_system/tabley_ui_sprite.png" id="1_snp6i"]
+[ext_resource type="Script" path="res://scripts/quest_system/quest_system.gd" id="1_ytean"]
+[ext_resource type="FontFile" uid="uid://biebeoeoqia3f" path="res://assets/fonts/martian_mono_semi_expanded_bold.ttf" id="3_dd861"]
+[ext_resource type="FontFile" uid="uid://cajonakxfadkd" path="res://assets/fonts/martian_mono_condensed_bold.ttf" id="4_y323q"]
+[ext_resource type="Theme" uid="uid://bik61h64rfvni" path="res://themes/quest_system/answer_buttons_theme.tres" id="5_gtjvw"]
+[ext_resource type="ButtonGroup" uid="uid://cqds0sa1dfx7e" path="res://resources/button_groups/tablet_answers_group.tres" id="5_pf5mh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oseax"]
+bg_color = Color(0.509804, 0.509804, 0.509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uc6vr"]
+bg_color = Color(0.501961, 0.12549, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqdjt"]
+bg_color = Color(0.6, 0.15, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbut0"]
+bg_color = Color(0.4, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85t0b"]
+bg_color = Color(0.18125, 0.5, 0.125, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp7g3"]
+bg_color = Color(0.2175, 0.6, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8fij"]
+bg_color = Color(0.145, 0.4, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfrtt"]
+bg_color = Color(0.18125, 0.5, 0.125, 0.588235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjpq6"]
+bg_color = Color(0.5, 0.125, 0.125, 0.588235)
+
+[sub_resource type="Animation" id="Animation_ci0bq"]
+resource_name = "correct_hide"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CorrectSubmitPanel:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yx4e2"]
+resource_name = "incorrect_hide"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IncorrectSubmitPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q1hye"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CorrectSubmitPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IncorrectSubmitPanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1u4o4"]
+_data = {
+"RESET": SubResource("Animation_q1hye"),
+"correct_hide": SubResource("Animation_ci0bq"),
+"incorrect_hide": SubResource("Animation_yx4e2")
+}
+
+[node name="QuestCanvas" type="CanvasLayer"]
+script = ExtResource("1_ytean")
+_data_file = "res://databases/quests/quest_question.json"
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -5.0
+offset_right = -27.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Tablet" type="TextureRect" parent="Control/CenterContainer"]
+custom_minimum_size = Vector2(290, 550)
+layout_mode = 2
+texture = ExtResource("1_snp6i")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/Tablet"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CenterContainer/Tablet/CenterContainer"]
+custom_minimum_size = Vector2(275, 480)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NamePanel" type="Panel" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oseax")
+
+[node name="NameLabel" type="Label" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/NamePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dd861")
+text = "Student Quest"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestionTitleLabel" type="Label" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_y323q")
+text = "Question:"
+
+[node name="StartQuestionHSeparator" type="HSeparator" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestionContantLabel" type="Label" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_y323q")
+text = "About this question, is this realy a question?"
+autowrap_mode = 2
+clip_text = true
+
+[node name="EndQuestionHSeparator" type="HSeparator" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AnswerTitleLabel" type="Label" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_y323q")
+text = "Pick correct answer:"
+
+[node name="AnswersVBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Answer1CheckBox" type="CheckBox" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/AnswersVBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("5_gtjvw")
+theme_override_fonts/font = ExtResource("4_y323q")
+button_group = ExtResource("5_pf5mh")
+text = "Or wait.. "
+clip_text = true
+
+[node name="Answer2CheckBox" type="CheckBox" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/AnswersVBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("5_gtjvw")
+theme_override_fonts/font = ExtResource("4_y323q")
+button_group = ExtResource("5_pf5mh")
+text = "Or wait.."
+clip_text = true
+
+[node name="Answer3CheckBox" type="CheckBox" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/AnswersVBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("5_gtjvw")
+theme_override_fonts/font = ExtResource("4_y323q")
+button_group = ExtResource("5_pf5mh")
+text = "Correct"
+clip_text = true
+
+[node name="Answer4CheckBox" type="CheckBox" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/AnswersVBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("5_gtjvw")
+theme_override_fonts/font = ExtResource("4_y323q")
+button_group = ExtResource("5_pf5mh")
+text = "No, incorrect"
+clip_text = true
+
+[node name="ButtonsHBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="ExitMarginContainer" type="MarginContainer" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="ExitButton" type="Button" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/ExitMarginContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_y323q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uc6vr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mqdjt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbut0")
+text = "Exit
+"
+
+[node name="SubmitMarginContainer" type="MarginContainer" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="SubmitButton" type="Button" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/SubmitMarginContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_y323q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_85t0b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wp7g3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o8fij")
+text = "Submit"
+
+[node name="SubminControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="SubminControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -640.0
+offset_right = 640.0
+offset_bottom = 200.0
+grow_horizontal = 2
+
+[node name="CorrectSubmitPanel" type="Panel" parent="SubminControl/CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(350, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vfrtt")
+
+[node name="Label" type="Label" parent="SubminControl/CenterContainer/CorrectSubmitPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dd861")
+theme_override_font_sizes/font_size = 20
+text = "The question was resolved correctly"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="IncorrectSubmitPanel" type="Panel" parent="SubminControl/CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(350, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjpq6")
+
+[node name="Label" type="Label" parent="SubminControl/CenterContainer/IncorrectSubmitPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dd861")
+theme_override_font_sizes/font_size = 20
+text = "The question was resolved incorrectly"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubminControl/CenterContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_1u4o4")
+}
+
+[connection signal="pressed" from="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/AnswersVBoxContainer/Answer1CheckBox" to="." method="_on_answer_check_box_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/AnswersVBoxContainer/Answer2CheckBox" to="." method="_on_answer_check_box_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/AnswersVBoxContainer/Answer3CheckBox" to="." method="_on_answer_check_box_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/AnswersVBoxContainer/Answer4CheckBox" to="." method="_on_answer_check_box_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/ExitMarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer/SubmitMarginContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

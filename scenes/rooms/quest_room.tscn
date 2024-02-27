@@ -143,8 +143,14 @@ shape = SubResource("BoxShape3D_r7tek")
 
 [node name="Enviroment" type="Node3D" parent="."]
 
-[node name="Tablet" parent="Enviroment" instance=ExtResource("6_p5f4f")]
+[node name="Tablets" type="Node3D" parent="Enviroment"]
+
+[node name="Tablet" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -1.80395, 1.52028, 5.10248)
+question_key = "main_question"
+
+[node name="Tablet2" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -9.34484, 0.0616081, 7.19915)
 
 [node name="PCs" type="Node3D" parent="Enviroment"]
 

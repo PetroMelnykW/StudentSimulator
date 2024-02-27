@@ -32,5 +32,5 @@ func _on_game_mode_changed(mode: PlayerState.GameMode):
 	match mode:
 		PlayerState.GameMode.WALK, PlayerState.GameMode.TRANSITION_CAMERA:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		PlayerState.GameMode.PANDA, PlayerState.GameMode.PC_BUILDING, PlayerState.GameMode.MAIN_MENU:
+		PlayerState.GameMode.PANDA, PlayerState.GameMode.PC_BUILDING, PlayerState.GameMode.MAIN_MENU, PlayerState.GameMode.QUEST:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
