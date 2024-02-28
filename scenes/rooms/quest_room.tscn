@@ -147,10 +147,43 @@ shape = SubResource("BoxShape3D_r7tek")
 
 [node name="Tablet" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -1.80395, 1.52028, 5.10248)
-question_key = "main_question"
+question_key = "password"
 
 [node name="Tablet2" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
-transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -9.34484, 0.0616081, 7.19915)
+transform = Transform3D(-0.03, -2.62109e-09, -9.15303e-11, 0, 0.00104698, -0.0299817, 2.62268e-09, -0.0299817, -0.00104698, -7.00478, 1.63462, 7.98042)
+question_key = "hacker"
+
+[node name="Tablet3" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
+transform = Transform3D(-1.31134e-09, -0.0281908, -0.0102606, 0, 0.0102606, -0.0281908, 0.03, -1.23226e-09, -4.48505e-10, 9.88162, 1.69391, 6.20147)
+question_key = "firewall"
+
+[node name="Tablet4" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
+transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.03, 0, 0.03, 0, -1.31134e-09, 5.22963, 0.484824, 7.7234)
+question_key = "encryption"
+
+[node name="Tablet5" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
+transform = Transform3D(0.0212132, 0.0204904, 0.00549038, 0, 0.00776457, -0.0289778, -0.0212132, 0.0204904, 0.00549038, -6.81197, 1.76551, -7.24859)
+question_key = "сomplex_password"
+
+[node name="Tablet6" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 8.88622, 0.0122467, -7.60765)
+question_key = "authentication"
+
+[node name="Tablet7" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
+transform = Transform3D(-1.31134e-09, -0.0281908, -0.0102606, 0, 0.0102606, -0.0281908, 0.03, -1.23226e-09, -4.48505e-10, 2.03304, 0.266351, -7.21217)
+question_key = "token"
+
+[node name="Tablet8" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -1.94683, 1.28756, 5.44853)
+question_key = "antivirus"
+
+[node name="Tablet9" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
+transform = Transform3D(-1.31134e-09, 0, -0.03, 0, 0.03, 0, 0.03, 0, -1.31134e-09, 2.56884, 3.27701, 7.72951)
+question_key = "vpn"
+
+[node name="Tablet10" parent="Enviroment/Tablets" instance=ExtResource("6_p5f4f")]
+transform = Transform3D(0.03, 0, 0, 0, 0.00520945, -0.0295442, 0, 0.0295442, 0.00520945, 1.51961, 0.280262, 7.78435)
+question_key = "operating_system"
 
 [node name="PCs" type="Node3D" parent="Enviroment"]
 
