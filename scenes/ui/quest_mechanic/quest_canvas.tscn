@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://du22yivofarxw"]
+[gd_scene load_steps=21 format=3 uid="uid://du22yivofarxw"]
 
 [ext_resource type="Texture2D" uid="uid://b7f6l2tv7rl2x" path="res://assets/sprites/quest_system/tabley_ui_sprite.png" id="1_snp6i"]
 [ext_resource type="Script" path="res://scripts/quest_system/quest_system.gd" id="1_ytean"]
@@ -9,6 +9,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oseax"]
 bg_color = Color(0.509804, 0.509804, 0.509804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ay5de"]
+line_spacing = 2.0
+font_size = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uc6vr"]
 bg_color = Color(0.501961, 0.12549, 0.12549, 1)
@@ -33,6 +37,33 @@ bg_color = Color(0.18125, 0.5, 0.125, 0.588235)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjpq6"]
 bg_color = Color(0.5, 0.125, 0.125, 0.588235)
+
+[sub_resource type="Animation" id="Animation_q1hye"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CorrectSubmitPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IncorrectSubmitPanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ci0bq"]
 resource_name = "correct_hide"
@@ -64,33 +95,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_q1hye"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CorrectSubmitPanel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("IncorrectSubmitPanel:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1u4o4"]
@@ -183,7 +187,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_y323q")
-text = "About this question, is this realy a question?"
+text = "Is this question is a real question?"
+label_settings = SubResource("LabelSettings_ay5de")
 autowrap_mode = 2
 clip_text = true
 

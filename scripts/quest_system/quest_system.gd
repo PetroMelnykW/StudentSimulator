@@ -70,7 +70,8 @@ func _on_exit_button_pressed() -> void:
 	_current_tablet = null
 	_current_answer = ""
 	_correct_answer = ""
-	_answers_button_group.get_pressed_button().button_pressed = false
+	var pressed_button: CheckBox = _answers_button_group.get_pressed_button()
+	if pressed_button: pressed_button.button_pressed = false
 	PlayerState.change_mode(PlayerState.GameMode.WALK)
 
 func _on_submit_button_pressed() -> void:

@@ -1,12 +1,102 @@
 {
-	"main_question" : {
-		"question" : "Is this game goat?",
+	"password" : {
+		"question" : "Like a door to your secrets, i only let you in. Encrypted key, my friend, who am I?",
 		"answers" : [
-			"Of course",
-			"No",
-			"Absolutely no",
-			"Maybe"
+			"Сipher",
+			"Lock",
+			"Password",
+			"Picklock"
 		],
-		"correct_answer" : "Of course"
+		"correct_answer" : "Password"
+	},
+	"hacker" : {
+		"question" : "An invisible enemy, he is mysterious and cunning, it seeks access and harms our files. This enemy on the Internet - who is it, do you know?",
+		"answers" : [
+			"Virus",
+			"Hacker",
+			"Spam",
+			"Phishing"
+		],
+		"correct_answer" : "Hacker"
+	},
+	"firewall" : {
+		"question" : "A network of protection, reliable and strong, it checks access and blocks threats from various troubles. This is what everyone needs, who is she?",
+		"answers" : [
+			"Antivirus",
+			"VPN",
+			"Password",
+			"Firewall"
+		],
+		"correct_answer" : "Firewall"
+	},
+	"encryption" : {
+		"question" : "Closed, complex, it is not vulnerable to attacks, its opening is a real challenge for criminals during mischief. What is this system that helps protect against risks?",
+		"answers" : [
+			"Encryption",
+			"Firewall",
+			"Antivirus",
+			"VPN"
+		],
+		"correct_answer" : "Encryption"
+	},
+	"сomplex_password" : {
+		"question" : "Numbers, letters, symbols are my language, create a strong barrier for your security data externally and internally. Who am I?",
+		"answers" : [
+			"Firewall",
+			"Antivirus",
+			"Complex password",
+			"Encryption"
+		],
+		"correct_answer" : "Complex password"
+	},
+	"authentication" : {
+		"question" : "Answering a request or accessing a system, it separates you from the rest of the attackers with almost a lot of status. What is it called, this check?",
+		"answers" : [
+			"Registration",
+			"Authentication",
+			"Encryption",
+			"Firewall"
+		],
+		"correct_answer" : "Authentication"
+	},
+	"token" : {
+		"question" : "A small device that holds your keys, your security identity, is definitely the only way around these days. What is this device you have with you?",
+		"answers" : [
+			"Password",
+			"Flash drive",
+			"Smart card",
+			"Token"
+		],
+		"correct_answer" : "Token"
+	},
+	"antivirus" : {
+		"question" : "Burglars look for my weak point, I follow every burglar if they don't fall under my influence. Who am I if you want to be safe?",
+		"answers" : [
+			"Antivirus",
+			"Firewall",
+			"VPN",
+			"Encryption"
+		],
+		"correct_answer" : "Antivirus"
+	},
+	"vpn" : {
+		"question" : "As a remote communication tower, I stand guard, protecting your network from viruses and spies that come at your fingertips. Who am I to protect your internet?",
+		"answers" : [
+			"Firewall",
+			"Antivirus",
+			"VPN",
+			"Encryption"
+		],
+		"correct_answer" : "VPN"
+	},
+	"operating_system" : {
+		"question" : "I execute commands, manage processes, my interface is convenient for both children and the masses. I manage everything I'm familiar with, sometimes the computer gets too silent without me. Who am I?",
+		"answers" : [
+			"Browser",
+			"Operating system",
+			"Text editor",
+			"Program"
+		],
+		"correct_answer" : "Operating system"
 	}
 }
