@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://h3aj8lyu2ttm"]
+
+[ext_resource type="PackedScene" uid="uid://dhx3efgycgjli" path="res://assets/models/enviroment/furniture/table_a.glb" id="1_ln5ka"]
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="1_w0npm"]
+[ext_resource type="Material" uid="uid://ixfcraoedk1" path="res://materials/surface_materials/middle_table_material.tres" id="2_6b411"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hg3ks"]
+size = Vector3(3.06824, 0.0712585, 0.702148)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bghha"]
+size = Vector3(1.02161, 0.628815, 0.355469)
+
+[node name="MiddleTable" type="StaticBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+physics_material_override = ExtResource("1_w0npm")
+
+[node name="MiddleTableModel" parent="." instance=ExtResource("1_ln5ka")]
+
+[node name="Ivar_2_001" parent="MiddleTableModel/Ivar_2_002" index="0"]
+material_override = ExtResource("2_6b411")
+
+[node name="Ivar_2_003" parent="MiddleTableModel/Ivar_2_002" index="1"]
+material_override = ExtResource("2_6b411")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000549316, 0.664085, 0)
+shape = SubResource("BoxShape3D_hg3ks")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00286865, 0.315109, 0)
+shape = SubResource("BoxShape3D_bghha")
+
+[editable path="MiddleTableModel"]

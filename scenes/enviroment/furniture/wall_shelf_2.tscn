@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl84yamxra0s3"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="1_ftlh4"]
+[ext_resource type="PackedScene" uid="uid://cwp67ijqucnx5" path="res://assets/models/enviroment/furniture/wall_shelfs/wall_shelf_2.glb" id="1_ufd6y"]
+[ext_resource type="PackedScene" uid="uid://cthdsidrlch6n" path="res://assets/models/enviroment/decor/book_1.glb" id="3_kw8tc"]
+[ext_resource type="PackedScene" uid="uid://c7ih571vrchx8" path="res://assets/models/enviroment/decor/book_2.glb" id="4_t0rtc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q17mu"]
+size = Vector3(0.801697, 0.553223, 0.202148)
+
+[node name="WallShelf2" type="StaticBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+physics_material_override = ExtResource("1_ftlh4")
+
+[node name="WallShelfModel" parent="." instance=ExtResource("1_ufd6y")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0169983, -0.0197754, 0)
+shape = SubResource("BoxShape3D_q17mu")
+
+[node name="Book1Model" parent="." instance=ExtResource("3_kw8tc")]
+transform = Transform3D(6.55671e-09, 0.05, 2.18557e-09, 1.91069e-16, 2.18557e-09, -0.05, -0.05, 6.55671e-09, 9.55343e-17, 0.391191, -0.0704223, 0.0556565)
+
+[node name="Book2Model" parent="." instance=ExtResource("4_t0rtc")]
+transform = Transform3D(-3.0598e-09, 0.0676148, -0.0181173, 0, -0.0181173, -0.0676148, -0.07, -2.95554e-09, 7.91934e-10, 0.370604, -0.0851222, 0.0586787)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dokw3v2217vrm"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="1_ssnfu"]
+[ext_resource type="PackedScene" uid="uid://dh851m25r67j7" path="res://assets/models/enviroment/furniture/office_chair_1.glb" id="2_jxttv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dy462"]
+size = Vector3(0.71637, 0.124069, 0.543213)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f7oh8"]
+size = Vector3(0.576004, 0.811474, 0.132248)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5bap"]
+size = Vector3(0.064209, 0.276303, 0.0635939)
+
+[node name="OfficeChair1" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+physics_material_override = ExtResource("1_ssnfu")
+
+[node name="OfficeChairModel" parent="." instance=ExtResource("2_jxttv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00454712, 0.36573, 0.0562744)
+shape = SubResource("BoxShape3D_dy462")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458527, 0.709433, -0.181587)
+shape = SubResource("BoxShape3D_f7oh8")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458527, 0.165762, 0.0576215)
+shape = SubResource("BoxShape3D_h5bap")
