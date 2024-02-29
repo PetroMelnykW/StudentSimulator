@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbgkqm4fb03fp"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="1_5klym"]
+[ext_resource type="PackedScene" uid="uid://w38ti6prpkpb" path="res://assets/models/enviroment/furniture/wall_shelfs/wall_shelf_3.glb" id="1_s7c66"]
+[ext_resource type="PackedScene" uid="uid://xfxreb0tkpks" path="res://assets/models/enviroment/decor/pot.glb" id="3_gdwla"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i50oe"]
+size = Vector3(5.93903, 12.7831, 2.00879)
+
+[node name="WallShelf3" type="StaticBody3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+physics_material_override = ExtResource("1_5klym")
+
+[node name="WallShelfModel" parent="." instance=ExtResource("1_s7c66")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306, -4.75836, 0)
+shape = SubResource("BoxShape3D_i50oe")
+
+[node name="PotModel" parent="." instance=ExtResource("3_gdwla")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -1.40605, -3.36247, 0.046118)

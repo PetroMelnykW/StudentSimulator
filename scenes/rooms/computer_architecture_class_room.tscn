@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://7vkplxfjvovq"]
 
 [ext_resource type="Script" path="res://scripts/room/room.gd" id="1_n3jyl"]
-[ext_resource type="Texture2D" uid="uid://l5pwmdhagk72" path="res://assets/textures/floor/light_parquet texture_2.jpg" id="1_qiptn"]
+[ext_resource type="Texture2D" uid="uid://djgw6jbetpbmx" path="res://assets/textures/floor/Dolomia marble floor tile texture seamless 14489.jpg" id="2_fa6ls"]
 [ext_resource type="Material" uid="uid://rpt1453qlpxn" path="res://materials/surface_materials/wall_material_1.tres" id="3_5emb8"]
 [ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="3_wbvgj"]
 [ext_resource type="PackedScene" uid="uid://wnglsown5uuu" path="res://scenes/room_box_objects/window_hole_1.tscn" id="4_bbj6l"]
@@ -13,12 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://ddx5c6n7jne6u" path="res://scenes/interactable_objects/light_switch.tscn" id="9_7hulf"]
 [ext_resource type="PackedScene" uid="uid://b0c4qow81i8kq" path="res://scenes/enviroment/decor/wall_socket.tscn" id="11_nyk2q"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5f0d2"]
-albedo_texture = ExtResource("1_qiptn")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if04b"]
+albedo_texture = ExtResource("2_fa6ls")
 uv1_scale = Vector3(5, 4, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yeejr"]
-material = SubResource("StandardMaterial3D_5f0d2")
+material = SubResource("StandardMaterial3D_if04b")
 size = Vector2(20, 16)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tovub"]

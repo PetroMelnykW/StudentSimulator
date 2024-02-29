@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ixfcraoedk1"]
+
+[ext_resource type="Texture2D" uid="uid://dk86qal7uoj34" path="res://assets/textures/enviroment/furniture/middle_table/Ivar_2_stonetravertine001_col_8k.jpg" id="1_465fv"]
+[ext_resource type="Texture2D" uid="uid://b3i20ejr1nc1y" path="res://assets/textures/enviroment/furniture/middle_table/Ivar_2_stonetravertine001_nrm_8k.jpg" id="3_p1020"]
+
+[resource]
+albedo_texture = ExtResource("1_465fv")
+normal_texture = ExtResource("3_p1020")
+uv1_scale = Vector3(0.006, 0.006, 0.006)
+uv1_triplanar = true

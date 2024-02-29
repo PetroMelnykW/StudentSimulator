@@ -360,7 +360,6 @@ object_description = ""
 
 [node name="Door3" parent="Doors" instance=ExtResource("3_xr6j2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.8464, 0, 24.8394)
-_scene_to_load = "res://scenes/rooms/test_room_2.tscn"
 
 [node name="10057_wooden_door_v002" parent="Doors/Door3/DoorModel" index="0"]
 transform = Transform3D(-0.01, -1.32349e-23, 0, 0, 0, 0.01, 2.77556e-17, 0.01, 0, -3.04274, 0, 0)
@@ -377,39 +376,38 @@ is_show_description_info = false
 object_name = "Room 3"
 object_description = ""
 
-[node name="Door4" parent="Doors" instance=ExtResource("3_xr6j2")]
+[node name="Classrom1Door" parent="Doors" instance=ExtResource("3_xr6j2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 0, 3.16)
-_scene_to_load = "res://scenes/rooms/test_room_2.tscn"
+_scene_to_load = "res://scenes/rooms/classroom_1.tscn"
 
-[node name="10057_wooden_door_v002" parent="Doors/Door4/DoorModel" index="0"]
+[node name="10057_wooden_door_v002" parent="Doors/Classrom1Door/DoorModel" index="0"]
 transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
 
-[node name="10057_wooden_door_frame_v002" parent="Doors/Door4/DoorModel" index="1"]
+[node name="10057_wooden_door_frame_v002" parent="Doors/Classrom1Door/DoorModel" index="1"]
 transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
 
-[node name="CollisionShape3D" parent="Doors/Door4" index="1"]
+[node name="CollisionShape3D" parent="Doors/Classrom1Door" index="1"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 5.02052, 1.5, 0)
 
-[node name="Interactable" parent="Doors/Door4" index="2"]
-is_can_interacted = false
+[node name="Interactable" parent="Doors/Classrom1Door" index="2"]
 is_show_description_info = false
-object_name = "Room 4"
+object_name = "Classroom 1"
 object_description = ""
 
-[node name="Door5" parent="Doors" instance=ExtResource("3_xr6j2")]
+[node name="QuestRoomDoor" parent="Doors" instance=ExtResource("3_xr6j2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 0, 11.641)
 _scene_to_load = "res://scenes/rooms/quest_room.tscn"
 
-[node name="10057_wooden_door_v002" parent="Doors/Door5/DoorModel" index="0"]
+[node name="10057_wooden_door_v002" parent="Doors/QuestRoomDoor/DoorModel" index="0"]
 transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
 
-[node name="10057_wooden_door_frame_v002" parent="Doors/Door5/DoorModel" index="1"]
+[node name="10057_wooden_door_frame_v002" parent="Doors/QuestRoomDoor/DoorModel" index="1"]
 transform = Transform3D(-0.01, -1.11022e-16, 0, 0, 0, 0.01, -1.11022e-16, 0.01, 0, 3.04274, 0, -4.76837e-07)
 
-[node name="CollisionShape3D" parent="Doors/Door5" index="1"]
+[node name="CollisionShape3D" parent="Doors/QuestRoomDoor" index="1"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 5.02052, 1.5, -1.90735e-06)
 
-[node name="Interactable" parent="Doors/Door5" index="2"]
+[node name="Interactable" parent="Doors/QuestRoomDoor" index="2"]
 is_show_description_info = false
 object_name = "Quest room"
 object_description = ""
@@ -442,9 +440,9 @@ gizmo_extents = 1.0
 [editable path="Doors/Door2/DoorModel"]
 [editable path="Doors/Door3"]
 [editable path="Doors/Door3/DoorModel"]
-[editable path="Doors/Door4"]
-[editable path="Doors/Door4/DoorModel"]
-[editable path="Doors/Door5"]
-[editable path="Doors/Door5/DoorModel"]
+[editable path="Doors/Classrom1Door"]
+[editable path="Doors/Classrom1Door/DoorModel"]
+[editable path="Doors/QuestRoomDoor"]
+[editable path="Doors/QuestRoomDoor/DoorModel"]
 [editable path="Doors/ComputerArchitectureDoor"]
 [editable path="Doors/ComputerArchitectureDoor/DoorModel"]

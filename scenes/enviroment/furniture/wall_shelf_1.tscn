@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo1e1lj7ft83x"]
+
+[ext_resource type="PackedScene" uid="uid://gia0iju1wmlb" path="res://assets/models/enviroment/furniture/wall_shelfs/wall_shelf_1.glb" id="1_suoma"]
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="1_uul7e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_emb78"]
+size = Vector3(12, 9.80463, 1.16492)
+
+[node name="WallShelf1" type="StaticBody3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+physics_material_override = ExtResource("1_uul7e")
+
+[node name="WallShelfModel" parent="." instance=ExtResource("1_suoma")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.744175, -0.240326, 0.0198975)
+shape = SubResource("BoxShape3D_emb78")
