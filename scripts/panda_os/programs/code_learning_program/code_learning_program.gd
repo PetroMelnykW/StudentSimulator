@@ -6,7 +6,7 @@ signal data_changed(available_blocks: Array)
 static var instance: CodeLearning
 
 const COLLECTION_ID = "player_stats"
-
+var scoreForAnswer = 60
 var module_number = "1"
 var lesson_number = "1"
 var available_blocks: Array
@@ -48,6 +48,7 @@ func check_task_result():
 		var unlock_module_number = _str_add(module_number, 1) if (module_number != _data.keys()[-1] and lesson_number == _data[module_number]["lessons"].keys()[-1]) else module_number
 		var unlock_lesson_number = _str_add(lesson_number, 1) if (lesson_number != _data[module_number]["lessons"].keys()[-1]) else "1"
 		var auth = Firebase.Auth.auth
+		set_score()
 		if auth.localid:
 			var collection: FirestoreCollection = Firebase.Firestore.collection(COLLECTION_ID)
 			var data: Dictionary = _server_player_data
@@ -178,3 +179,16 @@ func _on_next_lesson_button_pressed():
 
 func _on_quit_button_pressed():
 	visible = false
+
+func set_score():
+	var collection: FirestoreCollection
+	var auth = Firebase.Auth.auth
+	collection = Firebase.Firestore.collection(COLLECTION_ID)
+	var task = collection.get_doc(auth.localid)
+	var result = await task.get_document
+	print(result['doc_fields']['score'])
+	var score = result['doc_fields']['score']
+	var data: Dictionary = {
+		'score': score + scoreForAnswer
+	}
+	var task2: FirestoreTask = collection.update(auth.localid, data)

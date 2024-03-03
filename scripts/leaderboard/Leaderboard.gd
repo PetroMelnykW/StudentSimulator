@@ -6,15 +6,15 @@ func _ready():
 	collection = Firebase.Firestore.collection(COLLECTION_ID)
 	get_leader()
 
-func _on_button_pressed():
-	var auth = Firebase.Auth.auth
-	var username = %NikName.text
-	var score = %Score.text.to_int()
-
-	var data: Dictionary = {
-		username: score
-	}
-	var task: FirestoreTask = collection.update('rating', data)
+#func _on_button_pressed():
+	#var auth = Firebase.Auth.auth
+	#var username = %NikName.text
+	#var score = %Score.text.to_int()
+#
+	#var data: Dictionary = {
+		#username: score
+	#}
+	#var task: FirestoreTask = collection.update('rating', data)
 
 func get_leader():
 	var task = collection.get_doc('rating')

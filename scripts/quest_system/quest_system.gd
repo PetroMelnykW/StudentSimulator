@@ -12,6 +12,10 @@ var _answers_button_group: ButtonGroup
 var _current_tablet: Tablet
 var _is_ready_to_quest: bool = true
 
+var COLLECTION_ID = 'player_stats'
+var collection: FirestoreCollection
+var auth = Firebase.Auth.auth
+var scoreForAnswer = 20
 #dependencies
 @onready var _answer_panel_animator: AnimationPlayer = $SubminControl/CenterContainer/AnimationPlayer
 #ui
@@ -82,6 +86,7 @@ func _on_submit_button_pressed() -> void:
 	_current_tablet.queue_free()
 	var _answer_panel: Panel
 	if _current_answer == _correct_answer:
+		set_score()
 		_answer_panel = _correct_panel
 		_answer_panel.show()
 		_answer_panel_animator.play("correct_hide")
@@ -96,3 +101,14 @@ func _on_submit_button_pressed() -> void:
 
 func _on_answer_check_box_pressed() -> void:
 	_current_answer = _answers_button_group.get_pressed_button().text
+
+func set_score():
+	collection = Firebase.Firestore.collection(COLLECTION_ID)
+	var task = collection.get_doc(auth.localid)
+	var result = await task.get_document
+	print(result['doc_fields']['score'])
+	var score = result['doc_fields']['score']
+	var data: Dictionary = {
+		'score': score + scoreForAnswer
+	}
+	var task2: FirestoreTask = collection.update(auth.localid, data)

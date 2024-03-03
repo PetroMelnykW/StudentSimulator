@@ -5,12 +5,12 @@
 [ext_resource type="FontFile" uid="uid://dd7rsw2pt3kqk" path="res://assets/fonts/life_is_goofy.ttf" id="2_q6ufr"]
 [ext_resource type="Theme" uid="uid://cmqy68qhvq2re" path="res://themes/main_menu/main_menu_theme.tres" id="3_45ktk"]
 
-[sub_resource type="Gradient" id="Gradient_yqjnf"]
+[sub_resource type="Gradient" id="Gradient_amawt"]
 offsets = PackedFloat32Array(0, 0.513043, 1)
 colors = PackedColorArray(0.188235, 0.321569, 0.580392, 0, 0.352941, 0.631373, 0.729412, 0.588235, 0.188235, 0.321569, 0.580392, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_pjghs"]
-gradient = SubResource("Gradient_yqjnf")
+gradient = SubResource("Gradient_amawt")
 metadata/_snap_enabled = true
 metadata/_snap_count = 7
 

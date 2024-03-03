@@ -1,0 +1,122 @@
+[gd_scene load_steps=17 format=3 uid="uid://dij6ajyuubjvp"]
+
+[ext_resource type="Script" path="res://scripts/room/room.gd" id="1_blhgo"]
+[ext_resource type="PhysicsMaterial" uid="uid://cplha4jwcmqqx" path="res://materials/physics_materials/enviroment/enviroment_physics_material.tres" id="2_d2o12"]
+[ext_resource type="Texture2D" uid="uid://bw06wvjiw0dfk" path="res://assets/textures/floor/laminate_floor_02_diff_4k.jpg" id="2_mrhvl"]
+[ext_resource type="PackedScene" uid="uid://bhu2f0jam2xdf" path="res://scenes/interactable_objects/test_interatable_cube.tscn" id="4_nfl2v"]
+[ext_resource type="PackedScene" uid="uid://dm3mgcdspc851" path="res://scenes/interactable_objects/classroom_door.tscn" id="5_vpbf3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvymr"]
+albedo_texture = ExtResource("2_mrhvl")
+uv1_scale = Vector3(7.5, 20, 25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_okfj4"]
+material = SubResource("StandardMaterial3D_uvymr")
+size = Vector2(19, 48)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fqjyo"]
+size = Vector3(19, 0, 48)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8a1mb"]
+size = Vector3(1, 5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3tto"]
+size = Vector3(1, 5, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1j5qf"]
+size = Vector3(1, 5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nrlsi"]
+size = Vector3(1, 5, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lda3n"]
+size = Vector3(19, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_22w8j"]
+size = Vector3(19, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fch8m"]
+size = Vector3(19, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xxvja"]
+size = Vector3(19, 5, 1)
+
+[node name="TestRoom" type="Node3D" node_paths=PackedStringArray("_player_start_position")]
+script = ExtResource("1_blhgo")
+_player_start_position = NodePath("PlayerStartPosition")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0622334, -0.0173048, -0.1672)
+mesh = SubResource("PlaneMesh_okfj4")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_fqjyo")
+
+[node name="WestWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.5, 0)
+physics_material_override = ExtResource("2_d2o12")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WestWall"]
+mesh = SubResource("BoxMesh_8a1mb")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WestWall"]
+shape = SubResource("BoxShape3D_m3tto")
+
+[node name="EastWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.5, 0)
+physics_material_override = ExtResource("2_d2o12")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EastWall"]
+mesh = SubResource("BoxMesh_1j5qf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EastWall"]
+shape = SubResource("BoxShape3D_nrlsi")
+
+[node name="NorthWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -24.5)
+physics_material_override = ExtResource("2_d2o12")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NorthWall"]
+mesh = SubResource("BoxMesh_lda3n")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NorthWall"]
+shape = SubResource("BoxShape3D_22w8j")
+
+[node name="SouthWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 24.5)
+physics_material_override = ExtResource("2_d2o12")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SouthWall"]
+mesh = SubResource("BoxMesh_fch8m")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthWall"]
+shape = SubResource("BoxShape3D_xxvja")
+
+[node name="TestInteratableCube" parent="." instance=ExtResource("4_nfl2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0634172, 0.58944, -9.02727)
+
+[node name="TestInteratableCube2" parent="." instance=ExtResource("4_nfl2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09884, 0.58944, -8.53883)
+
+[node name="TestDoor2Door" parent="." instance=ExtResource("5_vpbf3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.5, 0, 0)
+_scene_to_load = "res://scenes/rooms/test_room_2.tscn"
+
+[node name="Interactable" parent="TestDoor2Door" index="2"]
+is_show_description_info = false
+object_name = "Test room 2"
+object_description = ""
+
+[node name="PlayerStartPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 14)
+gizmo_extents = 1.0
+
+[editable path="TestDoor2Door"]
+[editable path="TestDoor2Door/DoorModel"]
