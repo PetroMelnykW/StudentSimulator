@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="StudentSimulator"
+config/version="v0.1.0 - alpha"
 run/main_scene="res://scenes/ui/auth/login.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
