@@ -186,9 +186,10 @@ func set_score():
 	collection = Firebase.Firestore.collection(COLLECTION_ID)
 	var task = collection.get_doc(auth.localid)
 	var result = await task.get_document
-	print(result['doc_fields']['score'])
 	var score = result['doc_fields']['score']
 	var data: Dictionary = {
-		'score': score + scoreForAnswer
+		result['doc_fields']['name']: score + scoreForAnswer
 	}
-	var task2: FirestoreTask = collection.update(auth.localid, data)
+	var collection2: FirestoreCollection = Firebase.Firestore.collection("leaderboard")
+	var task2: FirestoreTask = collection2.update("rating", data)
+	var task3: FirestoreTask = collection.update(auth.localid, {"score" : score + scoreForAnswer})

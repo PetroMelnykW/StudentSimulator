@@ -103,12 +103,15 @@ func _on_answer_check_box_pressed() -> void:
 	_current_answer = _answers_button_group.get_pressed_button().text
 
 func set_score():
+	var collection: FirestoreCollection
+	var auth = Firebase.Auth.auth
 	collection = Firebase.Firestore.collection(COLLECTION_ID)
 	var task = collection.get_doc(auth.localid)
 	var result = await task.get_document
-	print(result['doc_fields']['score'])
 	var score = result['doc_fields']['score']
 	var data: Dictionary = {
-		'score': score + scoreForAnswer
+		result['doc_fields']['nickname']: score + scoreForAnswer
 	}
-	var task2: FirestoreTask = collection.update(auth.localid, data)
+	var collection2: FirestoreCollection = Firebase.Firestore.collection("leaderboard")
+	var task2: FirestoreTask = collection2.update("rating", data)
+	var task3: FirestoreTask = collection.update(auth.localid, {"score" : score + scoreForAnswer})

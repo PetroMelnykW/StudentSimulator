@@ -21,7 +21,7 @@ func _update_students_panel_data() -> void:
 		else:
 			printerr("Students rating data was not recieved")
 			
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 
 func _get_top_player_list() -> Array[Dictionary]:
 	var doc: Dictionary

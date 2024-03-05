@@ -19,11 +19,11 @@ func _ready():
 func get_leader():
 	var task = collection.get_doc('rating')
 	var result = await task.get_document
-	print(result)
+	
 	if result:
 		var leaderboard_data = result['doc_fields']
 		leaderboard_data = sort_dictionary(leaderboard_data)
-		print(sort_dictionary(leaderboard_data))
+		
 		var usernames = leaderboard_data.keys()
 		var label = %Leaderboard
 		var label_text = ''

@@ -46,7 +46,6 @@ func _on_log_out_button_pressed():
 
 func _on_exit_button_pressed():
 	if await add_to_lederboard():
-		print('llll')
 		get_tree().quit()
 
 func add_to_lederboard():
@@ -60,7 +59,7 @@ func add_to_lederboard():
 		username: score
 	}
 	var task: FirestoreTask = reting.update('rating', data)
-	#print(await task.task_finished)	
+	
 	if await task.task_finished:
 		return true
 	
@@ -68,5 +67,4 @@ func get_score():
 	collection = Firebase.Firestore.collection(COLLECTION_ID)
 	var task = collection.get_doc(auth.localid)
 	var result = await task.get_document
-	print(result['doc_fields']['score'])
 	%Score.text = "Score: " + str(result['doc_fields']['score'])

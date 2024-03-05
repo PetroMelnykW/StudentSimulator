@@ -265,8 +265,8 @@ theme_override_fonts/font = ExtResource("4_y323q")
 theme_override_styles/normal = SubResource("StyleBoxFlat_uc6vr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mqdjt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rbut0")
-text = "Exit
-"
+text = "Exit"
+clip_text = true
 
 [node name="SubmitMarginContainer" type="MarginContainer" parent="Control/CenterContainer/Tablet/CenterContainer/MarginContainer/VBoxContainer/ButtonsHBoxContainer"]
 layout_mode = 2

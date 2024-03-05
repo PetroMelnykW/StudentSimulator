@@ -243,8 +243,8 @@ text = "Settings"
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("2_ggd3n")
-text = "Leaderboard
-"
+text = "Leaderboard"
+clip_text = true
 
 [node name="LogOutButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
