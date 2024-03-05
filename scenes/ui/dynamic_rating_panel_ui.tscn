@@ -1,0 +1,315 @@
+[gd_scene load_steps=5 format=3 uid="uid://ysug5oryl84u"]
+
+[ext_resource type="Script" path="res://scripts/player/dynamic_rating_panel_ui.gd" id="1_d6ff2"]
+[ext_resource type="FontFile" uid="uid://ck18d1g324xia" path="res://assets/fonts/Montserrat-Medium.ttf" id="2_3w52y"]
+[ext_resource type="FontFile" uid="uid://biebeoeoqia3f" path="res://assets/fonts/martian_mono_semi_expanded_bold.ttf" id="2_hvjxn"]
+[ext_resource type="FontFile" uid="uid://cajonakxfadkd" path="res://assets/fonts/martian_mono_condensed_bold.ttf" id="3_5gdpb"]
+
+[node name="DynamicRatingPanelUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_d6ff2")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 258.0
+theme_override_constants/separation = 0
+
+[node name="PanelNameLabel" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hvjxn")
+text = "Top students"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="StudentRatingPanel1" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel1/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel1/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_fonts/font = ExtResource("2_3w52y")
+text = "None:"
+clip_text = true
+
+[node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel1/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_5gdpb")
+text = "0"
+horizontal_alignment = 2
+
+[node name="StudentRatingPanel2" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel2/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_fonts/font = ExtResource("2_3w52y")
+text = "None:"
+clip_text = true
+
+[node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_5gdpb")
+text = "0"
+horizontal_alignment = 2
+
+[node name="StudentRatingPanel3" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel3/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel3/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_fonts/font = ExtResource("2_3w52y")
+text = "None:"
+clip_text = true
+
+[node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel3/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_5gdpb")
+text = "0"
+horizontal_alignment = 2
+
+[node name="StudentRatingPanel4" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel4/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel4/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_fonts/font = ExtResource("2_3w52y")
+text = "None:"
+clip_text = true
+
+[node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel4/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_5gdpb")
+text = "0"
+horizontal_alignment = 2
+
+[node name="StudentRatingPanel5" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel5/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel5/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_fonts/font = ExtResource("2_3w52y")
+text = "None:"
+clip_text = true
+
+[node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel5/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_5gdpb")
+text = "0"
+horizontal_alignment = 2
+
+[node name="StudentRatingPanel6" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel6/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel6/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_fonts/font = ExtResource("2_3w52y")
+text = "None:"
+clip_text = true
+
+[node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel6/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_5gdpb")
+text = "0"
+horizontal_alignment = 2
+
+[node name="StudentRatingPanel7" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel7/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel7/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_fonts/font = ExtResource("2_3w52y")
+text = "None:"
+clip_text = true
+
+[node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel7/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_5gdpb")
+text = "0"
+horizontal_alignment = 2
+
+[node name="StudentRatingPanel8" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel8/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel8/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_fonts/font = ExtResource("2_3w52y")
+text = "None:"
+clip_text = true
+
+[node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel8/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_5gdpb")
+text = "0"
+horizontal_alignment = 2
