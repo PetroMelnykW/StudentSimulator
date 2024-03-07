@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://rkdmcnpo1yah" path="res://scenes/ui/player_crosshair_ui.tscn" id="1_dy3lw"]
 [ext_resource type="PackedScene" uid="uid://dov5i3renx7ay" path="res://scenes/ui/interactable_info_ui.tscn" id="2_w3dm8"]
-[ext_resource type="PackedScene" uid="uid://ysug5oryl84u" path="res://scenes/ui/dynamic_rating_panel_ui.tscn" id="3_ca2pn"]
+[ext_resource type="PackedScene" uid="uid://ysug5oryl84u" path="res://scenes/ui/async_rating_panel_ui.tscn" id="3_ca2pn"]
 
 [node name="PlayerUI" type="CanvasLayer"]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ysug5oryl84u"]
 
-[ext_resource type="Script" path="res://scripts/player/dynamic_rating_panel_ui.gd" id="1_d6ff2"]
-[ext_resource type="FontFile" uid="uid://ck18d1g324xia" path="res://assets/fonts/Montserrat-Medium.ttf" id="2_3w52y"]
-[ext_resource type="FontFile" uid="uid://biebeoeoqia3f" path="res://assets/fonts/martian_mono_semi_expanded_bold.ttf" id="2_hvjxn"]
-[ext_resource type="FontFile" uid="uid://cajonakxfadkd" path="res://assets/fonts/martian_mono_condensed_bold.ttf" id="3_5gdpb"]
+[ext_resource type="Script" path="res://scripts/player/dynamic_rating_panel_ui.gd" id="1_qpmqu"]
+[ext_resource type="FontFile" uid="uid://biebeoeoqia3f" path="res://assets/fonts/martian_mono_semi_expanded_bold.ttf" id="2_sfjq5"]
+[ext_resource type="FontFile" uid="uid://ck18d1g324xia" path="res://assets/fonts/Montserrat-Medium.ttf" id="3_qn12t"]
+[ext_resource type="FontFile" uid="uid://cajonakxfadkd" path="res://assets/fonts/martian_mono_condensed_bold.ttf" id="4_goivg"]
 
 [node name="DynamicRatingPanelUI" type="Control"]
 layout_mode = 3
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_d6ff2")
+script = ExtResource("1_qpmqu")
 metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -25,7 +25,7 @@ theme_override_constants/separation = 0
 [node name="PanelNameLabel" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_hvjxn")
+theme_override_fonts/font = ExtResource("2_sfjq5")
 text = "Top students"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -65,14 +65,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_fonts/font = ExtResource("2_3w52y")
+theme_override_fonts/font = ExtResource("3_qn12t")
 text = "None:"
 clip_text = true
 
 [node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel1/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_5gdpb")
+theme_override_fonts/font = ExtResource("4_goivg")
 text = "0"
 horizontal_alignment = 2
 
@@ -99,14 +99,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_fonts/font = ExtResource("2_3w52y")
+theme_override_fonts/font = ExtResource("3_qn12t")
 text = "None:"
 clip_text = true
 
 [node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_5gdpb")
+theme_override_fonts/font = ExtResource("4_goivg")
 text = "0"
 horizontal_alignment = 2
 
@@ -133,14 +133,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_fonts/font = ExtResource("2_3w52y")
+theme_override_fonts/font = ExtResource("3_qn12t")
 text = "None:"
 clip_text = true
 
 [node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel3/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_5gdpb")
+theme_override_fonts/font = ExtResource("4_goivg")
 text = "0"
 horizontal_alignment = 2
 
@@ -167,14 +167,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_fonts/font = ExtResource("2_3w52y")
+theme_override_fonts/font = ExtResource("3_qn12t")
 text = "None:"
 clip_text = true
 
 [node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel4/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_5gdpb")
+theme_override_fonts/font = ExtResource("4_goivg")
 text = "0"
 horizontal_alignment = 2
 
@@ -201,14 +201,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_fonts/font = ExtResource("2_3w52y")
+theme_override_fonts/font = ExtResource("3_qn12t")
 text = "None:"
 clip_text = true
 
 [node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel5/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_5gdpb")
+theme_override_fonts/font = ExtResource("4_goivg")
 text = "0"
 horizontal_alignment = 2
 
@@ -235,14 +235,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_fonts/font = ExtResource("2_3w52y")
+theme_override_fonts/font = ExtResource("3_qn12t")
 text = "None:"
 clip_text = true
 
 [node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel6/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_5gdpb")
+theme_override_fonts/font = ExtResource("4_goivg")
 text = "0"
 horizontal_alignment = 2
 
@@ -269,14 +269,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_fonts/font = ExtResource("2_3w52y")
+theme_override_fonts/font = ExtResource("3_qn12t")
 text = "None:"
 clip_text = true
 
 [node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel7/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_5gdpb")
+theme_override_fonts/font = ExtResource("4_goivg")
 text = "0"
 horizontal_alignment = 2
 
@@ -303,13 +303,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_fonts/font = ExtResource("2_3w52y")
+theme_override_fonts/font = ExtResource("3_qn12t")
 text = "None:"
 clip_text = true
 
 [node name="PlayerScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StudentRatingPanel8/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_5gdpb")
+theme_override_fonts/font = ExtResource("4_goivg")
 text = "0"
 horizontal_alignment = 2

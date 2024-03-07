@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwehhi1a2681n"
-path.s3tc="res://.godot/imported/plaster_wall_texture.jpg-2066194ad05b27f1aa64f3374035f1f4.s3tc.ctex"
+path.s3tc="res://.godot/imported/plaster_wall_texture.jpg-2c909eddec0f6feffaf841feb8ef55f5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Wall/plaster_wall_texture.jpg"
-dest_files=["res://.godot/imported/plaster_wall_texture.jpg-2066194ad05b27f1aa64f3374035f1f4.s3tc.ctex"]
+source_file="res://assets/textures/wall/plaster_wall_texture.jpg"
+dest_files=["res://.godot/imported/plaster_wall_texture.jpg-2c909eddec0f6feffaf841feb8ef55f5.s3tc.ctex"]
 
 [params]
 
