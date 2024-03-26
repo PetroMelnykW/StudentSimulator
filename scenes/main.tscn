@@ -19,7 +19,6 @@ background_mode = 2
 background_energy_multiplier = 0.4
 sky = SubResource("Sky_jdu1x")
 reflected_light_source = 2
-ssao_enabled = true
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("_player", "_current_room")]
 script = ExtResource("1_5icmi")

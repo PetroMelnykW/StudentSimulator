@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cc0w40lhvmpvy"]
+[gd_scene load_steps=13 format=3 uid="uid://cc0w40lhvmpvy"]
 
 [ext_resource type="Script" path="res://scripts/main_menu/main_menu_ui.gd" id="1_4sitg"]
 [ext_resource type="Texture2D" uid="uid://8214exs7eeml" path="res://assets/ui/main_menu/student_simulator.png" id="1_e5m04"]
@@ -43,9 +43,6 @@ shader_parameter/color2 = Color(0.654902, 0.603922, 0.729412, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6bsp"]
 bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_os2e4"]
-length = 0.001
 
 [sub_resource type="Animation" id="Animation_l47yh"]
 resource_name = "hide"
@@ -154,7 +151,6 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u22e1"]
 _data = {
-"RESET": SubResource("Animation_os2e4"),
 "hide": SubResource("Animation_l47yh"),
 "show": SubResource("Animation_dwguu")
 }
@@ -198,6 +194,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.35
 anchor_bottom = 1.0
+offset_right = -3.05176e-05
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_t6bsp")
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]

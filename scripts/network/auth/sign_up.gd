@@ -27,16 +27,25 @@ func _send_account_data():
 		var data: Dictionary = {
 			"nickname": nickname,
 			"role": role,
-			"available_lessons": {"1": ["1"]}
+			"available_lessons": {"1": ["1"]},
+			"score": 0
 		}
 		var task: FirestoreTask = collection.update(auth.localid, data)
+
+func set_score():
+	var data: Dictionary = {
+		%NicknameLineEdit.text: 0
+	}
+	var collection: FirestoreCollection = Firebase.Firestore.collection("leaderboard")
+	var task2: FirestoreTask = collection.update("rating", data)
 
 func on_signup_succeeded(auth):
 	print(auth)
 	Firebase.Auth.save_auth(auth)
 	Firebase.Auth.load_auth()
 	if Firebase.Auth.check_auth_file():
-		_send_account_data()
+		await _send_account_data()
+		set_score()
 	%StatusMessage.text
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
