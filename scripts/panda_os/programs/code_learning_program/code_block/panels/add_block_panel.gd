@@ -11,7 +11,7 @@ extends PanelContainer
 @export_file("*.tscn") var reassignment_var_panel_scene
 
 func _ready():
-	await get_tree().process_frame
+	await get_tree().create_timer(4).timeout
 	_on_data_changed(CodeLearning.instance.available_blocks)
 	CodeLearning.instance.data_changed.connect(_on_data_changed)
 

@@ -60,6 +60,7 @@ func check_task_result():
 				_update_levels_block()
 
 func _ready():
+	await get_tree().create_timer(3).timeout
 	instance = self
 	_data = _load_data_data(_data_file_path)
 	await _load_server_player_data()
@@ -188,7 +189,7 @@ func set_score():
 	var result = await task.get_document
 	var score = result['doc_fields']['score']
 	var data: Dictionary = {
-		result['doc_fields']['name']: score + scoreForAnswer
+		result['doc_fields']['nickname']: score + scoreForAnswer
 	}
 	var collection2: FirestoreCollection = Firebase.Firestore.collection("leaderboard")
 	var task2: FirestoreTask = collection2.update("rating", data)
